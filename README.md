@@ -1,2 +1,7 @@
-# Nidhogg_Clone
-"Alpha" of a Nidhogg Clone as a final group project for Intermediate Game Dev course at NYU.
+# Nidhogg Clone
+"Alpha" of a clone of the 2D two-player side-scroller Nidhogg.
+
+Contributors:
+[Lina Sanchez](https://github.com/linahsan)
+[Caroline Guo](https://github.com/ggui1213)
+[Caleb Levy]
