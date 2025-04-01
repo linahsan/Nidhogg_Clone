@@ -3,5 +3,7 @@
 
 Contributors:
 [Lina Sanchez](https://github.com/linahsan)
+
 [Caroline Guo](https://github.com/ggui1213)
+
 [Caleb Levy]
