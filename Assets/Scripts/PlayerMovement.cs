@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// THIS IS A TEMPORARY IMPLEMENTATION SO IGNORE BADLY WRITTEN STUFF - lina
+    /// </summary>
+    [SerializeField] float enGardeSpeed;
+    
     void Start()
     {
-        
+        enGardeSpeed = 5f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            
+        }
     }
 }
