@@ -7,4 +7,4 @@
 
 [Caroline Guo](https://github.com/ggui1213)
 
-[Caleb Levy]
+[Caleb Levy](https://github.com/CalebSnitch) 
