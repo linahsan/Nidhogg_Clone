@@ -6,8 +6,14 @@ public class SwordScript : MonoBehaviour
 
     public enum SWORD_STATES
     {
-
+        HELD,
+        THROWN,
+        FALLING,
+        LAYING
     }
+
+    public SWORD_STATES State;
+
     void Start()
     {
         
