@@ -391,7 +391,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Player2
+  m_DefaultControlScheme: Player1
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -557,6 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enGardeSpeed: 2
   playerInputScript: {fileID: 0}
+  jumpSpeed: 0
 --- !u!114 &889366642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: 0
+  jumpDirection: 0
   playerInput: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
