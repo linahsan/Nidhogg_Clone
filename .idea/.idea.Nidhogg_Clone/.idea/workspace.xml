@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8d8ddfab-0c7f-436d-9abb-6eedea80bb39" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerControls.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/LinaScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LinaScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInputScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +21,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInputScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@920b46832575/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -33,7 +37,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "lina",
+    "git-widget-placeholder": "CG__2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,6 +100,7 @@
       <updated>1743613285921</updated>
       <workItem from="1743613287270" duration="4000" />
       <workItem from="1743614519231" duration="6385000" />
+      <workItem from="1743975497369" duration="1669000" />
     </task>
     <servers />
   </component>
