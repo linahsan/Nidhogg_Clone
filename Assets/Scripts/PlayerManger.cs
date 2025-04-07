@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerManger : MonoBehaviour
 {
+    public event Action<PlayerStates> OnPlayerStateEnds, OnPlayerStateStart; //event subscribe
     public enum PlayerStates
     {
         ENGARDE_HIGH,
@@ -65,6 +67,8 @@ public class PlayerManger : MonoBehaviour
     
     public void stateEnd(PlayerStates newState)
     {
+        OnPlayerStateEnds?.Invoke(State);
+        
         switch (State)
         {
             case PlayerStates.ENGARDE_HIGH:
@@ -87,6 +91,7 @@ public class PlayerManger : MonoBehaviour
 
     public void stateBegin(PlayerStates newState)
     {
+        OnPlayerStateStart?.Invoke(State);
         State = newState;
 
         switch (newState)
@@ -106,4 +111,6 @@ public class PlayerManger : MonoBehaviour
             
         }
     }
+    
+    
 }
