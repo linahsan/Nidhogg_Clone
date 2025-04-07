@@ -19,16 +19,16 @@ public class PlayerManger : MonoBehaviour
 
     private PlayerStates State;
 
-    public ENGARDE_HIGH ENGARDE_HIGH_SCRIPT;
-    public ENGARDE_MIDDLE ENGARDE_MIDDLE_SCRIPT;
-    public ENGARDE_LOW ENGARDE_LOW_SCRIPT;
-
+    public ENGARDE_HIGH engardeHighScript;
+    public ENGARDE_MIDDLE engardeMiddleScript;
+    public ENGARDE_LOW engardeLowScript;
+    
     void Start()
     {
         //get the state scripts:
-        ENGARDE_HIGH_SCRIPT = gameObject.GetComponent<ENGARDE_HIGH>();
-        ENGARDE_MIDDLE_SCRIPT = gameObject.GetComponent<ENGARDE_MIDDLE>();
-        ENGARDE_LOW_SCRIPT = gameObject.GetComponent<ENGARDE_LOW>();
+        engardeHighScript = gameObject.GetComponent<ENGARDE_HIGH>();
+        engardeMiddleScript = gameObject.GetComponent<ENGARDE_MIDDLE>();
+        engardeLowScript = gameObject.GetComponent<ENGARDE_LOW>();
     }
 
     void Update()
@@ -48,15 +48,15 @@ public class PlayerManger : MonoBehaviour
         switch (updateState)
         {
             case PlayerStates.ENGARDE_HIGH:
-                ENGARDE_HIGH_SCRIPT.altUpdate();
+                engardeHighScript.altUpdate();
                 break;
 
             case PlayerStates.ENGARDE_MIDDLE:
-                ENGARDE_MIDDLE_SCRIPT.altUpdate();
+                engardeMiddleScript.altUpdate();
                 break;
 
             case PlayerStates.ENGARDE_LOW:
-                ENGARDE_LOW_SCRIPT.altUpdate();
+                engardeLowScript.altUpdate();
                 break;
 
             
@@ -68,15 +68,15 @@ public class PlayerManger : MonoBehaviour
         switch (State)
         {
             case PlayerStates.ENGARDE_HIGH:
-                ENGARDE_HIGH_SCRIPT.altEndState();
+                engardeHighScript.altEndState();
                 break;
             
             case PlayerStates.ENGARDE_MIDDLE:
-                ENGARDE_MIDDLE_SCRIPT.altEndState();
+                engardeMiddleScript.altEndState();
                 break;
 
             case PlayerStates.ENGARDE_LOW:
-                ENGARDE_LOW_SCRIPT.altEndState();
+                engardeLowScript.altEndState();
                 break;
 
             
@@ -92,15 +92,15 @@ public class PlayerManger : MonoBehaviour
         switch (newState)
         {
             case PlayerStates.ENGARDE_HIGH:
-                ENGARDE_HIGH_SCRIPT.altBeginState();
+                engardeHighScript.altBeginState();
                 break;
             
             case PlayerStates.ENGARDE_MIDDLE:
-                ENGARDE_MIDDLE_SCRIPT.altBeginState();
+                engardeMiddleScript.altBeginState();
                 break;
 
             case PlayerStates.ENGARDE_LOW:
-                ENGARDE_LOW_SCRIPT.altBeginState();
+                engardeLowScript.altBeginState();
                 break;
 
             
