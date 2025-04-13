@@ -6,134 +6,258 @@
             "id": "89bbfb28-1655-416e-89d8-7253f6d08731",
             "actions": [
                 {
-                    "name": "Move (En Garde)",
-                    "type": "Value",
-                    "id": "68fc74f7-4af8-40c8-87f6-b86d843a3342",
-                    "expectedControlType": "Vector2",
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "f6bdebe8-ca8e-4fcb-9f69-446b36456d01",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Value",
-                    "id": "a5aafd42-1b1b-49ed-800f-c13cfe59327f",
-                    "expectedControlType": "Vector2",
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "b4af2d9a-2b51-4e4f-a624-e938ab73f27b",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "57cf7db5-d9aa-4731-b7a8-262c68ad97c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "6c3a7600-3bd4-4c02-bed4-00d18990aca0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump1",
+                    "type": "Button",
+                    "id": "d1a10b80-ac01-48ac-816e-ef4db601a113",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "17b6e34d-07dd-43a5-8aea-673f2ed31f8d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "Player1",
-                    "id": "1cfbfae0-9ea7-4cc5-8adc-f96a14991f79",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move (En Garde)",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "left",
-                    "id": "3fb43799-aefd-4a95-96e0-42e7e6c4e7ae",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Player1",
-                    "action": "Move (En Garde)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "679288a8-7f93-4a0c-8a61-1af2f4b1c069",
+                    "name": "",
+                    "id": "2d2bcf8e-1be6-4139-b33c-486a7d930369",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Player1",
-                    "action": "Move (En Garde)",
+                    "action": "Right",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Player2",
-                    "id": "fe5edd92-58d0-4cef-a4a2-667f83fad2bf",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move (En Garde)",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "ac76ae30-246e-41b6-842f-86c4c8af00c9",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Player2",
-                    "action": "Move (En Garde)",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "716be5d6-19d1-4c49-a3b2-080252fe166d",
+                    "name": "",
+                    "id": "1465b384-e928-4de5-87ee-34160594ba8b",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Player2",
-                    "action": "Move (En Garde)",
+                    "action": "Right",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Player1",
-                    "id": "c6f6127d-6d56-4afe-ad83-c0ef9da5e3aa",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "77592d30-9b72-4ecc-900c-52a4065acf17",
+                    "name": "",
+                    "id": "c028cfb9-7ed5-4f1e-8c84-2db0ef7d8e37",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bce5346-7b90-4cbd-8fde-4e01a8ff11b6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player1",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8ae75c2-9fc6-4d32-a814-205da361fa84",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player2",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2697e81-4e54-4e8a-b58b-96babbb3046f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97377f3d-e3b8-4801-8b6c-badec8e119d6",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Player1",
-                    "action": "Jump",
+                    "action": "Up",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Player2",
-                    "id": "417f879a-1943-48d0-9ed5-70f4bffdbff9",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "42c2f24d-d65f-4f5b-87fa-59b0da083a71",
+                    "name": "",
+                    "id": "0798e7d1-1627-44f2-9234-d27cdf9d5ff6",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Player2",
-                    "action": "Jump",
+                    "action": "Up",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68d0b9a7-6bdb-48b1-a35f-3e2bdd3c2988",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f05d394f-0fb0-4538-8c8a-1adca24273e0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player1",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9e6e368-933e-456c-af36-addb2b483c61",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player2",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e7e0222-4cd1-42f9-992e-f8946662098b",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66602113-44ba-4a14-a4f3-c8011e96b32c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player1",
+                    "action": "Jump1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1ba9aec-ca6e-4fd6-9330-8b4a2a9369a7",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player2",
+                    "action": "Jump1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9448e346-b8d7-4a9b-98f6-ffd97fdfb9ea",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Jump1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48ff9104-92d8-4ae9-890e-9a71b19b716f",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player1",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fe8b823-4711-4c56-81d4-62d0d508a24f",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Player2",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c749751f-db4e-40d5-817a-20433c58fb0c",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PLAYER3",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -160,6 +284,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "PLAYER3",
+            "bindingGroup": "PLAYER3",
+            "devices": []
         }
     ]
 }
