@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+/*
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float enGardeSpeed;
@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         */
        
         //falling
+/*
         currentVelocity.y = Mathf.Max(maxFallSpeed, currentVelocity.y - gravity * Time.deltaTime);
         //movement
 
@@ -83,3 +84,4 @@ public class PlayerMovement : MonoBehaviour
         currentVelocity.y = currentJumpSpeed;
     }
 }
+*/

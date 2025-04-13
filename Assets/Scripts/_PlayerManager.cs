@@ -1,7 +1,8 @@
+/*
 using System;
 using UnityEngine;
 
-public class PlayerManger : MonoBehaviour
+public class _PlayerManager : MonoBehaviour
 {
     public event Action<PlayerStates> OnPlayerStateEnds, OnPlayerStateStart; //event subscribe
     public enum PlayerStates
@@ -114,3 +115,4 @@ public class PlayerManger : MonoBehaviour
     
     
 }
+*/

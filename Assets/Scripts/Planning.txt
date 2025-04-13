@@ -1,0 +1,39 @@
+INHERITANCE LOGIC
+figure out how falling fits in (due to necessary grounded checks)
+
+Player (base class)
+       ├── Armed (super state)
+       │   ├── Still
+       │   │   ├── Standing
+       │   │   │   └── Attacking
+       │   │   ├── Crouching
+       │   │   │   └── Attacking
+       │   │   └── Jumping
+       │   │       └── Attacking
+       │   └── Moving
+       │       ├── Running
+       │       │   └── Attacking → Still
+       │       ├── Rolling
+       │       │   └── Attacking → Still
+       │       └── Jumping
+       │           └── Attacking → Still
+       │
+       ├── Unarmed (super state)
+       │   ├── Still
+       │   │   ├── Standing
+       │   │   │   └── Attacking
+       │   │   ├── Crouching
+       │   │   │   └── Attacking
+       │   │   └── Jumping
+       │   │       └── Attacking
+       │   └── Moving
+       │       ├── Running
+       │       │   └── Attacking → Still
+       │       ├── Rolling
+       │       │   └── Attacking → Still
+       │       └── Jumping
+       │           └── Attacking → Still
+       │
+       ├── Downed
+       │
+       ├── Dead

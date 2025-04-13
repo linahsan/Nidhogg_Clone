@@ -1,13 +1,12 @@
 using UnityEngine;
-
-public class ENGARDE_LOW : MonoBehaviour
+/*
+public class ENGARDE_HIGH : MonoBehaviour
 {
-     public PlayerManger playerManager;
+    public PlayerManger playerManager;
     void Start()
     {
         playerManager = gameObject.GetComponent<PlayerManger>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -15,14 +14,19 @@ public class ENGARDE_LOW : MonoBehaviour
         
     }
 
+
     public void altUpdate()
     {
+        //
 
-        //transitions away
-        if (Input.GetKeyDown(KeyCode.W))
+        //transitions away:
+
+        if (Input.GetKeyDown(KeyCode.S))
         {
             playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_MIDDLE);
         }
+
+
     }
 
     public void altBeginState()
@@ -34,3 +38,4 @@ public class ENGARDE_LOW : MonoBehaviour
         //nothing I can think of
     }
 }
+*/

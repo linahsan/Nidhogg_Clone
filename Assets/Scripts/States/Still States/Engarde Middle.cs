@@ -1,6 +1,6 @@
-using UnityEngine;
+/*using UnityEngine;
 
-public class ENGARDE_HIGH : MonoBehaviour
+public class ENGARDE_MIDDLE : MonoBehaviour
 {
     public PlayerManger playerManager;
     void Start()
@@ -8,25 +8,27 @@ public class ENGARDE_HIGH : MonoBehaviour
         playerManager = gameObject.GetComponent<PlayerManger>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
         
     }
-
-
+    
+    
     public void altUpdate()
     {
-        //
 
-        //transitions away:
+        //transitions away
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_HIGH);
+        }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_MIDDLE);
+            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_LOW);
         }
-
-
     }
 
     public void altBeginState()
@@ -38,3 +40,4 @@ public class ENGARDE_HIGH : MonoBehaviour
         //nothing I can think of
     }
 }
+*/
