@@ -1,8 +1,8 @@
 using UnityEngine;
-
-public class ENGARDE_MIDDLE : MonoBehaviour
+/*
+public class ENGARDE_LOW : MonoBehaviour
 {
-    public PlayerManger playerManager;
+     public PlayerManger playerManager;
     void Start()
     {
         playerManager = gameObject.GetComponent<PlayerManger>();
@@ -14,20 +14,14 @@ public class ENGARDE_MIDDLE : MonoBehaviour
     {
         
     }
-    
-    
+
     public void altUpdate()
     {
 
         //transitions away
         if (Input.GetKeyDown(KeyCode.W))
         {
-            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_HIGH);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_LOW);
+            playerManager.stateEnd(PlayerManger.PlayerStates.ENGARDE_MIDDLE);
         }
     }
 
@@ -40,3 +34,4 @@ public class ENGARDE_MIDDLE : MonoBehaviour
         //nothing I can think of
     }
 }
+*/
