@@ -44,5 +44,15 @@ public class PlayerInputTestScript : MonoBehaviour
             Debug.Log(response);
             Debug.Log("happened");
         }
+
+        if(playerInput.actions["Right"].IsPressed())
+        {
+
+        }
+
+        if(playerInput.actions["Right"].WasReleasedThisFrame())
+        {
+            
+        }
     }
 }
