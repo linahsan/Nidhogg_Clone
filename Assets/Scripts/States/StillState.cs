@@ -1,10 +1,15 @@
+using States;
 using UnityEngine;
 
-public class StillState : PlayerState
+public abstract class StillState : PlayerState
 {
     // inherit from base class, level 1
     public StillState(PlayerManager manager) : base(manager)
     {
+        if (manager.dir == -1)
+        {
+            
+        }
     }
     
     public override void Enter()
