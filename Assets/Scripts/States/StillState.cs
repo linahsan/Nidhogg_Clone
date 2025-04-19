@@ -9,7 +9,7 @@ public abstract class StillState : PlayerState
         if (manager.dir == -1)
         {
             
-        }
+        }z
     }
     
     public override void Enter()
