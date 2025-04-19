@@ -7,7 +7,7 @@ Player (base class)
        │   │   ├── Standing
        │   │   │   └── Attacking
        │   │   ├── Crouching
-       │   │   │   └── Attacking
+       │   │   │   └── CrouchAttacking
        │   │   └── Jumping
        │   │       └── Attacking
        │   └── Moving
@@ -15,8 +15,10 @@ Player (base class)
        │       │   └── Attacking → Still
        │       ├── Rolling
        │       │   └── Attacking → Still
-       │       └── Jumping
-       │           └── Attacking → Still
+       │       ├── Jumping
+       │       │   └── Attacking → Still
+       |       └── Crouching
+       |           └── CrouchAttacking
        │
        ├── Unarmed (super state)
        │   ├── Still
