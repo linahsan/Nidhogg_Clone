@@ -7,10 +7,10 @@ namespace States
         // base class
         protected PlayerManager manager;
         protected Animator animator;
-        public PlayerState(PlayerManager manager, Animator animator) 
+        public PlayerState(PlayerManager manager) 
         {
             this.manager = manager;
-            this.animator = animator;
+            animator = manager.animator;
             //Need to clean this up later
         }
         
