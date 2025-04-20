@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace States.Armed.Still
 {
     public class ArmedStillStandingState : ArmedStillState
@@ -8,14 +10,14 @@ namespace States.Armed.Still
         }
         private SwordPosition _swordPosition;
         
-        public ArmedStillStandingState(PlayerManager manager) : base(manager)
+        public ArmedStillStandingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
             
         }
 
         protected override void GotoAttackingState()
         {
-            manager.ChangeState(new ArmedStillStandingAttackingState(manager));
+            manager.ChangeState(new ArmedStillStandingAttackingState(manager, animator));
         }
 
         protected override void GotoDisarmedState()

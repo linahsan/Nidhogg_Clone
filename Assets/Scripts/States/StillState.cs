@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class StillState : PlayerState
 {
     // inherit from base class, level 1
-    public StillState(PlayerManager manager) : base(manager)
+    public StillState(PlayerManager manager, Animator animator) : base(manager, animator)
     {
         if (manager.dir == -1)
         {

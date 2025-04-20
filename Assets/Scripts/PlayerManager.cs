@@ -1,10 +1,12 @@
 using States;
 using States.Armed.Still;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
     public Animator animator;
+    public PlayerInput playerInput;
     public int dir = -1;
     public bool hasSword;
     public bool isGrounded;
@@ -20,10 +22,14 @@ public class PlayerManager : MonoBehaviour
         isGrounded = true; // change when refining game feel (players jump in)
         isDowned = false;
         isDead = false;
-        //ResetState();Somebody says pointless, blame him . :(
-        ChangeState(new ArmedStillStandingState(this));
-        
+
+
         animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+        //ResetState();Somebody says pointless, blame him . :(
+        state = ChangeState(new ArmedStillStandingState(this, animator));
+        
+   
     }
     
     void Update()
@@ -50,18 +56,19 @@ public class PlayerManager : MonoBehaviour
         state?.Update();//checks if state exist
     }
 
-    public void ChangeState(PlayerState newState)
+    public PlayerState ChangeState(PlayerState newState)
     {
         if (newState == null)
         {
             Debug.LogError("newState is null");
-            return;
+            return null;
         }
         
 
         state?.Exit();
         state = newState;
         state.Enter();
+        return newState;
     }
 
     void ResetState()

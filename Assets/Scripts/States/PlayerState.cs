@@ -7,7 +7,7 @@ namespace States
         // base class
         protected PlayerManager manager;
         protected Animator animator;
-        public PlayerState(PlayerManager manager) 
+        public PlayerState(PlayerManager manager, Animator animator) 
         {
             this.manager = manager;
             animator = manager.animator;
@@ -32,7 +32,62 @@ namespace States
     
         public virtual PlayerState HandleInput()
         {
+            if(manager.playerInput.actions["Right"].IsPressed())
+            {
+                RightPressed();
+            }
+
+            if(manager.playerInput.actions["Left"].IsPressed())
+            {
+                LeftPressed();
+            }
+
+            if(manager.playerInput.actions["Up"].IsPressed())
+            {
+                UpPressed();
+            }
+
+            if(manager.playerInput.actions["Down"].IsPressed())
+            {
+                DownPressed();
+            }
+
+            if(manager.playerInput.actions["Jump"].IsPressed())
+            {
+                JumpPressed();
+            }
+
+            if(manager.playerInput.actions["Attack"].IsPressed())
+            {
+                AttackPressed();
+            }
+            
             return null;
+        }
+
+        protected virtual void RightPressed()
+        {
+
+        }
+        protected virtual void LeftPressed()
+        {
+            
+        }
+        protected virtual void UpPressed()
+        {
+            
+        }
+        protected virtual void DownPressed()
+        {
+            
+        }
+        protected virtual void JumpPressed()
+        {
+            
+        }
+        protected virtual void AttackPressed()
+        {
+            
         }
     }
 }

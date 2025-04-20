@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace States.Armed.Still
 {
     public class ArmedStillCrouchingState : ArmedStillState
     {
-        public ArmedStillCrouchingState(PlayerManager manager) : base(manager)
+        public ArmedStillCrouchingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
             
         }
