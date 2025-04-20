@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
         state?.Update();//checks if state exist
     }
 
-    public void ChangeState(PlayerState newState, Animator animator)
+    public void ChangeState(PlayerState newState)
     {
         if (newState == null)
         {
