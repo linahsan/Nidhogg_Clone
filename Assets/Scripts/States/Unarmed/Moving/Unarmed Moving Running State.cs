@@ -13,7 +13,7 @@ namespace States.Unarmed.Moving
         public override void Enter()
         {
             base.Enter();
-            animator.SetTrigger("DoUnarmedMovingAdvancing");
+            animator.SetTrigger("DoUnarmedMovingRunning");
         }
 
         public override void Update()
@@ -32,5 +32,7 @@ namespace States.Unarmed.Moving
             }
 
         }
+
+        //IMPLEMENT OTHER THINGS YOU CAN DO WHILE RUNNING
     }
 }

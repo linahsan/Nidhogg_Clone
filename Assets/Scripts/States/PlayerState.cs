@@ -27,14 +27,16 @@ namespace States
 
         public virtual void Update()
         {
-            
+            HandleInput();
         }
     
         public virtual PlayerState HandleInput()
         {
+            //Debug.Log("happened 2");
             if(manager.playerInput.actions["Right"].IsPressed())
             {
                 RightPressed();
+                Debug.Log("happened");
             }
 
             if(manager.playerInput.actions["Left"].IsPressed())

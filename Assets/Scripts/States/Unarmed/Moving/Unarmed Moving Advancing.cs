@@ -21,6 +21,8 @@ namespace States.Unarmed.Moving
         public override void Update()
         {
             base.Update();
+            //IMPLEMENT ACTUAL CODE
+
             if(manager.dir == 1 && !manager.playerInput.actions["Right"].IsPressed())
             {
                 hasReleased = true;

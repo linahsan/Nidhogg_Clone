@@ -1,5 +1,6 @@
 using States;
 using States.Armed.Still;
+using States.Unarmed.Still;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,8 +27,9 @@ public class PlayerManager : MonoBehaviour
 
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        
         //ResetState();Somebody says pointless, blame him . :(
-        state = ChangeState(new ArmedStillStandingState(this, animator));
+        state = ChangeState(new UnarmedStillStandingState(this, animator));
         
    
     }
@@ -68,6 +70,7 @@ public class PlayerManager : MonoBehaviour
         state?.Exit();
         state = newState;
         state.Enter();
+        Debug.Log(state);
         return newState;
     }
 
