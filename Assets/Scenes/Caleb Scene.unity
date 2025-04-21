@@ -419,6 +419,10 @@ MonoBehaviour:
   isDead: 0
   advanceSpeed: 0.2
   runSpeed: 0.35
+  jumpSpeed: 0.3
+  jumpTime: 40
+  fallSpeed: 0.3
+  airMoveSpeed: 0.2
 --- !u!1001 &3787514074947410997
 PrefabInstance:
   m_ObjectHideFlags: 0

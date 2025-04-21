@@ -13,8 +13,14 @@ public class PlayerManager : MonoBehaviour
     public bool isGrounded;
     public bool isDowned;
     public bool isDead;
+
+    //Movement tuning:
     public float advanceSpeed;
     public float runSpeed;
+    public float jumpSpeed;
+    public float jumpTime;
+    public float fallSpeed;
+    public float airMoveSpeed;
     
     //will be discuss later
     public PlayerState state;
