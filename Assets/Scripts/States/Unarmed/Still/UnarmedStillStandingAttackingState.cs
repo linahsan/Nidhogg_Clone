@@ -12,7 +12,7 @@ namespace States.Unarmed.Still
         public override void Enter()
         {
             base.Enter();
-            animator.SetTrigger("DoUnarmedStillStandingAttacking");
+            animator.Play("Unarmed Still Standing Attacking", 0, 0);
         }
 
         public override void Update()

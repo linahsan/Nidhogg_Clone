@@ -14,7 +14,8 @@ namespace States.Unarmed.Moving
         public override void Enter()
         {
             base.Enter();
-            animator.SetTrigger("DoUnarmedMovingAdvancing");
+            //animator.SetTrigger("DoUnarmedMovingAdvancing");
+            animator.Play("Unarmed Moving Advancing", 0, 0);
         }
 
         public override void Update()
