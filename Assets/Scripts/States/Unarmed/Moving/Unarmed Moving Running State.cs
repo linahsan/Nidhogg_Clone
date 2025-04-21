@@ -19,6 +19,7 @@ namespace States.Unarmed.Moving
         public override void Update()
         {
             //ACTUAL RUNNING
+            manager.gameObject.GetComponent<Transform>().position += new Vector3(manager.runSpeed/50 * manager.dir, 0, 0);
 
             base.Update();
             if(manager.dir == 1 && !manager.playerInput.actions["Right"].IsPressed())

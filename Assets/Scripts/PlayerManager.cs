@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     public bool isGrounded;
     public bool isDowned;
     public bool isDead;
+    public float advanceSpeed;
+    public float runSpeed;
     
     //will be discuss later
     public PlayerState state;
