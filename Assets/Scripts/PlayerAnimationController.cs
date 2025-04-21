@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    public void OnAnimationEnd(int i, string s)
+    private Animator animator;
+
+    private void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
+    }
+
+    public void OnAttackFinished()
+    {
+        animator.SetTrigger("AttackFinished");
     }
 }

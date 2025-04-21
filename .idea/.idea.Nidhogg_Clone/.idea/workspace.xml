@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d8ddfab-0c7f-436d-9abb-6eedea80bb39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillStandingAttackingState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillStandingAttackingState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillStandingState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillStandingState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/Still/UnarmedStillState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/UnarmedState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/States/Unarmed/UnarmedState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CG.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CG.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/PlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/StillState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/StillState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/SwordStandHi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/SwordStandHi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/SwordStandHi_0.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/SwordStandHi_0.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +41,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CG__2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -63,7 +53,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\6000.0.36f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -71,7 +61,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\6000.0.36f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -129,6 +119,8 @@
       <workItem from="1745084276239" duration="8000" />
       <workItem from="1745084298038" duration="22000" />
       <workItem from="1745084332816" duration="6447000" />
+      <workItem from="1745218187935" duration="603000" />
+      <workItem from="1745221079435" duration="2449000" />
     </task>
     <servers />
   </component>
