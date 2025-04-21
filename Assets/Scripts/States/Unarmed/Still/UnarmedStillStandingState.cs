@@ -7,12 +7,13 @@ namespace States.Unarmed.Still
     {
         public UnarmedStillStandingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
-
+            //Debug.Log(animator);
         }
 
         public override void Enter()
         {
             base.Enter();
+            //Debug.Log(animator);
             animator.SetTrigger("DoUnarmedStillStanding");
         }
 

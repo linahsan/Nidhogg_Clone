@@ -6,7 +6,7 @@ namespace States.Unarmed.Still
     {
         public UnarmedStillState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
-            
+            //Debug.Log(animator);
         }
 
     }

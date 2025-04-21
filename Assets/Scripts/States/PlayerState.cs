@@ -9,15 +9,20 @@ namespace States
         protected Animator animator;
         public PlayerState(PlayerManager manager, Animator animator) 
         {
+    
             this.manager = manager;
-            animator = manager.animator;
+            animator = manager.gameObject.GetComponent<Animator>();
+            //Debug.Log(animator);
+            
             //Need to clean this up later
         }
         
 
         public virtual void Enter()
         {
-            
+            this.manager = manager;
+            animator = manager.gameObject.GetComponent<Animator>();
+            //Debug.Log(animator);
         }
 
         public virtual void Exit()
@@ -36,7 +41,7 @@ namespace States
             if(manager.playerInput.actions["Right"].IsPressed())
             {
                 RightPressed();
-                Debug.Log("happened");
+                //Debug.Log("happened");
             }
 
             if(manager.playerInput.actions["Left"].IsPressed())

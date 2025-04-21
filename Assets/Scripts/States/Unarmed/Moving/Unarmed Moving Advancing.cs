@@ -9,7 +9,6 @@ namespace States.Unarmed.Moving
         private bool hasReleased = false;
         public UnarmedMovingAdvancingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
-
         }
 
         public override void Enter()

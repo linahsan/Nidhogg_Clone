@@ -25,9 +25,10 @@ public class PlayerManager : MonoBehaviour
         isDead = false;
 
 
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
+        //Debug.Log(animator);
         playerInput = GetComponent<PlayerInput>();
-        
+
         //ResetState();Somebody says pointless, blame him . :(
         state = ChangeState(new UnarmedStillStandingState(this, animator));
         
