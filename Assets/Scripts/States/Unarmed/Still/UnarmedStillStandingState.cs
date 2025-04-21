@@ -46,8 +46,7 @@ namespace States.Unarmed.Still
         protected override void JumpPressed()
         {
             base.JumpPressed();
-            //IMPLEMENT JUMPING
-            //manager.ChangeState(new UnarmedMovingJumpingState(manager, animator));
+            manager.ChangeState(new UnarmedMovingJumpingState(manager, animator));
         }
     }
 

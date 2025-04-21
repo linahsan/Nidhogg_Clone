@@ -1,4 +1,7 @@
 using States.Unarmed.Still;
+using Unity.Collections;
+using UnityEditor;
+using UnityEditor.Scripting;
 using UnityEngine;
 
 
@@ -21,7 +24,10 @@ namespace States.Unarmed.Moving
         public override void Update()
         {
             base.Update();
-            //IMPLEMENT ACTUAL CODE
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            {
+                manager.gameObject.GetComponent<Transform>().position += new Vector3 (manager.advanceSpeed/25 * manager.dir, 0, 0);
+            }
 
             if(manager.dir == 1 && !manager.playerInput.actions["Right"].IsPressed())
             {
@@ -32,6 +38,7 @@ namespace States.Unarmed.Moving
             {
                 hasReleased = true;
             }
+
 
             //transitions away:
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)

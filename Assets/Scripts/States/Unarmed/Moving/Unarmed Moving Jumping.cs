@@ -1,3 +1,4 @@
+using System.Numerics;
 using States.Unarmed.Still;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ namespace States.Unarmed.Moving
     {
         private int timer;
         private int jumpTime = 60;
+        //I think the actual way to implement this is gonne just be giving it a starting momentum, then 
+        //subtracting that due to gravity as you go. We'll need to see what arc the game makes though. Iirc
+        //the game also has you go higher if you have momentum from running, so we should probably include
+        //a momentum variable in manager,then add some function of that to the upward momentum in 
+        //this script's enter function
         public UnarmedMovingJumpingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
             
@@ -25,7 +31,7 @@ namespace States.Unarmed.Moving
             timer++;
             if(timer < jumpTime)
             {
-                //UPWARD JUMP LOGIC
+                manager.gameObject.GetComponent<Transform>().position += new UnityEngine.Vector3(0, manager.jumpSpeed/50, 0);
             }
             else
             {
@@ -43,12 +49,16 @@ namespace States.Unarmed.Moving
         {
             base.RightPressed();
             //MOVE RIGHT
+            manager.dir = 1;
+            manager.gameObject.GetComponent<Transform>().position += new UnityEngine.Vector3(manager.airMoveSpeed/50 * manager.dir, 0, 0);
         }
 
         protected override void LeftPressed()
         {
             base.LeftPressed();
             //MOVE LEFT
+            manager.dir = -1;
+            manager.gameObject.GetComponent<Transform>().position += new UnityEngine.Vector3(manager.airMoveSpeed/50 * manager.dir, 0, 0);
         }
 
 
