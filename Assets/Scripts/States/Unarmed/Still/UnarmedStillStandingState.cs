@@ -31,6 +31,12 @@ namespace States.Unarmed.Still
             manager.ChangeState(new UnarmedMovingAdvancingState(manager, animator));
         }
 
+        protected override void DownPressed()
+        {
+            base.DownPressed();
+            manager.ChangeState(new UnarmedStillCrouch(manager, animator));
+        }
+
         protected override void AttackPressed()
         {
             base.LeftPressed();
