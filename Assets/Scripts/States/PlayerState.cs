@@ -33,6 +33,7 @@ namespace States
         public virtual void Update()
         {
             HandleInput();
+            manager.gameObject.GetComponent<Transform>().localScale = new Vector3(manager.dir, 1, 1);
         }
     
         public virtual PlayerState HandleInput()

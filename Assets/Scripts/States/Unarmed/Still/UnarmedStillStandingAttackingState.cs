@@ -24,6 +24,7 @@ namespace States.Unarmed.Still
             }
         }
 
+        //We need to check if you can exit out of the attacking animation early in game
 
     }
 }
