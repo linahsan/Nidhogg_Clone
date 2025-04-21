@@ -1,3 +1,5 @@
+using System.Globalization;
+using States.Unarmed.Moving;
 using UnityEngine;
 
 namespace States.Unarmed.Still
@@ -15,11 +17,7 @@ namespace States.Unarmed.Still
             animator.SetTrigger("DoUnarmedStillCrouch");
         }
 
-        protected override void AttackPressed()
-        {
-            base.AttackPressed();
-            manager.ChangeState(new UnarmedStillSweepkick(manager, animator));
-        }
+       
 
         protected override void RightPressed()
         {
@@ -38,6 +36,18 @@ namespace States.Unarmed.Still
         {
             base.UpPressed();
             manager.ChangeState(new UnarmedStillStandingState(manager, animator));
+        }
+
+        protected override void AttackPressed()
+        {
+            base.AttackPressed();
+            manager.ChangeState(new UnarmedStillSweepkick(manager, animator));
+        }
+
+        protected override void JumpPressed()
+        {
+            base.JumpPressed();
+            manager.ChangeState(new UnarmedMovingSquatJump(manager, animator));
         }
     }
 }
