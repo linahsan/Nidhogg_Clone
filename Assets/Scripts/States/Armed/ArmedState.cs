@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace States.Armed
 {
     public abstract class ArmedState : PlayerState
     {
-        public ArmedState(PlayerManager manager) : base(manager)
+        public ArmedState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
             
         }

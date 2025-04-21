@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace States.Armed.Still
 {
     public class ArmedStillJumpingState : ArmedStillState
     {
-        public ArmedStillJumpingState(PlayerManager manager) : base(manager)
+        public ArmedStillJumpingState(PlayerManager manager, Animator animator) : base(manager, animator)
         {
         }
 
