@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d8ddfab-0c7f-436d-9abb-6eedea80bb39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nidhogg_Clone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CG.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CG.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/drawn sprite/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +116,7 @@
       <workItem from="1745084298038" duration="22000" />
       <workItem from="1745084332816" duration="6447000" />
       <workItem from="1745218187935" duration="603000" />
-      <workItem from="1745221079435" duration="2449000" />
+      <workItem from="1745221079435" duration="3164000" />
     </task>
     <servers />
   </component>
