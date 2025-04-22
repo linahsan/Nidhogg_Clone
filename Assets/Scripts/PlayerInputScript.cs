@@ -61,114 +61,30 @@ public class PlayerInputScript : MonoBehaviour
         */
     }
     //right:
-    public bool RightPressed()
-    {
-        if(right.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool RightPressed() => right.IsPressed();
 
-    public bool RightReleased()
-    {
-        if(right.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool RightReleased() => right.WasReleasedThisFrame();
     //left:
-    public bool LeftPressed()
-    {
-        if(left.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool LeftPressed() => left.IsPressed();
 
-    public bool LeftReleased()
-    {
-        if(left.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool LeftReleased() => left.WasReleasedThisFrame();
     //up:
-    public bool UpPressed()
-    {
-        if(up.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool UpPressed() => up.IsPressed();
 
-    public bool UpReleased()
-    {
-        if(up.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool UpReleased() => up.WasReleasedThisFrame();
     //down:
-    public bool DownPressed()
-    {
-        if(down.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool DownPressed() => down.IsPressed();
 
-    public bool DownReleased()
-    {
-        if(down.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool DownReleased() => down.WasReleasedThisFrame();
     //jump:
-    public bool JumpPressed()
-    {
-        if(jump.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool JumpPressed() => jump.IsPressed();
 
-    public bool JumpReleased()
-    {
-        if(jump.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool JumpReleased() => jump.WasReleasedThisFrame();
     //attack:
-    public bool AttackPressed()
-    {
-        if(attack.WasPressedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool AttackPressed() => attack.IsPressed();
 
-    public bool AttackReleased()
-    {
-        if(attack.WasReleasedThisFrame())
-        {
-            return true;
-        }
-        return false;
-    }
-
+    public bool AttackReleased() => attack.WasReleasedThisFrame();
+    
     /*
     private void OnMove(InputAction.CallbackContext context)
     {
