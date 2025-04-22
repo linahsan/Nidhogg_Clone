@@ -45,6 +45,17 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
+        // Handle Input
+        int moveDir = 0;
+        bool isMoving = false;
+        if (Input.GetKey(KeyCode.RightArrow))
+            moveDir += 1;
+        if (Input.GetKey(KeyCode.LeftArrow))
+            moveDir -= 1;
+        if (moveDir != 0)
+            isMoving = true;
+        animator?.SetBool("IsMoving", isMoving);
+        
         if (isDead)
         {
             
@@ -65,6 +76,8 @@ public class PlayerManager : MonoBehaviour
         }
         //state update
         state?.Update();//checks if state exist
+        
+        
     }
 
     public PlayerState ChangeState(PlayerState newState)
