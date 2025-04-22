@@ -14,4 +14,9 @@ public class PlayerAnimationController : MonoBehaviour
     {
         animator.SetTrigger("AttackFinished");
     }
+
+    private void Update()
+    {
+        
+    }
 }
