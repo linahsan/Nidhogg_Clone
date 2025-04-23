@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d8ddfab-0c7f-436d-9abb-6eedea80bb39" name="Changes" comment="" />
+    <list default="true" id="8d8ddfab-0c7f-436d-9abb-6eedea80bb39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Armed (Standing - Still Mid).anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Armed (Standing - Still Mid).anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/LinaAnimator.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/LinaAnimator.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/SwordStandMid_0.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/SwordStandMid_0.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/test.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/test.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LinaScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LinaScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/data_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/data_0.png.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,6 +133,7 @@
       <workItem from="1745218187935" duration="603000" />
       <workItem from="1745221079435" duration="3164000" />
       <workItem from="1745289531686" duration="5503000" />
+      <workItem from="1745295059322" duration="2706000" />
     </task>
     <servers />
   </component>

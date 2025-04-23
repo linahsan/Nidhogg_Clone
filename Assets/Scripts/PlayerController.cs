@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CheckGrounded();
         ApplyGravity();
