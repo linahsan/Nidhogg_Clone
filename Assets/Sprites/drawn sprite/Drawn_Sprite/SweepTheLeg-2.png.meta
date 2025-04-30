@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SweepTheLeg-2_0: -1015310802038601963
+      SweepTheLeg-2_1: -1714798372738803978
+      SweepTheLeg-2_2: 5499850630810948050
+      SweepTheLeg-2_3: -4044204260963960731
+      SweepTheLeg-2_4: -926978095811071374
+      SweepTheLeg-2_5: 2073454262731462717
+      SweepTheLeg-2_6: -6955148755821865471
+      SweepTheLeg-2_7: -5579531429727547680
+      SweepTheLeg-2_8: 7624134218311376117
+      SweepTheLeg-2_9: -8500407538192624798
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

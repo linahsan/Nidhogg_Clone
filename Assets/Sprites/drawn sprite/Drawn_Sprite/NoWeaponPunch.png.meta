@@ -447,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      NoWeaponPunch_0: 7752312256140913354
+      NoWeaponPunch_1: 7820354688761716081
+      NoWeaponPunch_10: 5264297794093034082
+      NoWeaponPunch_11: 364579504938276506
+      NoWeaponPunch_12: -4244319362341743487
+      NoWeaponPunch_2: 7830471075845940842
+      NoWeaponPunch_3: -5740177318182213363
+      NoWeaponPunch_4: -4893851238534913286
+      NoWeaponPunch_5: 2145246061476294295
+      NoWeaponPunch_6: 3298580288689230783
+      NoWeaponPunch_7: 8309651124280841281
+      NoWeaponPunch_8: -8669951183962526283
+      NoWeaponPunch_9: 7439611304941048472
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
