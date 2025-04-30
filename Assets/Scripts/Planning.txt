@@ -41,13 +41,4 @@ Player (base class)
        ├── Dead
        
        
-    Void Update(){
-        if isSword{
-        WithSword_Sprite
-        }else{
-        NoSword_Sprite
-        }
-        Attack == true{
-        }
-       
-    }
+ 
