@@ -69,11 +69,11 @@ public class PlayerInputScript : MonoBehaviour
 
     public bool LeftReleased() => left.WasReleasedThisFrame();
     //up:
-    public bool UpPressed() => up.IsPressed();
+    public bool UpPressed() => up.WasPressedThisFrame();
 
     public bool UpReleased() => up.WasReleasedThisFrame();
     //down:
-    public bool DownPressed() => down.IsPressed();
+    public bool DownPressed() => down.WasPressedThisFrame();
 
     public bool DownReleased() => down.WasReleasedThisFrame();
     //jump:
