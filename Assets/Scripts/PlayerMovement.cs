@@ -1,3 +1,4 @@
+using Unity.Jobs;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     
     // Standing Idle Heights
     private int currentHeight = 1;
+    
+    // speed
+    private bool movingForward = false;
     
     void Start()
     {
@@ -20,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HeightCheck();
+        MoveForwardCheck();
     }
 
     void HeightCheck()
@@ -36,25 +41,34 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void RunCheck() // TO BE REFINED
+    void MoveForwardCheck()
     {
         if (input.LeftPressed())
         {
-            UpdateRunAnimation();
+            movingForward = true;
+            UpdateMoveForwardAnimation();
         }
         else if (input.RightPressed())
         {
-            UpdateRunAnimation();
+            movingForward = true;
+            UpdateMoveForwardAnimation();
+        }
+        if(input.LeftReleased() || input.RightReleased())
+        {
+            movingForward = false;
+            UpdateMoveForwardAnimation();
         }
     }
 
     void UpdateHeightAnimation()
     {
         animator.SetInteger("height", currentHeight);
+        animator.SetBool("movingForward", movingForward);
     }
 
-    void UpdateRunAnimation() // TO BE REFINED
+    void UpdateMoveForwardAnimation()
     {
-        animator.SetFloat("speed", playerController.moveSpeed);
+        animator.SetInteger("height", currentHeight);
+        animator.SetBool("movingForward", movingForward);
     }
 }
