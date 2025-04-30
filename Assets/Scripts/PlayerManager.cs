@@ -8,6 +8,9 @@ public class PlayerManager : MonoBehaviour
 {
     public Animator animator;
     public PlayerInput playerInput;
+
+    public GameObject punchColliderObject;
+    public BoxCollider2D punchCollider; 
     public int dir = -1;
     public bool hasSword;
     public bool isGrounded;
@@ -31,6 +34,9 @@ public class PlayerManager : MonoBehaviour
         isGrounded = true; // change when refining game feel (players jump in)
         isDowned = false;
         isDead = false;
+
+        //ADD FINDING THE CHILD COLLIDERS HERE
+        punchCollider = punchColliderObject.GetComponent<BoxCollider2D>();
 
 
         animator = gameObject.GetComponent<Animator>();
