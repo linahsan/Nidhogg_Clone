@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     
-    [SerializeField] float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     [SerializeField] bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float gravity = -30f;

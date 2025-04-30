@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OnEdge_PreBackflip_0: -2105001417328985886
+      OnEdge_PreBackflip_1: 2629269167918186976
+      OnEdge_PreBackflip_2: -4407750337477306704
+      OnEdge_PreBackflip_3: -2063397608659082195
+      OnEdge_PreBackflip_4: -7676398004822715479
+      OnEdge_PreBackflip_5: 6104887825816260761
+      OnEdge_PreBackflip_6: 6115079334809375547
+      OnEdge_PreBackflip_7: 8681100216131224579
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
