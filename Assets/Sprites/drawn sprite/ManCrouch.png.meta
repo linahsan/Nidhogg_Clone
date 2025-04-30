@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ManCrouch_0: 1928394230214106590
+      ManCrouch_1: 4097651491560738715
+      ManCrouch_2: -2955903415349873782
+      ManCrouch_3: -1389870806211243306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
