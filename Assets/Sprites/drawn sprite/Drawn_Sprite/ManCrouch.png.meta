@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 00decc75e13284c93bb82f2734e8e7a5
+guid: 429ec41021feb4a4b8c06b5e007fe19f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1914213035354974075
-    second: Slide_Intro 2_0
+      213: -392849121422922742
+    second: ManCrouch 2_0
   - first:
-      213: -2175865430919960559
-    second: Slide_Intro 2_1
+      213: -4101631827599889789
+    second: ManCrouch 2_1
   - first:
-      213: 1648460014035657898
-    second: Slide_Intro 2_2
+      213: 3631298387895880767
+    second: ManCrouch 2_2
   - first:
-      213: 4675202895973644892
-    second: Slide_Intro 2_3
-  - first:
-      213: 422024634075833357
-    second: Slide_Intro 2_4
+      213: 2605979814247876058
+    second: ManCrouch 2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,35 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slide_Intro 2_0
+      name: ManCrouch 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 40
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5889e33e2695f65e0800000000000000
-      internalID: -1914213035354974075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slide_Intro 2_1
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 10
+        x: 6
+        y: 2
         width: 32
-        height: 46
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 118a6f63be5cdc1e0800000000000000
-      internalID: -2175865430919960559
+      spriteID: a0c23433ec15c8af0800000000000000
+      internalID: -392849121422922742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slide_Intro 2_2
+      name: ManCrouch 2_1
       rect:
         serializedVersion: 2
-        x: 221
-        y: 17
-        width: 45
-        height: 36
+        x: 44
+        y: 0
+        width: 47
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa4e70b16a180e610800000000000000
-      internalID: 1648460014035657898
+      spriteID: 38ae87c85931417c0800000000000000
+      internalID: -4101631827599889789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slide_Intro 2_3
+      name: ManCrouch 2_2
       rect:
         serializedVersion: 2
-        x: 337
-        y: 14
-        width: 38
-        height: 37
+        x: 101
+        y: 1
+        width: 35
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5af26b7348a1e040800000000000000
-      internalID: 4675202895973644892
+      spriteID: f3c8bf3f4a6f46230800000000000000
+      internalID: 3631298387895880767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slide_Intro 2_4
+      name: ManCrouch 2_3
       rect:
         serializedVersion: 2
-        x: 459
-        y: 15
-        width: 31
-        height: 34
+        x: 153
+        y: 1
+        width: 39
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d04ed803b255bd500800000000000000
-      internalID: 422024634075833357
+      spriteID: ad5451085dc4a2420800000000000000
+      internalID: 2605979814247876058
       vertices: []
       indices: 
       edges: []
@@ -247,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ManCrouch 2_0: -392849121422922742
+      ManCrouch 2_1: -4101631827599889789
+      ManCrouch 2_2: 3631298387895880767
+      ManCrouch 2_3: 2605979814247876058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

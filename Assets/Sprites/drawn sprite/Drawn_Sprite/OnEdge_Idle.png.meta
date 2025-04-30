@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: eebb4016c3c3c4cdc9d8b5afe3cec356
+guid: 014d7f8b1d9f848abae588c5ae133927
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9067273506147852558
-    second: BeginMove_Med 2_0
+      213: 3391533712251772744
+    second: OnEdge_Idle 2_0
   - first:
-      213: 1092192820450838639
-    second: BeginMove_Med 2_1
+      213: 4130969042480545076
+    second: OnEdge_Idle 2_1
   - first:
-      213: -1513697259659041723
-    second: BeginMove_Med 2_2
+      213: -1097846920857856883
+    second: OnEdge_Idle 2_2
   - first:
-      213: 3473359885600475345
-    second: BeginMove_Med 2_3
+      213: 4060255116396999462
+    second: OnEdge_Idle 2_3
   - first:
-      213: 4254256534935163712
-    second: BeginMove_Med 2_4
+      213: -7283076446389942084
+    second: OnEdge_Idle 2_4
+  - first:
+      213: -1132461986350360329
+    second: OnEdge_Idle 2_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BeginMove_Med 2_0
+      name: OnEdge_Idle 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3
-        width: 39
-        height: 57
+        x: 8
+        y: 16
+        width: 29
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fe1fb069c29a2280800000000000000
-      internalID: -9067273506147852558
+      spriteID: 84f578231f5211f20800000000000000
+      internalID: 3391533712251772744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Med 2_1
+      name: OnEdge_Idle 2_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 3
-        width: 42
-        height: 57
+        x: 95
+        y: 15
+        width: 30
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f684431659f382f00800000000000000
-      internalID: 1092192820450838639
+      spriteID: 43d30331576245930800000000000000
+      internalID: 4130969042480545076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Med 2_2
+      name: OnEdge_Idle 2_2
       rect:
         serializedVersion: 2
-        x: 91
-        y: 7
-        width: 41
-        height: 54
+        x: 182
+        y: 16
+        width: 29
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5446a8cbc544efae0800000000000000
-      internalID: -1513697259659041723
+      spriteID: d84d288ca0aa3c0f0800000000000000
+      internalID: -1097846920857856883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Med 2_3
+      name: OnEdge_Idle 2_3
       rect:
         serializedVersion: 2
-        x: 133
-        y: 3
-        width: 44
-        height: 58
+        x: 270
+        y: 15
+        width: 29
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d8ce4ec96ad33030800000000000000
-      internalID: 3473359885600475345
+      spriteID: 6233e46248ce85830800000000000000
+      internalID: 4060255116396999462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Med 2_4
+      name: OnEdge_Idle 2_4
       rect:
         serializedVersion: 2
-        x: 178
-        y: 12
-        width: 42
-        height: 50
+        x: 357
+        y: 16
+        width: 29
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,8 +231,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 043d13c47c72a0b30800000000000000
-      internalID: 4254256534935163712
+      spriteID: cb8c9e43f805dea90800000000000000
+      internalID: -7283076446389942084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OnEdge_Idle 2_5
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 15
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f814fdc2dfa840f0800000000000000
+      internalID: -1132461986350360329
       vertices: []
       indices: 
       edges: []
@@ -247,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OnEdge_Idle 2_0: 3391533712251772744
+      OnEdge_Idle 2_1: 4130969042480545076
+      OnEdge_Idle 2_2: -1097846920857856883
+      OnEdge_Idle 2_3: 4060255116396999462
+      OnEdge_Idle 2_4: -7283076446389942084
+      OnEdge_Idle 2_5: -1132461986350360329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

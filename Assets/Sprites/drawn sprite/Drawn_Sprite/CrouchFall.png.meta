@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: c61e29325f335445cbc417f608c4250e
+guid: 412a865926ff94574b6fbabdff66a3f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1782484279146202202
-    second: FallForward 2_0
-  - first:
-      213: 5613927917313954182
-    second: FallForward 2_1
-  - first:
-      213: 8559145377653114844
-    second: FallForward 2_2
-  - first:
-      213: -7892684582888734019
-    second: FallForward 2_3
-  - first:
-      213: -6929039657292006700
-    second: FallForward 2_4
-  - first:
-      213: -6777982478822371954
-    second: FallForward 2_5
+      213: -5788759919016323355
+    second: CrouchFall 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FallForward 2_0
+      name: CrouchFall 2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
-        width: 32
-        height: 49
+        y: 17
+        width: 38
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,118 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6abb5cbfdf75347e0800000000000000
-      internalID: -1782484279146202202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallForward 2_1
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 9
-        width: 39
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 681952a62bda8ed40800000000000000
-      internalID: 5613927917313954182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallForward 2_2
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 12
-        width: 45
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd7c0f76f5138c670800000000000000
-      internalID: 8559145377653114844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallForward 2_3
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 19
-        width: 49
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db207b8603d877290800000000000000
-      internalID: -7892684582888734019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallForward 2_4
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 16
-        width: 52
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4daf380b42b17df90800000000000000
-      internalID: -6929039657292006700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallForward 2_5
-      rect:
-        serializedVersion: 2
-        x: 294
-        y: 8
-        width: 42
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e8d88f7c8d4cfe1a0800000000000000
-      internalID: -6777982478822371954
+      spriteID: 5e6530916813aafa0800000000000000
+      internalID: -5788759919016323355
       vertices: []
       indices: 
       edges: []
@@ -272,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CrouchFall 2_0: -5788759919016323355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 032718fbe57564bf5a4ac010049a43d0
+guid: 6ee3c9f3fe9634a3baa85ca9728037f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8879382064657795416
-    second: CrouchJump 2_0
+      213: 1551820881875905837
+    second: JumpUp 2_0
+  - first:
+      213: -3713635622609047322
+    second: JumpUp 2_1
+  - first:
+      213: -5151045687150217405
+    second: JumpUp 2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrouchJump 2_0
+      name: JumpUp 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 36
-        height: 30
+        x: 17
+        y: 1
+        width: 37
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85907ec51f6e93b70800000000000000
-      internalID: 8879382064657795416
+      spriteID: d2d2f33cedc298510800000000000000
+      internalID: 1551820881875905837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpUp 2_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 11
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e0b621b314867cc0800000000000000
+      internalID: -3713635622609047322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpUp 2_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 23
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3477a9b2d3fc388b0800000000000000
+      internalID: -5151045687150217405
       vertices: []
       indices: 
       edges: []
@@ -147,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JumpUp 2_0: 1551820881875905837
+      JumpUp 2_1: -3713635622609047322
+      JumpUp 2_2: -5151045687150217405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

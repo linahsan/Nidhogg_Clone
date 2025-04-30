@@ -1,43 +1,34 @@
 fileFormatVersion: 2
-guid: 2c2b8da23ee9441d88caea73c5828676
+guid: 53ef6da7e2c85421681970c67e3ac019
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7820806433478365165
-    second: SwordStandLo 2_0
+      213: 1696035957728390161
+    second: Dying_0
   - first:
-      213: 2694942064456294509
-    second: SwordStandLo 2_1
+      213: 5966049027011578701
+    second: Dying_1
   - first:
-      213: -1113127917790974078
-    second: SwordStandLo 2_2
+      213: 7066051119365129051
+    second: Dying_2
   - first:
-      213: -3593344279083519686
-    second: SwordStandLo 2_3
+      213: 1472727819937242052
+    second: Dying_3
   - first:
-      213: -979902697536952107
-    second: SwordStandLo 2_4
+      213: -8931253946334322236
+    second: Dying_4
   - first:
-      213: 5763645047850693033
-    second: SwordStandLo 2_5
+      213: -2263788774785607426
+    second: Dying_5
   - first:
-      213: 6319757120360940070
-    second: SwordStandLo 2_6
+      213: 4110606291435444657
+    second: Dying_6
   - first:
-      213: -599878095686193132
-    second: SwordStandLo 2_7
+      213: -5315950768213896313
+    second: Dying_7
   - first:
-      213: 6775234966637949815
-    second: SwordStandLo 2_8
-  - first:
-      213: -6594241805463088356
-    second: SwordStandLo 2_9
-  - first:
-      213: -7991327024001155413
-    second: SwordStandLo 2_10
-  - first:
-      213: 4873304663601510317
-    second: SwordStandLo 2_11
+      213: -6249636578027622931
+    second: Dying_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -146,13 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SwordStandLo 2_0
+      name: Dying_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 38
-        height: 56
+        x: 9
+        y: 15
+        width: 54
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 310be633cf9e67390800000000000000
-      internalID: -7820806433478365165
+      spriteID: 11ca0b2b7b7898710800000000000000
+      internalID: 1696035957728390161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_1
+      name: Dying_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 0
-        width: 38
-        height: 57
+        x: 75
+        y: 15
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d60ec2a778b566520800000000000000
-      internalID: 2694942064456294509
+      spriteID: d4b07970bf9abc250800000000000000
+      internalID: 5966049027011578701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_2
+      name: Dying_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 38
-        height: 57
+        x: 141
+        y: 15
+        width: 54
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28faf7e6e006d80f0800000000000000
-      internalID: -1113127917790974078
+      spriteID: b5382863e08af0260800000000000000
+      internalID: 7066051119365129051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_3
+      name: Dying_3
       rect:
         serializedVersion: 2
-        x: 121
-        y: 1
-        width: 38
-        height: 56
+        x: 207
+        y: 15
+        width: 54
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a317b81aa60e12ec0800000000000000
-      internalID: -3593344279083519686
+      spriteID: 4cbd13e362e207410800000000000000
+      internalID: 1472727819937242052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_4
+      name: Dying_4
       rect:
         serializedVersion: 2
-        x: 161
-        y: 2
-        width: 38
-        height: 55
+        x: 273
+        y: 15
+        width: 54
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d8ecd630bfa662f0800000000000000
-      internalID: -979902697536952107
+      spriteID: 4c1efe90bdfcd0480800000000000000
+      internalID: -8931253946334322236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_5
+      name: Dying_5
       rect:
         serializedVersion: 2
-        x: 201
-        y: 0
-        width: 39
-        height: 55
+        x: 340
+        y: 15
+        width: 51
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +262,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a1749842a49cff40800000000000000
-      internalID: 5763645047850693033
+      spriteID: ef813687a186590e0800000000000000
+      internalID: -2263788774785607426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_6
+      name: Dying_6
       rect:
         serializedVersion: 2
-        x: 242
-        y: 1
-        width: 38
-        height: 54
+        x: 406
+        y: 15
+        width: 53
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6220cd11e9944b750800000000000000
-      internalID: 6319757120360940070
+      spriteID: 1b9de74a4aecb0930800000000000000
+      internalID: 4110606291435444657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_7
+      name: Dying_7
       rect:
         serializedVersion: 2
-        x: 281
-        y: 0
-        width: 38
-        height: 55
+        x: 472
+        y: 15
+        width: 25
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,20 +306,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 410361edc0ecca7f0800000000000000
-      internalID: -599878095686193132
+      spriteID: 783552101f2f936b0800000000000000
+      internalID: -5315950768213896313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordStandLo 2_8
+      name: Dying_8
       rect:
         serializedVersion: 2
-        x: 322
-        y: 0
-        width: 38
-        height: 56
+        x: 497
+        y: 15
+        width: 26
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,74 +328,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 773b2403e48760e50800000000000000
-      internalID: 6775234966637949815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SwordStandLo 2_9
-      rect:
-        serializedVersion: 2
-        x: 362
-        y: 0
-        width: 38
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c139756040c8c74a0800000000000000
-      internalID: -6594241805463088356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SwordStandLo 2_10
-      rect:
-        serializedVersion: 2
-        x: 402
-        y: 0
-        width: 38
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bae7e6a596a191190800000000000000
-      internalID: -7991327024001155413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SwordStandLo 2_11
-      rect:
-        serializedVersion: 2
-        x: 442
-        y: 0
-        width: 38
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: da7f83c85c471a340800000000000000
-      internalID: 4873304663601510317
+      spriteID: ded206fe4a4d449a0800000000000000
+      internalID: -6249636578027622931
       vertices: []
       indices: 
       edges: []

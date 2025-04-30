@@ -1,22 +1,31 @@
 fileFormatVersion: 2
-guid: b83e03801eecc4cc28d580202640da4b
+guid: 4354fb9823311455cb610224acf1c441
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5592771070622958579
-    second: BeginMove_Low 2_0
+      213: 8237654873543162153
+    second: OnEdge_PreBackflip 2_0
   - first:
-      213: 6673029845909614580
-    second: BeginMove_Low 2_1
+      213: -8001193712450246368
+    second: OnEdge_PreBackflip 2_1
   - first:
-      213: 9057797773595739812
-    second: BeginMove_Low 2_2
+      213: -3665213454248642520
+    second: OnEdge_PreBackflip 2_2
   - first:
-      213: 2108746290071297689
-    second: BeginMove_Low 2_3
+      213: 4020576338804941021
+    second: OnEdge_PreBackflip 2_3
   - first:
-      213: 3935308168619169255
-    second: BeginMove_Low 2_4
+      213: -3253259446514351573
+    second: OnEdge_PreBackflip 2_4
+  - first:
+      213: -3611584500056518449
+    second: OnEdge_PreBackflip 2_5
+  - first:
+      213: 8165655054916626175
+    second: OnEdge_PreBackflip 2_6
+  - first:
+      213: 360063813223006846
+    second: OnEdge_PreBackflip 2_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BeginMove_Low 2_0
+      name: OnEdge_PreBackflip 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3
-        width: 38
-        height: 57
+        x: 8
+        y: 26
+        width: 33
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f3009e28a38d9d40800000000000000
-      internalID: 5592771070622958579
+      spriteID: 9293ec76677025270800000000000000
+      internalID: 8237654873543162153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Low 2_1
+      name: OnEdge_PreBackflip 2_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 4
-        width: 42
-        height: 55
+        x: 92
+        y: 25
+        width: 34
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ffa5052a4d5b9c50800000000000000
-      internalID: 6673029845909614580
+      spriteID: 029605ee5bc06f090800000000000000
+      internalID: -8001193712450246368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Low 2_2
+      name: OnEdge_PreBackflip 2_2
       rect:
         serializedVersion: 2
-        x: 91
-        y: 7
-        width: 39
-        height: 54
+        x: 176
+        y: 26
+        width: 35
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a68f76b513c3bd70800000000000000
-      internalID: 9057797773595739812
+      spriteID: 828f68158cb822dc0800000000000000
+      internalID: -3665213454248642520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Low 2_3
+      name: OnEdge_PreBackflip 2_3
       rect:
         serializedVersion: 2
-        x: 136
-        y: 3
-        width: 40
-        height: 58
+        x: 262
+        y: 21
+        width: 33
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99e5f150495c34d10800000000000000
-      internalID: 2108746290071297689
+      spriteID: dd02fc2d0e4fbc730800000000000000
+      internalID: 4020576338804941021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeginMove_Low 2_4
+      name: OnEdge_PreBackflip 2_4
       rect:
         serializedVersion: 2
-        x: 179
-        y: 10
-        width: 41
-        height: 50
+        x: 346
+        y: 24
+        width: 34
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,8 +237,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e51d30ede50d9630800000000000000
-      internalID: 3935308168619169255
+      spriteID: b22045815c91ad2d0800000000000000
+      internalID: -3253259446514351573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OnEdge_PreBackflip 2_5
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 23
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc013dd380311edc0800000000000000
+      internalID: -3611584500056518449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OnEdge_PreBackflip 2_6
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 24
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff6adaa420c325170800000000000000
+      internalID: 8165655054916626175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OnEdge_PreBackflip 2_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 24
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7241a361243ff400800000000000000
+      internalID: 360063813223006846
       vertices: []
       indices: 
       edges: []
@@ -247,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OnEdge_PreBackflip 2_0: 8237654873543162153
+      OnEdge_PreBackflip 2_1: -8001193712450246368
+      OnEdge_PreBackflip 2_2: -3665213454248642520
+      OnEdge_PreBackflip 2_3: 4020576338804941021
+      OnEdge_PreBackflip 2_4: -3253259446514351573
+      OnEdge_PreBackflip 2_5: -3611584500056518449
+      OnEdge_PreBackflip 2_6: 8165655054916626175
+      OnEdge_PreBackflip 2_7: 360063813223006846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

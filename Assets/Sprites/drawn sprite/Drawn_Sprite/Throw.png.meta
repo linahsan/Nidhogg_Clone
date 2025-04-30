@@ -1,52 +1,46 @@
 fileFormatVersion: 2
-guid: 3f7e7d23b854240dea1ae56bb22447ca
+guid: fbcbf4f413ec54a0fb1b0b62f455ce66
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7973336188786758514
-    second: Stomping 2_0
+      213: -6330369540962696439
+    second: Throw 2_0
   - first:
-      213: -1521660991482224897
-    second: Stomping 2_1
+      213: -4432579345944203747
+    second: Throw 2_1
   - first:
-      213: -7910852253919849067
-    second: Stomping 2_2
+      213: 4524001952728029473
+    second: Throw 2_2
   - first:
-      213: 6880628952917985221
-    second: Stomping 2_3
+      213: -339295463538646284
+    second: Throw 2_3
   - first:
-      213: -2158842828215961846
-    second: Stomping 2_4
+      213: 3918943870007464619
+    second: Throw 2_4
   - first:
-      213: 3756007194652983727
-    second: Stomping 2_5
+      213: -4440228738006800448
+    second: Throw 2_5
   - first:
-      213: -397429945003839494
-    second: Stomping 2_6
+      213: 6707883294674671874
+    second: Throw 2_6
   - first:
-      213: -2450623680107084130
-    second: Stomping 2_7
+      213: 344700061016174076
+    second: Throw 2_7
   - first:
-      213: -7114512426214360499
-    second: Stomping 2_8
+      213: 2231430176330579177
+    second: Throw 2_8
   - first:
-      213: -5134979067652252142
-    second: Stomping 2_9
+      213: 1817950559262050556
+    second: Throw 2_9
   - first:
-      213: 1128321759079973473
-    second: Stomping 2_10
+      213: 5614092332098637614
+    second: Throw 2_10
   - first:
-      213: -3083153121663066921
-    second: Stomping 2_11
+      213: -7544819422385306762
+    second: Throw 2_11
   - first:
-      213: 4992790602565117778
-    second: Stomping 2_12
-  - first:
-      213: 5826601546575895590
-    second: Stomping 2_13
-  - first:
-      213: -175925551424096703
-    second: Stomping 2_14
+      213: 1574330251961168490
+    second: Throw 2_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -155,255 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stomping 2_0
+      name: Throw 2_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 4
-        width: 29
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 273d667e40bf6ae60800000000000000
-      internalID: 7973336188786758514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_1
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 4
-        width: 29
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ffe122ee369f1eae0800000000000000
-      internalID: -1521660991482224897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_2
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 3
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 595528ed9c1073290800000000000000
-      internalID: -7910852253919849067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_3
-      rect:
-        serializedVersion: 2
-        x: 361
-        y: 3
-        width: 31
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c7c1f9d397ec7f50800000000000000
-      internalID: 6880628952917985221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_4
-      rect:
-        serializedVersion: 2
-        x: 469
-        y: 4
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a07b942c2ef3a02e0800000000000000
-      internalID: -2158842828215961846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_5
-      rect:
-        serializedVersion: 2
-        x: 582
-        y: 4
-        width: 32
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa14a13b4a4002430800000000000000
-      internalID: 3756007194652983727
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_6
-      rect:
-        serializedVersion: 2
-        x: 695
-        y: 4
-        width: 28
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aff61f8129b0c7af0800000000000000
-      internalID: -397429945003839494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_7
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 4
-        width: 30
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e968e053fb2adfdd0800000000000000
-      internalID: -2450623680107084130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_8
-      rect:
-        serializedVersion: 2
-        x: 921
-        y: 4
-        width: 26
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4af36584ac244d90800000000000000
-      internalID: -7114512426214360499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_9
-      rect:
-        serializedVersion: 2
-        x: 1033
-        y: 4
-        width: 31
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21e55878eb3ecb8b0800000000000000
-      internalID: -5134979067652252142
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_10
-      rect:
-        serializedVersion: 2
-        x: 1146
-        y: 4
-        width: 27
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1624e4a69aa98af00800000000000000
-      internalID: 1128321759079973473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stomping 2_11
-      rect:
-        serializedVersion: 2
-        x: 1248
-        y: 4
+        x: 0
+        y: 1
         width: 35
-        height: 56
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,19 +164,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7dcd22332907635d0800000000000000
-      internalID: -3083153121663066921
+      spriteID: 90347f531720628a0800000000000000
+      internalID: -6330369540962696439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stomping 2_12
+      name: Throw 2_1
       rect:
         serializedVersion: 2
-        x: 1357
-        y: 4
-        width: 39
+        x: 48
+        y: 1
+        width: 30
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1e2346d1905c72c0800000000000000
+      internalID: -4432579345944203747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1
+        width: 33
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 129178b8ecb78ce30800000000000000
+      internalID: 4524001952728029473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 38
         height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -434,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2576dcf9994f94540800000000000000
-      internalID: 4992790602565117778
+      spriteID: 4f2a0e5d2949a4bf0800000000000000
+      internalID: -339295463538646284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stomping 2_13
+      name: Throw 2_4
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 4
-        width: 38
-        height: 57
+        x: 189
+        y: 1
+        width: 46
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -456,20 +252,174 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 62cd5676c3f3cd050800000000000000
-      internalID: 5826601546575895590
+      spriteID: ba25d72bfa2e26630800000000000000
+      internalID: 3918943870007464619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stomping 2_14
+      name: Throw 2_5
       rect:
         serializedVersion: 2
-        x: 1593
-        y: 4
+        x: 239
+        y: 1
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c7af95fc732162c0800000000000000
+      internalID: -4440228738006800448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_6
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2095cdd0150371d50800000000000000
+      internalID: 6707883294674671874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_7
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfdace211ee98c400800000000000000
+      internalID: 344700061016174076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_8
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec75493ce1a7fe10800000000000000
+      internalID: 2231430176330579177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_9
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf88908d668aa3910800000000000000
+      internalID: 1817950559262050556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_10
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2fcbf63b3349ed40800000000000000
+      internalID: 5614092332098637614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_11
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 0
+        width: 28
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6738142a5ba6b4790800000000000000
+      internalID: -7544819422385306762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw 2_12
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1
         width: 27
-        height: 52
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,8 +428,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 146b370a4acfe8df0800000000000000
-      internalID: -175925551424096703
+      spriteID: a62fb43e50529d510800000000000000
+      internalID: 1574330251961168490
       vertices: []
       indices: 
       edges: []
@@ -497,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Throw 2_0: -6330369540962696439
+      Throw 2_1: -4432579345944203747
+      Throw 2_10: 5614092332098637614
+      Throw 2_11: -7544819422385306762
+      Throw 2_12: 1574330251961168490
+      Throw 2_2: 4524001952728029473
+      Throw 2_3: -339295463538646284
+      Throw 2_4: 3918943870007464619
+      Throw 2_5: -4440228738006800448
+      Throw 2_6: 6707883294674671874
+      Throw 2_7: 344700061016174076
+      Throw 2_8: 2231430176330579177
+      Throw 2_9: 1817950559262050556
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
