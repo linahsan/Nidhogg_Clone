@@ -1,37 +1,43 @@
 fileFormatVersion: 2
-guid: dcbf42d1f48064fe29a80a9843d979f7
+guid: 9e517279b6cc148e9bd7800079b3c64e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1015310802038601963
-    second: SweepTheLeg-2_0
+      213: 5086996089339802975
+    second: HitMed_0
   - first:
-      213: -1714798372738803978
-    second: SweepTheLeg-2_1
+      213: -4918601417585270287
+    second: HitMed_1
   - first:
-      213: 5499850630810948050
-    second: SweepTheLeg-2_2
+      213: 1686750330502855169
+    second: HitMed_2
   - first:
-      213: -4044204260963960731
-    second: SweepTheLeg-2_3
+      213: 3807847163620389017
+    second: HitMed_3
   - first:
-      213: -926978095811071374
-    second: SweepTheLeg-2_4
+      213: -8131475682301216743
+    second: HitMed_4
   - first:
-      213: 2073454262731462717
-    second: SweepTheLeg-2_5
+      213: -3030904516122086268
+    second: HitMed_5
   - first:
-      213: -6955148755821865471
-    second: SweepTheLeg-2_6
+      213: 5095061232439936705
+    second: HitMed_6
   - first:
-      213: -5579531429727547680
-    second: SweepTheLeg-2_7
+      213: -279371015824944114
+    second: HitMed_7
   - first:
-      213: 7624134218311376117
-    second: SweepTheLeg-2_8
+      213: 6906692767739985662
+    second: HitMed_8
   - first:
-      213: -8500407538192624798
-    second: SweepTheLeg-2_9
+      213: 4806196277996834220
+    second: HitMed_9
+  - first:
+      213: -8042851140072099426
+    second: HitMed_10
+  - first:
+      213: -7862235548030305917
+    second: HitMed_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,13 +146,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SweepTheLeg-2_0
+      name: HitMed_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 15
-        height: 17
+        x: 0
+        y: 5
+        width: 36
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5174fd37434e8e1f0800000000000000
-      internalID: -1015310802038601963
+      spriteID: f5576eebdf3a89640800000000000000
+      internalID: 5086996089339802975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_1
+      name: HitMed_1
       rect:
         serializedVersion: 2
-        x: 27
-        y: 0
-        width: 15
-        height: 16
+        x: 39
+        y: 5
+        width: 35
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f65c7327ffc338e0800000000000000
-      internalID: -1714798372738803978
+      spriteID: 1f1e811121e9dbbb0800000000000000
+      internalID: -4918601417585270287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_2
+      name: HitMed_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 12
-        height: 15
+        x: 78
+        y: 6
+        width: 33
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d1d13f5205635c40800000000000000
-      internalID: 5499850630810948050
+      spriteID: 10a35622d7a886710800000000000000
+      internalID: 1686750330502855169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_3
+      name: HitMed_3
       rect:
         serializedVersion: 2
-        x: 86
-        y: 1
-        width: 17
-        height: 14
+        x: 117
+        y: 5
+        width: 31
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5683f1ad6a910e7c0800000000000000
-      internalID: -4044204260963960731
+      spriteID: 990729a02d038d430800000000000000
+      internalID: 3807847163620389017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_4
+      name: HitMed_4
       rect:
         serializedVersion: 2
-        x: 111
-        y: 1
-        width: 24
-        height: 15
+        x: 155
+        y: 6
+        width: 31
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 272fc9c4556b223f0800000000000000
-      internalID: -926978095811071374
+      spriteID: 91875b803f1372f80800000000000000
+      internalID: -8131475682301216743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_5
+      name: HitMed_5
       rect:
         serializedVersion: 2
-        x: 138
-        y: 1
-        width: 23
-        height: 16
+        x: 195
+        y: 5
+        width: 28
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d38d0249aa366cc10800000000000000
-      internalID: 2073454262731462717
+      spriteID: 4847a68a66010f5d0800000000000000
+      internalID: -3030904516122086268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_6
+      name: HitMed_6
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 17
-        height: 15
+        x: 234
+        y: 5
+        width: 27
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +293,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 106dc397e095a7f90800000000000000
-      internalID: -6955148755821865471
+      spriteID: 1c64274323b45b640800000000000000
+      internalID: 5095061232439936705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_7
+      name: HitMed_7
       rect:
         serializedVersion: 2
-        x: 194
-        y: 2
-        width: 15
-        height: 15
+        x: 275
+        y: 5
+        width: 25
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,20 +315,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ee46fde9b58192b0800000000000000
-      internalID: -5579531429727547680
+      spriteID: e04d6319a897f1cf0800000000000000
+      internalID: -279371015824944114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_8
+      name: HitMed_8
       rect:
         serializedVersion: 2
-        x: 221
-        y: 0
-        width: 14
-        height: 18
+        x: 313
+        y: 6
+        width: 27
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,20 +337,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5fc995a5dad5ec960800000000000000
-      internalID: 7624134218311376117
+      spriteID: efeb6e1aa7089df50800000000000000
+      internalID: 6906692767739985662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_9
+      name: HitMed_9
       rect:
         serializedVersion: 2
-        x: 246
-        y: 1
-        width: 15
-        height: 17
+        x: 351
+        y: 5
+        width: 31
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,8 +359,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 263d9ff816c780a80800000000000000
-      internalID: -8500407538192624798
+      spriteID: cad4eceec0a03b240800000000000000
+      internalID: 4806196277996834220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitMed_10
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 6
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9138ae308d026090800000000000000
+      internalID: -8042851140072099426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitMed_11
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 6
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 389743bcc6ab3e290800000000000000
+      internalID: -7862235548030305917
       vertices: []
       indices: 
       edges: []
@@ -372,17 +422,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      SweepTheLeg-2_0: -1015310802038601963
-      SweepTheLeg-2_1: -1714798372738803978
-      SweepTheLeg-2_2: 5499850630810948050
-      SweepTheLeg-2_3: -4044204260963960731
-      SweepTheLeg-2_4: -926978095811071374
-      SweepTheLeg-2_5: 2073454262731462717
-      SweepTheLeg-2_6: -6955148755821865471
-      SweepTheLeg-2_7: -5579531429727547680
-      SweepTheLeg-2_8: 7624134218311376117
-      SweepTheLeg-2_9: -8500407538192624798
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

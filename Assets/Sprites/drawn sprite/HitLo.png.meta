@@ -1,37 +1,43 @@
 fileFormatVersion: 2
-guid: dcbf42d1f48064fe29a80a9843d979f7
+guid: 9928b0c6182c2443899f25e22ca60132
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1015310802038601963
-    second: SweepTheLeg-2_0
+      213: 8389817736129931398
+    second: HitLo_0
   - first:
-      213: -1714798372738803978
-    second: SweepTheLeg-2_1
+      213: -3616472370091712541
+    second: HitLo_1
   - first:
-      213: 5499850630810948050
-    second: SweepTheLeg-2_2
+      213: -4070886527616812072
+    second: HitLo_2
   - first:
-      213: -4044204260963960731
-    second: SweepTheLeg-2_3
+      213: -3090502811597417950
+    second: HitLo_3
   - first:
-      213: -926978095811071374
-    second: SweepTheLeg-2_4
+      213: -1821866723066831568
+    second: HitLo_4
   - first:
-      213: 2073454262731462717
-    second: SweepTheLeg-2_5
+      213: 531440733690235665
+    second: HitLo_5
   - first:
-      213: -6955148755821865471
-    second: SweepTheLeg-2_6
+      213: 3204906566017651322
+    second: HitLo_6
   - first:
-      213: -5579531429727547680
-    second: SweepTheLeg-2_7
+      213: 1802452456720669272
+    second: HitLo_7
   - first:
-      213: 7624134218311376117
-    second: SweepTheLeg-2_8
+      213: -751396372609826079
+    second: HitLo_8
   - first:
-      213: -8500407538192624798
-    second: SweepTheLeg-2_9
+      213: -8868168330066436315
+    second: HitLo_9
+  - first:
+      213: 3572944093906230336
+    second: HitLo_10
+  - first:
+      213: 3448754451407829309
+    second: HitLo_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,13 +146,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SweepTheLeg-2_0
+      name: HitLo_0
       rect:
         serializedVersion: 2
         x: 2
-        y: 0
-        width: 15
-        height: 17
+        y: 7
+        width: 37
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5174fd37434e8e1f0800000000000000
-      internalID: -1015310802038601963
+      spriteID: 688eb44a7ce9e6470800000000000000
+      internalID: 8389817736129931398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_1
+      name: HitLo_1
       rect:
         serializedVersion: 2
-        x: 27
-        y: 0
-        width: 15
-        height: 16
+        x: 49
+        y: 6
+        width: 34
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f65c7327ffc338e0800000000000000
-      internalID: -1714798372738803978
+      spriteID: 3ef1ba05a85bfcdc0800000000000000
+      internalID: -3616472370091712541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_2
+      name: HitLo_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 12
-        height: 15
+        x: 93
+        y: 6
+        width: 37
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,64 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d1d13f5205635c40800000000000000
-      internalID: 5499850630810948050
+      spriteID: 8dbf978854e4187c0800000000000000
+      internalID: -4070886527616812072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_3
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 1
-        width: 17
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5683f1ad6a910e7c0800000000000000
-      internalID: -4044204260963960731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SweepTheLeg-2_4
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 1
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 272fc9c4556b223f0800000000000000
-      internalID: -926978095811071374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SweepTheLeg-2_5
+      name: HitLo_3
       rect:
         serializedVersion: 2
         x: 138
-        y: 1
-        width: 23
-        height: 16
+        y: 7
+        width: 38
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d38d0249aa366cc10800000000000000
-      internalID: 2073454262731462717
+      spriteID: 222d36921145c15d0800000000000000
+      internalID: -3090502811597417950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_6
+      name: HitLo_4
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 17
-        height: 15
+        x: 184
+        y: 7
+        width: 34
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 106dc397e095a7f90800000000000000
-      internalID: -6955148755821865471
+      spriteID: 03d1f773edd67b6e0800000000000000
+      internalID: -1821866723066831568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_7
+      name: HitLo_5
       rect:
         serializedVersion: 2
-        x: 194
-        y: 2
-        width: 15
-        height: 15
+        x: 229
+        y: 6
+        width: 31
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ee46fde9b58192b0800000000000000
-      internalID: -5579531429727547680
+      spriteID: 11b87c6188e006700800000000000000
+      internalID: 531440733690235665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_8
+      name: HitLo_6
       rect:
         serializedVersion: 2
-        x: 221
-        y: 0
-        width: 14
-        height: 18
+        x: 273
+        y: 7
+        width: 28
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,20 +293,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5fc995a5dad5ec960800000000000000
-      internalID: 7624134218311376117
+      spriteID: a729ccd9a8d1a7c20800000000000000
+      internalID: 3204906566017651322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_9
+      name: HitLo_7
       rect:
         serializedVersion: 2
-        x: 246
-        y: 1
-        width: 15
-        height: 17
+        x: 318
+        y: 6
+        width: 28
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,8 +315,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 263d9ff816c780a80800000000000000
-      internalID: -8500407538192624798
+      spriteID: 85a9d57a5f8930910800000000000000
+      internalID: 1802452456720669272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitLo_8
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 7
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e2031deaf08295f0800000000000000
+      internalID: -751396372609826079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitLo_9
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 7
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f550ea3efede480800000000000000
+      internalID: -8868168330066436315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitLo_10
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 6
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c5c9f19b5a59130800000000000000
+      internalID: 3572944093906230336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitLo_11
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 7
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d39f5b9b6ef6cdf20800000000000000
+      internalID: 3448754451407829309
       vertices: []
       indices: 
       edges: []
@@ -372,17 +422,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      SweepTheLeg-2_0: -1015310802038601963
-      SweepTheLeg-2_1: -1714798372738803978
-      SweepTheLeg-2_2: 5499850630810948050
-      SweepTheLeg-2_3: -4044204260963960731
-      SweepTheLeg-2_4: -926978095811071374
-      SweepTheLeg-2_5: 2073454262731462717
-      SweepTheLeg-2_6: -6955148755821865471
-      SweepTheLeg-2_7: -5579531429727547680
-      SweepTheLeg-2_8: 7624134218311376117
-      SweepTheLeg-2_9: -8500407538192624798
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

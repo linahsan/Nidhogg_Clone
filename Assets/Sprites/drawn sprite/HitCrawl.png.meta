@@ -1,37 +1,43 @@
 fileFormatVersion: 2
-guid: dcbf42d1f48064fe29a80a9843d979f7
+guid: 720d131dc521149ecacdc609df0836ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1015310802038601963
-    second: SweepTheLeg-2_0
+      213: -566926444883972541
+    second: HitCrawl_0
   - first:
-      213: -1714798372738803978
-    second: SweepTheLeg-2_1
+      213: -6965997364322210797
+    second: HitCrawl_1
   - first:
-      213: 5499850630810948050
-    second: SweepTheLeg-2_2
+      213: -4777401025835229405
+    second: HitCrawl_2
   - first:
-      213: -4044204260963960731
-    second: SweepTheLeg-2_3
+      213: -6886743411897478603
+    second: HitCrawl_3
   - first:
-      213: -926978095811071374
-    second: SweepTheLeg-2_4
+      213: 4930361638958415449
+    second: HitCrawl_4
   - first:
-      213: 2073454262731462717
-    second: SweepTheLeg-2_5
+      213: 6521185024585383301
+    second: HitCrawl_5
   - first:
-      213: -6955148755821865471
-    second: SweepTheLeg-2_6
+      213: -2444127759164412680
+    second: HitCrawl_6
   - first:
-      213: -5579531429727547680
-    second: SweepTheLeg-2_7
+      213: 3328000840037678885
+    second: HitCrawl_7
   - first:
-      213: 7624134218311376117
-    second: SweepTheLeg-2_8
+      213: -2423780092793342326
+    second: HitCrawl_8
   - first:
-      213: -8500407538192624798
-    second: SweepTheLeg-2_9
+      213: 2816561491436283541
+    second: HitCrawl_9
+  - first:
+      213: 3859370965426063347
+    second: HitCrawl_10
+  - first:
+      213: 8202092387646852427
+    second: HitCrawl_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,13 +146,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SweepTheLeg-2_0
+      name: HitCrawl_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 15
-        height: 17
+        x: 4
+        y: 16
+        width: 34
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5174fd37434e8e1f0800000000000000
-      internalID: -1015310802038601963
+      spriteID: 34e6aeee66fd128f0800000000000000
+      internalID: -566926444883972541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_1
+      name: HitCrawl_1
       rect:
         serializedVersion: 2
-        x: 27
-        y: 0
-        width: 15
-        height: 16
+        x: 49
+        y: 15
+        width: 32
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f65c7327ffc338e0800000000000000
-      internalID: -1714798372738803978
+      spriteID: 31c6449fd4ec35f90800000000000000
+      internalID: -6965997364322210797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_2
+      name: HitCrawl_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 12
-        height: 15
+        x: 94
+        y: 16
+        width: 31
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d1d13f5205635c40800000000000000
-      internalID: 5499850630810948050
+      spriteID: 32f1189241343bdb0800000000000000
+      internalID: -4777401025835229405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_3
+      name: HitCrawl_3
       rect:
         serializedVersion: 2
-        x: 86
-        y: 1
-        width: 17
-        height: 14
+        x: 140
+        y: 17
+        width: 28
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5683f1ad6a910e7c0800000000000000
-      internalID: -4044204260963960731
+      spriteID: 532d69aba5f5d60a0800000000000000
+      internalID: -6886743411897478603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_4
+      name: HitCrawl_4
       rect:
         serializedVersion: 2
-        x: 111
-        y: 1
-        width: 24
-        height: 15
+        x: 185
+        y: 16
+        width: 28
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 272fc9c4556b223f0800000000000000
-      internalID: -926978095811071374
+      spriteID: 95e3458d9c92c6440800000000000000
+      internalID: 4930361638958415449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_5
+      name: HitCrawl_5
       rect:
         serializedVersion: 2
-        x: 138
-        y: 1
-        width: 23
-        height: 16
+        x: 230
+        y: 16
+        width: 29
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d38d0249aa366cc10800000000000000
-      internalID: 2073454262731462717
+      spriteID: 58d3209aa37ef7a50800000000000000
+      internalID: 6521185024585383301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_6
+      name: HitCrawl_6
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 17
-        height: 15
+        x: 273
+        y: 16
+        width: 30
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +293,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 106dc397e095a7f90800000000000000
-      internalID: -6955148755821865471
+      spriteID: 8fc6559a0c6b41ed0800000000000000
+      internalID: -2444127759164412680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_7
+      name: HitCrawl_7
       rect:
         serializedVersion: 2
-        x: 194
-        y: 2
-        width: 15
-        height: 15
+        x: 319
+        y: 16
+        width: 29
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,20 +315,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ee46fde9b58192b0800000000000000
-      internalID: -5579531429727547680
+      spriteID: 52fb5aaa12f6f2e20800000000000000
+      internalID: 3328000840037678885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_8
+      name: HitCrawl_8
       rect:
         serializedVersion: 2
-        x: 221
-        y: 0
-        width: 14
-        height: 18
+        x: 362
+        y: 16
+        width: 31
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,20 +337,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5fc995a5dad5ec960800000000000000
-      internalID: 7624134218311376117
+      spriteID: a86b36be8d00d5ed0800000000000000
+      internalID: -2423780092793342326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SweepTheLeg-2_9
+      name: HitCrawl_9
       rect:
         serializedVersion: 2
-        x: 246
-        y: 1
-        width: 15
-        height: 17
+        x: 405
+        y: 15
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,8 +359,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 263d9ff816c780a80800000000000000
-      internalID: -8500407538192624798
+      spriteID: 596aa11f0cf661720800000000000000
+      internalID: 2816561491436283541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitCrawl_10
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 15
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f74daaf17d3f8530800000000000000
+      internalID: 3859370965426063347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HitCrawl_11
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 15
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d40ace19fa3d170800000000000000
+      internalID: 8202092387646852427
       vertices: []
       indices: 
       edges: []
@@ -372,17 +422,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      SweepTheLeg-2_0: -1015310802038601963
-      SweepTheLeg-2_1: -1714798372738803978
-      SweepTheLeg-2_2: 5499850630810948050
-      SweepTheLeg-2_3: -4044204260963960731
-      SweepTheLeg-2_4: -926978095811071374
-      SweepTheLeg-2_5: 2073454262731462717
-      SweepTheLeg-2_6: -6955148755821865471
-      SweepTheLeg-2_7: -5579531429727547680
-      SweepTheLeg-2_8: 7624134218311376117
-      SweepTheLeg-2_9: -8500407538192624798
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
