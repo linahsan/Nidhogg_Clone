@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DiveKick 2_0: 3657912250301235663
+      DiveKick 2_1: 2951796077667318501
+      DiveKick 2_2: -178588500657840538
+      DiveKick 2_3: -8937790639447541398
+      DiveKick 2_4: -2299930542607101329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

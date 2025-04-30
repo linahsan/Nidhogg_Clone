@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerInputScript input;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] SpriteRenderer spriteRenderer;
     
     public float moveSpeed = 5f;
     [SerializeField] bool isJumping = false;
@@ -14,13 +15,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
     [SerializeField] bool isGrounded = false;
+    [SerializeField] bool isPlayer1;
     
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
         isGrounded = false;
+        
+        if (this.name == "Player1")
+        {
+            isPlayer1 = true;
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            isPlayer1 = false;
+            spriteRenderer.flipX = true;
+        }
     }
 
     void FixedUpdate()

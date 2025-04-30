@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SwordStandMid 2_0: 3419420612261391748
+      SwordStandMid 2_1: -4921267167018633056
+      SwordStandMid 2_10: -6373218507848234615
+      SwordStandMid 2_11: 495259583394213945
+      SwordStandMid 2_2: 8961370012965387949
+      SwordStandMid 2_3: 6052510745242754952
+      SwordStandMid 2_4: -4548667599417763508
+      SwordStandMid 2_5: -494706475938541654
+      SwordStandMid 2_6: -1239206900546926497
+      SwordStandMid 2_7: 5904636181989050957
+      SwordStandMid 2_8: 9774444818398199
+      SwordStandMid 2_9: 7456755218025468718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
