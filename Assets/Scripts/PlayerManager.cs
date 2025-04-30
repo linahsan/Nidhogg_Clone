@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject punchColliderObject;
     public BoxCollider2D punchCollider; 
+    public ColliderTag punchColliderTag;
     public int dir = -1;
     public bool hasSword;
     public bool isGrounded;
@@ -36,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         isDead = false;
 
         //ADD FINDING THE CHILD COLLIDERS HERE
+        punchColliderTag = punchColliderObject.GetComponent<ColliderTag>();
         punchCollider = punchColliderObject.GetComponent<BoxCollider2D>();
 
 
@@ -46,21 +48,22 @@ public class PlayerManager : MonoBehaviour
         //ResetState();Somebody says pointless, blame him . :(
         state = ChangeState(new UnarmedStillStandingState(this, animator));
         
-   
+        GameObject.Find("Camera Object").GetComponent<CameraScript>().AddActivePlayer(gameObject);
+        //Debug.Log(GameObject.Find("Camera Object").GetComponent<CameraScript>().activePlayers.Count);
     }
     
     void Update()
     {
         // Handle Input
         int moveDir = 0;
-        bool isMoving = false;
+        //bool isMoving = false;
         if (Input.GetKey(KeyCode.RightArrow))
             moveDir += 1;
         if (Input.GetKey(KeyCode.LeftArrow))
             moveDir -= 1;
         if (moveDir != 0)
-            isMoving = true;
-        animator?.SetBool("IsMoving", isMoving);
+            //isMoving = true;
+        //animator?.SetBool("IsMoving", isMoving);
         
         if (isDead)
         {
