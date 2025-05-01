@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
     [SerializeField] bool isGrounded = false;
-    [SerializeField] bool isPlayer1;
+    public bool isPlayer1;
     
     void Start()
     {
@@ -53,10 +53,28 @@ public class PlayerController : MonoBehaviour
         if (input.LeftPressed())
         {
             direction.x = -1f;
+
+            if (isPlayer1)
+            {
+                spriteRenderer.flipX = true;
+            }
         }
         else if (input.RightPressed())
         {
             direction.x = 1f;
+            
+            if (!isPlayer1)
+            {
+                spriteRenderer.flipX = false;
+            }
+        } 
+        else if (input.LeftReleased() && isPlayer1)
+        {
+            spriteRenderer.flipX = false;
+        } 
+        else if (input.RightReleased() && !isPlayer1)
+        {
+            spriteRenderer.flipX = true;
         }
 
         transform.Translate(direction * moveSpeed * Time.deltaTime);

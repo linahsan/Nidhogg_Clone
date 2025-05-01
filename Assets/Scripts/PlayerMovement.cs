@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
+    [SerializeField] PlayerController controller;
     [SerializeField] PlayerInputScript input; 
     [SerializeField] Animator animator;
     
@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
     
     // speed
     private bool movingForward = false;
+    private bool stepBack = false;
     
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerInputScript>();
     }
@@ -46,16 +47,29 @@ public class PlayerMovement : MonoBehaviour
         if (input.LeftPressed())
         {
             movingForward = true;
+
+            if (controller.isPlayer1)
+            {
+                stepBack = true;
+            }
+            
             UpdateMoveForwardAnimation();
         }
         else if (input.RightPressed())
         {
             movingForward = true;
+
+            if (!controller.isPlayer1)
+            {
+                stepBack = true;
+            }
             UpdateMoveForwardAnimation();
         }
         if(input.LeftReleased() || input.RightReleased())
         {
             movingForward = false;
+            stepBack = false;
+            
             UpdateMoveForwardAnimation();
         }
     }
@@ -64,11 +78,13 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetInteger("height", currentHeight);
         animator.SetBool("movingForward", movingForward);
+        animator.SetBool("stepBack", stepBack);
     }
 
     void UpdateMoveForwardAnimation()
     {
         animator.SetInteger("height", currentHeight);
         animator.SetBool("movingForward", movingForward);
+        animator.SetBool("stepBack", stepBack);
     }
 }
