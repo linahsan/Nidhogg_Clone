@@ -24,10 +24,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateControllerBools();
         HeightCheck();
         MoveForwardCheck();
+        JumpingCheck();
+        FallingCheck();
     }
 
+    // 
     void HeightCheck()
     {
         if (input.DownPressed() && animator.GetInteger("height") > 0)
@@ -41,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             UpdateHeightAnimation();
         }
     }
-
+    
     void MoveForwardCheck()
     {
         if (input.LeftPressed())
@@ -74,6 +78,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void JumpingCheck()
+    {
+        if (input.JumpPressed())
+        {
+            UpdateJumpAnimation();
+        }
+    }
+
+    void FallingCheck()
+    {
+        if (controller.isFalling)
+        {
+            UpdateFallAnimation();
+        }
+    }
+
+    void UpdateControllerBools()
+    {
+        animator.SetBool("isFalling", controller.isFalling);
+        animator.SetBool("isJumping", controller.isJumping);
+        animator.SetBool("isGrounded", controller.isGrounded);
+    }
+
+    // update height animation
     void UpdateHeightAnimation()
     {
         animator.SetInteger("height", currentHeight);
@@ -81,10 +109,19 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("stepBack", stepBack);
     }
 
+    // update animation to step forward or step back
     void UpdateMoveForwardAnimation()
     {
         animator.SetInteger("height", currentHeight);
         animator.SetBool("movingForward", movingForward);
         animator.SetBool("stepBack", stepBack);
+    }
+
+    void UpdateJumpAnimation()
+    {
+    }
+
+    void UpdateFallAnimation()
+    {
     }
 }
