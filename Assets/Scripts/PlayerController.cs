@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] CameraScript cameraScript;
     
     public float moveSpeed = 5f;
     public bool isJumping = false;
@@ -17,10 +18,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
+    public bool isAlive =true;
     
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
+
+    //debugging:
+    private bool hasDied = false;
     
     void Start()
     {
@@ -44,6 +49,8 @@ public class PlayerController : MonoBehaviour
         
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
+        cameraScript.AddActivePlayer(gameObject);
+
     }
 
     void FixedUpdate()
@@ -52,6 +59,18 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         HandleMovement();
         HandleJump();
+        
+        if(input.DebugPressed() && !hasDied)
+        {
+            isAlive = !isAlive;
+            cameraScript.PlayerDies(gameObject);
+            hasDied = true;
+        }
+
+        if(input.DebugReleased())
+        {
+            hasDied = false;
+        }
     }
 
     void HandleMovement()
@@ -162,5 +181,13 @@ public class PlayerController : MonoBehaviour
     void SetSpriteFacing(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
+    }
+
+
+
+
+    public bool IsAlive()
+    {
+        return isAlive;
     }
 }

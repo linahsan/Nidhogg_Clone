@@ -18,6 +18,16 @@ namespace States.Unarmed.Still
         public override void Update()
         {
             base.Update();
+
+            if(manager.punchColliderTag.isColliding)
+            {
+                if(manager.punchColliderTag.collidingWithTag.type == ColliderTag.colliderType.BODY)
+                {
+                    //IMPLEMENT HITTING
+                    Debug.Log("happened");
+                }
+            }
+
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 manager.ChangeState(new UnarmedStillStandingState(manager, animator));
