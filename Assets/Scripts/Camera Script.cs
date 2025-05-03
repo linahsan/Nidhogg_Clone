@@ -21,7 +21,12 @@ public class CameraScript : MonoBehaviour
    private float frameMinX;
    public int winningDirection = 0;
    
-
+   public GameObject player1;
+   public GameObject player2;
+   
+   public Transform player1Transform;
+   public Transform player2Transform;
+   
     void Start()
     {
 
@@ -105,7 +110,7 @@ public class CameraScript : MonoBehaviour
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
 
-        GameObject testPlayer = null;
+        //GameObject testPlayer = null;
 
 
         if(winningDirection == 0)
@@ -145,6 +150,7 @@ public class CameraScript : MonoBehaviour
         }
         else if(winningDirection == 1)
         {
+            /*
             for(int i = 0; i < activePlayers.Count; i++)
             {
                 if(!activePlayers[i].GetComponent<PlayerController>().isPlayer1)
@@ -152,17 +158,20 @@ public class CameraScript : MonoBehaviour
                     testPlayer = activePlayers[i];
                 }
             }
+            */
+            
 
-            frameMinX = testPlayer.GetComponent<Transform>().position.x - (barrierRange)*width;
+            frameMinX = player2.GetComponent<Transform>().position.x - (barrierRange)*width;
             //frameMaxX = testPlayer.GetComponent<Transform>().position.x + (barrierRange)*width; 
             frameMaxX = maxX;
 
             //rightBorder.SetActive(false);
-            //leftBorder.SetActive(false);
+            leftBorder.SetActive(false);
             Debug.Log("1");
         }
         else if(winningDirection == -1)
         {
+            /*
             for(int i = 0; i < activePlayers.Count; i++)
             {
                 if(activePlayers[i].GetComponent<PlayerController>().isPlayer1)
@@ -170,13 +179,14 @@ public class CameraScript : MonoBehaviour
                     testPlayer = activePlayers[i];
                 }
             }
+            */
 
             //frameMinX = testPlayer.GetComponent<Transform>().position.x - (barrierRange)*width;
-            frameMaxX = testPlayer.GetComponent<Transform>().position.x + (barrierRange)*width; 
+            frameMaxX = player1.GetComponent<Transform>().position.x + (barrierRange)*width; 
 
             frameMinX = minX;
 
-            //rightBorder.SetActive(false);
+            rightBorder.SetActive(false);
             //leftBorder.SetActive(false);
             Debug.Log("-1");
         }
@@ -243,5 +253,26 @@ public class CameraScript : MonoBehaviour
         Debug.Log(testPlayer);
         Debug.Log(otherPlayerController.IsAlive());
     }
+
+    public void Initalization()
+    {
+        if (activePlayers.Count > 1)
+        {
+            for (int i = 0; i < activePlayers.Count; i++)
+            {
+                if (activePlayers[i].GetComponent<PlayerController>().isPlayer1)
+                {
+                    player1 = activePlayers[i];
+                }
+                else
+                {
+                    player2 = activePlayers[i];
+                }
+            }
+        }
+        player1Transform = player1.GetComponent<Transform>().transform;
+        player2Transform = player2.GetComponent<Transform>().transform;
+    }
     
 }
+
