@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
-    public bool isAlive;
+    public bool isAlive =true;
     
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
+
+    //debugging:
+    private bool hasDied = false;
     
     void Start()
     {
@@ -56,6 +59,18 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         HandleMovement();
         HandleJump();
+        
+        if(input.DebugPressed() && !hasDied)
+        {
+            isAlive = !isAlive;
+            cameraScript.PlayerDies(gameObject);
+            hasDied = true;
+        }
+
+        if(input.DebugReleased())
+        {
+            hasDied = false;
+        }
     }
 
     void HandleMovement()
@@ -173,10 +188,6 @@ public class PlayerController : MonoBehaviour
 
     public bool IsAlive()
     {
-        if(isAlive)
-        {
-            return true;
-        }
-        return false;
+        return isAlive;
     }
 }
