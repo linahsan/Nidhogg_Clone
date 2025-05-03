@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    [SerializeField] private GameObject leftBorder;
+    [SerializeField] private GameObject rightBorder;
    public List<GameObject> activePlayers;
    private int activePlayerCount;
    private List<GameObject> updateActivePlayers = new List<GameObject>();
@@ -28,6 +30,8 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
         UpdateMaxAndMins();
+        Debug.Log(frameMinX);
+        Debug.Log(frameMaxX);
         activePlayerCount = 0;
         updateActivePlayers.Clear();
 
@@ -53,11 +57,11 @@ public class CameraScript : MonoBehaviour
         else if(activePlayerCount == 2)
         {
             newX = activePlayers[0].GetComponent<Transform>().position.x;
-            Debug.Log(newX);
+            //Debug.Log(newX);
             newX += activePlayers[1].GetComponent<Transform>().position.x;
-            Debug.Log(newX);
+            //Debug.Log(newX);
             newX /= 2;
-            Debug.Log(newX);
+            //Debug.Log(newX);
             newPosition = new Vector3(newX, 0, -10);
             /*
             Debug.Log(activePlayers.Count);
@@ -68,9 +72,9 @@ public class CameraScript : MonoBehaviour
             */
 
         }
-        Debug.Log(newPosition);
+        //Debug.Log(newPosition);
         gameObject.GetComponent<Transform>().position = newPosition;
-        Debug.Log(gameObject.GetComponent<Transform>().position.x);
+        //Debug.Log(gameObject.GetComponent<Transform>().position.x);
 
         /*
         if(gameObject.GetComponent<Transform>().position.x > maxX)
@@ -117,8 +121,32 @@ public class CameraScript : MonoBehaviour
 
         if(winningDirection == 0)
         {
+            
             frameMaxX = maxX;
             frameMinX = minX;
+
+            rightBorder.SetActive(true);
+            leftBorder.SetActive(true);
+
+            //set min
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(activePlayers[0].GetComponent<Transform>().position.x - (1/2)*width > frameMinX)
+                {
+                    frameMinX = activePlayers[0].GetComponent<Transform>().position.x - (1/2)*width;
+                }
+            }
+
+            //set max
+
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(activePlayers[0].GetComponent<Transform>().position.x - (1/2)*width < frameMaxX)
+                {
+                    frameMaxX = activePlayers[0].GetComponent<Transform>().position.x + (1/2)*width;
+                }
+            }
+            Debug.Log("0");
         }
         else if(winningDirection == 1)
         {
@@ -128,9 +156,14 @@ public class CameraScript : MonoBehaviour
                 {
                     testPlayer = activePlayers[i];
                 }
-                frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
-                frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
             }
+
+            frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
+            frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
+
+            rightBorder.SetActive(false);
+            leftBorder.SetActive(false);
+            Debug.Log("1");
         }
         else if(winningDirection == -1)
         {
@@ -140,9 +173,14 @@ public class CameraScript : MonoBehaviour
                 {
                     testPlayer = activePlayers[i];
                 }
-                frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
-                frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
             }
+
+            frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
+            frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
+
+            rightBorder.SetActive(false);
+            leftBorder.SetActive(false);
+            Debug.Log("-1");
         }
     }
 
