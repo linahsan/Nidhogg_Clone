@@ -9,13 +9,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     
     public float moveSpeed = 5f;
-    [SerializeField] bool isJumping = false;
+    public bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float gravity = -30f;
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
-    [SerializeField] bool isGrounded = false;
-    [SerializeField] bool isPlayer1;
+    public bool isGrounded = false;
+    public bool isFalling;
+    public bool isPlayer1;
+    
+    // flip logic
+    private bool facingDefault;
+    private bool defaultFacingRight;
     
     void Start()
     {
@@ -29,13 +34,16 @@ public class PlayerController : MonoBehaviour
         if (this.name == "Player1")
         {
             isPlayer1 = true;
-            spriteRenderer.flipX = false;
+            defaultFacingRight = true;
         }
         else
         {
             isPlayer1 = false;
-            spriteRenderer.flipX = true;
+            defaultFacingRight = false;
         }
+        
+        facingDefault = true;
+        SetSpriteFacing(defaultFacingRight);
     }
 
     void FixedUpdate()
@@ -53,10 +61,35 @@ public class PlayerController : MonoBehaviour
         if (input.LeftPressed())
         {
             direction.x = -1f;
+
+            if (isPlayer1 && facingDefault)
+            {
+                Flip();
+            }
+            else if (!isPlayer1 && !facingDefault)
+            {
+                Flip();
+            }
         }
         else if (input.RightPressed())
         {
             direction.x = 1f;
+            
+            if (!isPlayer1 && facingDefault)
+            {
+                Flip();
+            }
+            else if (isPlayer1 && !facingDefault)
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            if (!facingDefault)
+            {
+                Flip();
+            }
         }
 
         transform.Translate(direction * moveSpeed * Time.deltaTime);
@@ -69,6 +102,7 @@ public class PlayerController : MonoBehaviour
             verticalVelocity = jumpForce;
             isJumping = true;
             isGrounded = false;
+            isFalling = false;
         }
     }
 
@@ -81,6 +115,12 @@ public class PlayerController : MonoBehaviour
             if (verticalVelocity < 0)
             {
                 currentGravity *= fallMultiplier;
+                isFalling = true;
+                isJumping = false;
+            }
+            else
+            {
+                isFalling = false;
             }
 
             verticalVelocity += currentGravity * Time.deltaTime;
@@ -89,6 +129,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             verticalVelocity = 0f;
+            isFalling = false;
         }
     }
 
@@ -99,6 +140,8 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null)
         {
             isGrounded = true;
+            isFalling = false;
+            isJumping = false;
             verticalVelocity = 0f;
 
             // snapping ot ground --> might not need, need to check iwht high heights
@@ -108,5 +151,16 @@ public class PlayerController : MonoBehaviour
             pos.y = groundY;
             transform.position = pos;
         }
+    }
+    
+    void Flip()
+    {
+        facingDefault = !facingDefault;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+    }
+    
+    void SetSpriteFacing(bool faceRight)
+    {
+        spriteRenderer.flipX = !faceRight;
     }
 }
