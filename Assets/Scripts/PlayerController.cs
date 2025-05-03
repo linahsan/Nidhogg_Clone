@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     //debugging:
     private bool hasDied = false;
     
+    //orietnation:
+    private GameObject otherPlayer;
+    private Transform otherPlayerTransform;
+    private int orientation = 1;
+    
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -50,7 +55,11 @@ public class PlayerController : MonoBehaviour
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
         cameraScript.AddActivePlayer(gameObject);
+        cameraScript.Initalization();
 
+        otherPlayer = GetOtherPlayer();
+        otherPlayerTransform = otherPlayer.GetComponent<Transform>();
+        
     }
 
     void FixedUpdate()
@@ -182,12 +191,34 @@ public class PlayerController : MonoBehaviour
     {
         spriteRenderer.flipX = !faceRight;
     }
-
-
-
+    
 
     public bool IsAlive()
     {
         return isAlive;
+    }
+
+    //handling orientation functions
+    public GameObject GetOtherPlayer()
+    {
+        GameObject otherPlayer = null;
+        for (int i = 0; i < cameraScript.activePlayers.Count; i++)
+        {
+            if (cameraScript.activePlayers[i].GetComponent<PlayerController>().isPlayer1 != isPlayer1)
+            {
+                otherPlayer = cameraScript.activePlayers[i];
+            }
+        }
+        return otherPlayer;
+    }
+
+    public void HandleOrientation()
+    {
+        
+        float distance = otherPlayerTransform.position.x - transform.position.x;
+        orientation = (int)Mathf.Sign(distance);
+        //transform.localScale = new Vector3(orientation, transform.localScale.y, transform.localScale.z);
+        
+        
     }
 }
