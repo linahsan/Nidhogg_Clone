@@ -14,14 +14,20 @@ public class CameraScript : MonoBehaviour
    [SerializeField] private float maxX;
    [SerializeField] private float minX;
 
+   private float frameMaxX;
+   private float frameMinX;
+   public int winningDirection = 0;
+   
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateMaxAndMins();
         activePlayerCount = 0;
         updateActivePlayers.Clear();
 
@@ -96,6 +102,104 @@ public class CameraScript : MonoBehaviour
         }
         activePlayers.Add(currentPlayer);
         Debug.Log(activePlayers.Count);
+    }
+
+
+    private void UpdateMaxAndMins()
+    {
+
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        GameObject testPlayer = null;
+
+
+        if(winningDirection == 0)
+        {
+            frameMaxX = maxX;
+            frameMinX = minX;
+        }
+        else if(winningDirection == 1)
+        {
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(activePlayers[i].GetComponent<PlayerController>().isPlayer1)
+                {
+                    testPlayer = activePlayers[i];
+                }
+                frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
+                frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
+            }
+        }
+        else if(winningDirection == -1)
+        {
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(!activePlayers[i].GetComponent<PlayerController>().isPlayer1)
+                {
+                    testPlayer = activePlayers[i];
+                }
+                frameMinX = testPlayer.GetComponent<Transform>().position.x - (1/2)*width;
+                frameMaxX = testPlayer.GetComponent<Transform>().position.x + (1/2)*width; 
+            }
+        }
+    }
+
+    public void PlayerDies(GameObject player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        GameObject testPlayer = null;
+        PlayerController otherPlayerController;
+
+
+        if(player.GetComponent<PlayerController>().isPlayer1)
+        {
+            //get player 2
+
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(!activePlayers[i].GetComponent<PlayerController>().isPlayer1)
+                {
+                    testPlayer = activePlayers[i];
+                }
+            }
+
+            otherPlayerController = testPlayer.GetComponent<PlayerController>();
+
+
+            if(otherPlayerController.IsAlive())
+            {
+                winningDirection = -1;
+            }
+            else
+            {
+                winningDirection = 0;
+            }
+
+        }
+        else
+        {
+            for(int i = 0; i < activePlayers.Count; i++)
+            {
+                if(activePlayers[i].GetComponent<PlayerController>().isPlayer1)
+                {
+                    testPlayer = activePlayers[i];
+                }
+            }
+
+            otherPlayerController = testPlayer.GetComponent<PlayerController>();
+
+
+            if(otherPlayerController.IsAlive())
+            {
+                winningDirection = 1;
+            }
+            else
+            {
+                winningDirection = 0;
+            }
+        }
     }
     
 }

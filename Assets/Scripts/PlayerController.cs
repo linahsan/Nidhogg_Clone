@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
+    public bool isAlive;
     
     // flip logic
     private bool facingDefault;
@@ -165,5 +166,17 @@ public class PlayerController : MonoBehaviour
     void SetSpriteFacing(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
+    }
+
+
+
+
+    public bool IsAlive()
+    {
+        if(isAlive)
+        {
+            return true;
+        }
+        return false;
     }
 }
