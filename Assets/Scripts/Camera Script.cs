@@ -157,8 +157,8 @@ public class CameraScript : MonoBehaviour
             //frameMaxX = testPlayer.GetComponent<Transform>().position.x + (barrierRange)*width; 
             frameMaxX = maxX;
 
-            rightBorder.SetActive(false);
-            leftBorder.SetActive(false);
+            //rightBorder.SetActive(false);
+            //leftBorder.SetActive(false);
             Debug.Log("1");
         }
         else if(winningDirection == -1)
@@ -176,8 +176,8 @@ public class CameraScript : MonoBehaviour
 
             frameMinX = minX;
 
-            rightBorder.SetActive(false);
-            leftBorder.SetActive(false);
+            //rightBorder.SetActive(false);
+            //leftBorder.SetActive(false);
             Debug.Log("-1");
         }
     }
