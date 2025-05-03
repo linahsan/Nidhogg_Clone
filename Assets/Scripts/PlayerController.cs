@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] CameraScript cameraScript;
     
     public float moveSpeed = 5f;
     public bool isJumping = false;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
         
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
+        cameraScript.AddActivePlayer(gameObject);
+
     }
 
     void FixedUpdate()

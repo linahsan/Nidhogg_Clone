@@ -11,8 +11,8 @@ public class CameraScript : MonoBehaviour
     private Vector3 newPosition;
    private float newX;
 
-   private float maxX;
-   private float minX;
+   [SerializeField] private float maxX;
+   [SerializeField] private float minX;
 
     void Start()
     {
@@ -42,29 +42,41 @@ public class CameraScript : MonoBehaviour
         }
         else if(activePlayerCount == 1)
         {
-           newPosition = new Vector3(updateActivePlayers[0].GetComponent<Transform>().position.x, 0, 0);
+           newPosition = new Vector3(updateActivePlayers[0].GetComponent<Transform>().position.x, 0, -10);
         }
         else if(activePlayerCount == 2)
         {
-            newX = updateActivePlayers[0].GetComponent<Transform>().position.x;
-            newX += updateActivePlayers[1].GetComponent<Transform>().position.x;
-            newX *= (1/2);
-            newPosition = new Vector3(newX, 0, 0);
+            newX = activePlayers[0].GetComponent<Transform>().position.x;
+            Debug.Log(newX);
+            newX += activePlayers[1].GetComponent<Transform>().position.x;
+            Debug.Log(newX);
+            newX /= 2;
+            Debug.Log(newX);
+            newPosition = new Vector3(newX, 0, -10);
+            /*
+            Debug.Log(activePlayers.Count);
+            Debug.Log(activePlayers[0]);
+            Debug.Log(activePlayers[0].GetComponent<Transform>().position.x);
             Debug.Log("Happened");
+            Debug.Log(newX);
+            */
 
         }
-
+        Debug.Log(newPosition);
         gameObject.GetComponent<Transform>().position = newPosition;
+        Debug.Log(gameObject.GetComponent<Transform>().position.x);
 
+        /*
         if(gameObject.GetComponent<Transform>().position.x > maxX)
         {
-            gameObject.GetComponent<Transform>().position = new Vector3(maxX, 0, 0);
+            gameObject.GetComponent<Transform>().position = new Vector3(maxX, 0, -10);
         }
 
         if (gameObject.GetComponent<Transform>().position.x < minX)
         {
-            gameObject.GetComponent<Transform>().position = new Vector3(minX, 0, 0);
+            gameObject.GetComponent<Transform>().position = new Vector3(minX, 0, -10);
         }
+        */
 
 
     }
