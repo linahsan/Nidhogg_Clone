@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 852185469969292801}
   - component: {fileID: 570906226081467373}
   - component: {fileID: 211811811238798129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -83,9 +83,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: abb043ec9eed147f0be013905fd16aa8, type: 3}
+  m_Sprite: {fileID: 3419420612261391748, guid: fd037d053a56d4610a8069a7107cb133, type: 3}
   m_Color: {r: 1, g: 0.51245356, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -137,7 +137,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -159,7 +159,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.39, y: 0.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -167,10 +167,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.025729954, y: 0.26932395}
+      - {x: -0.123625636, y: -0.06987357}
+      - {x: -0.11800039, y: -0.26563308}
+      - {x: 0.13829982, y: -0.26747847}
+      - {x: 0.049720287, y: 0.2711693}
   m_UseDelaunayMesh: 0
 --- !u!114 &610382591606609261
 MonoBehaviour:
@@ -267,6 +268,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
   cameraScript: {fileID: 0}
+  playerMovement: {fileID: 0}
   moveSpeed: 5
   isJumping: 0
   jumpForce: 15
@@ -277,6 +279,8 @@ MonoBehaviour:
   isFalling: 0
   isPlayer1: 0
   isAlive: 1
+  isCrouching: 0
+  respawnTime: 180
 --- !u!114 &852185469969292801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,3 +348,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   input: {fileID: 0}
   animator: {fileID: 0}
+  currentAnimation: 
+  currentHeight: 1
+  movingForward: 0
+  stepBack: 0

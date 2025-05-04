@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
-    public bool isAlive =true;
+    public bool isAlive = true;
     public bool isCrouching;
-    
+    //respawn code:
+    public int respawnTime;
+    private int deathTimer;
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
@@ -68,24 +70,36 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        CheckGrounded();
-        ApplyGravity();
-        HandleMovement();
-        HandleJump();
-        //HandleCameraEdges();
-        HandleCrouch();
+        if(isAlive)
+        {
+            CheckGrounded();
+            ApplyGravity();
+            HandleMovement();
+            HandleJump();
+            //HandleCameraEdges();
+            HandleCrouch();
+        }
+        else
+        {
+            deathTimer++;
+            transform.position = new Vector3(-20, -20, 0);
+            if(deathTimer > respawnTime)
+            {
+                PlayerRespawns();
+            }
+        }
         
         if(input.DebugPressed() && !hasDied)
         {
-            isAlive = !isAlive;
-            cameraScript.PlayerDies(gameObject);
-            hasDied = true;
+            PlayerDies();
         }
 
-        if(input.DebugReleased())
-        {
-            hasDied = false;
-        }
+
+    }
+
+    void OnBecameInvisible()
+    {
+        PlayerDies();
     }
 
     void HandleMovement()
@@ -169,21 +183,26 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, LayerMask.GetMask("Ground"));
+        isGrounded = false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Ground"));
 
         if (hit.collider != null)
         {
-            isGrounded = true;
-            isFalling = false;
-            isJumping = false;
-            verticalVelocity = 0f;
+            //other possible if statement: hit.transform.gameObject.tag == LayerMask.NameToLayer("Ground")
+            if (hit.transform.gameObject.tag == "Ground" && !isJumping)
+            {
+                isGrounded = true;
+                isFalling = false;
+                isJumping = false;
+                verticalVelocity = 0f;
 
-            // snapping ot ground --> might not need, need to check iwht high heights
-            float groundY = hit.point.y + GetComponent<Collider2D>().bounds.extents.y;
-            
-            Vector2 pos = transform.position;
-            pos.y = groundY;
-            transform.position = pos;
+                // snapping ot ground --> might not need, need to check iwht high heights
+                float groundY = hit.point.y + GetComponent<Collider2D>().bounds.extents.y;
+                
+                Vector2 pos = transform.position;
+                pos.y = groundY;
+                transform.position = pos;
+            }
         }
     }
     
@@ -266,5 +285,39 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width, transform.position.y, 0);
             }
         }
+    }
+
+    public void PlayerDies()
+    {
+        if(isAlive)
+        {
+            isAlive = false;
+            cameraScript.PlayerDies(gameObject);
+            deathTimer = 0;
+            isCrouching = false;
+            isFalling = false;
+            //its *possible* I may need to mess w "isFacingDefaultDirection" here
+        }
+    }
+
+    public void PlayerRespawns()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        isAlive = true;
+        //SET ANIMATOR TO RUNNing state
+
+        //WILL NEED TO FIX THE Y VALUE HERE
+        if(isPlayer1)
+        {
+            gameObject.transform.position = new Vector3(cam.transform.position.x - (1/2)*width, 2, 0);
+        }
+        else
+        {
+            gameObject.transform.position = new Vector3(cam.transform.position.x + (1/2)*width, 2, 0);
+        }
+        
     }
 }
