@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -29,7 +30,7 @@ public class CameraScript : MonoBehaviour
    
     void Start()
     {
-
+        OnSceneEnter();
     }
 
     // Update is called once per frame
@@ -82,6 +83,17 @@ public class CameraScript : MonoBehaviour
         }
 
         //ADD LEANING IF STATEMENT HERE
+        /*
+        if(Vector3.Distance(newPosition, transform.position) < 2.0f)
+        {
+            gameObject.GetComponent<Transform>().position = newPosition;
+        }
+        else
+        {
+            
+        }
+        */
+
         gameObject.GetComponent<Transform>().position = newPosition;
 
         /*
@@ -255,6 +267,15 @@ public class CameraScript : MonoBehaviour
             player2.GetComponent<PlayerController>().GetOtherPlayerVariables();
         }
         
+    }
+
+    public void OnSceneEnter()
+    {
+        if(SceneTransitionManager.Instance.winningDirection != 0)
+        {
+            transform.position = new Vector3(SceneTransitionManager.Instance.cameraStartingX, transform.position.y, transform.position.z);
+            winningDirection = SceneTransitionManager.Instance.winningDirection;
+        }
     }
     
 }
