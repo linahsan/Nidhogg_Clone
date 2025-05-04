@@ -76,6 +76,8 @@ public class PlayerInputScript : MonoBehaviour
     public bool UpReleased() => up.WasReleasedThisFrame();
     //down:
     public bool DownPressed() => down.WasPressedThisFrame();
+    
+    public bool DownPressedLong() => down.IsPressed();
 
     public bool DownReleased() => down.WasReleasedThisFrame();
     //jump:

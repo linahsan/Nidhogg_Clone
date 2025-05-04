@@ -6,13 +6,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerController controller;
     [SerializeField] PlayerInputScript input; 
     [SerializeField] Animator animator;
+    [SerializeField] string currentAnimation;
     
     // Standing Idle Heights
-    private int currentHeight = 1;
+    public int currentHeight = 1;
     
     // speed
-    private bool movingForward = false;
-    private bool stepBack = false;
+    [SerializeField] bool movingForward = false;
+    [SerializeField] bool stepBack = false;
     
     void Start()
     {
@@ -24,11 +25,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
         HeightCheck();
         MoveForwardCheck();
         JumpingCheck();
         FallingCheck();
+        CrouchingCheck();
+        CrawlingCheck();
     }
 
     // 
@@ -94,11 +98,45 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void CrouchingCheck()
+    {
+        if (controller.isCrouching)
+        {
+            UpdateCrouchAnimation();
+        }
+    }
+
+    void CrawlingCheck()
+    {
+        if (controller.isCrouching)
+        {
+            Debug.Log("is crouching");
+            if (currentAnimation == "Armed_Crawling")
+            {
+                Debug.Log("hi");
+                if (!movingForward)
+                {
+                    Debug.Log("stop crouching");
+                    animator.speed = 0f;
+                }
+                else
+                {
+                    animator.speed = 1f;
+                }
+            }
+        }
+        else
+        {
+            animator.speed = 1f;
+        }
+    }
+
     void UpdateControllerBools()
     {
         animator.SetBool("isFalling", controller.isFalling);
         animator.SetBool("isJumping", controller.isJumping);
         animator.SetBool("isGrounded", controller.isGrounded);
+        animator.SetBool("isCrouching", controller.isCrouching);
     }
 
     // update height animation
@@ -123,5 +161,10 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateFallAnimation()
     {
+    }
+
+    void UpdateCrouchAnimation()
+    {
+        animator.SetInteger("height", currentHeight);
     }
 }
