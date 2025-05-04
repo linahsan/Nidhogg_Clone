@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] CameraScript cameraScript;
     [SerializeField] PlayerMovement playerMovement;
-    
+
     public float moveSpeed = 5f;
     public bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
@@ -21,21 +21,28 @@ public class PlayerController : MonoBehaviour
     public bool isPlayer1;
     public bool isAlive = true;
     public bool isCrouching;
+
+    public bool isAttacking;
     //respawn code:
     public int respawnTime;
     private int deathTimer;
+
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
 
     //debugging:
     private bool hasDied = false;
-    
+
     //orietnation:
     private GameObject otherPlayer;
     private Transform otherPlayerTransform;
     private int orientation = 1;
-    
+
+    //hitbox
+    public GameObject grabChild;
+
+
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -43,9 +50,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
-        
+
+        grabChild = transform.Find("StandingHitboxP1").gameObject;
+
         isGrounded = false;
-        
+
         if (this.name == "Player1")
         {
             isPlayer1 = true;
@@ -56,7 +65,7 @@ public class PlayerController : MonoBehaviour
             isPlayer1 = false;
             defaultFacingRight = false;
         }
-        
+
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
 
@@ -65,15 +74,16 @@ public class PlayerController : MonoBehaviour
         cameraScript.Initalization();
 
        OnEnterScene();
-        
+
     }
 
     void FixedUpdate()
     {
-        if(isAlive)
+        if (isAlive)
         {
-            CheckGrounded();
             ApplyGravity();
+            CheckGrounded();
+            
             HandleMovement();
             HandleJump();
             //HandleCameraEdges();
@@ -83,13 +93,14 @@ public class PlayerController : MonoBehaviour
         {
             deathTimer++;
             transform.position = new Vector3(-20, -20, 0);
-            if(deathTimer > respawnTime)
+            if (deathTimer > respawnTime)
             {
                 PlayerRespawns();
             }
         }
-        
-        if(input.DebugPressed() && !hasDied)
+
+        if (input.DebugPressed() && !hasDied)
+
         {
             PlayerDies();
         }
@@ -105,7 +116,7 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         Vector2 direction = Vector2.zero;
-        
+
         if (input.LeftPressed())
         {
             direction.x = -1f;
@@ -122,7 +133,7 @@ public class PlayerController : MonoBehaviour
         else if (input.RightPressed())
         {
             direction.x = 1f;
-            
+
             if (!isPlayer1 && facingDefault)
             {
                 Flip();
@@ -196,27 +207,30 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
                 verticalVelocity = 0f;
 
+
                 // snapping ot ground --> might not need, need to check iwht high heights
-                float groundY = hit.point.y + GetComponent<Collider2D>().bounds.extents.y;
-                
+                float groundY = hit.point.y + grabChild.GetComponent<Collider2D>().bounds.extents.y;
+
+
                 Vector2 pos = transform.position;
                 pos.y = groundY;
                 transform.position = pos;
             }
+
         }
     }
-    
+
     void Flip()
     {
         facingDefault = !facingDefault;
         spriteRenderer.flipX = !spriteRenderer.flipX;
     }
-    
+
     void SetSpriteFacing(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
     }
-    
+
 
     public bool IsAlive()
     {
@@ -228,13 +242,55 @@ public class PlayerController : MonoBehaviour
 
         if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed())
         {
+
             isCrouching = true;
+           
+
+
+           
+            transform.Find("CrouchingHitboxP1").gameObject.SetActive(true);
+            transform.Find("StandingHitboxP1").gameObject.SetActive(false);
+            transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
+            grabChild = transform.Find("CrouchingHitboxP1").gameObject;
+            Debug.Log("We are currently crouching");
+
         }
         else
         {
             isCrouching = false;
+
+            if (!isGrounded)
+            {
+                
+                transform.Find("CrouchingHitboxP1").gameObject.SetActive(false);
+                transform.Find("StandingHitboxP1").gameObject.SetActive(false);
+                transform.Find("JumpingHitboxP1").gameObject.SetActive(true);
+                grabChild = transform.Find("JumpingHitboxP1").gameObject;
+            }
+            else
+            {
+                
+                transform.Find("CrouchingHitboxP1").gameObject.SetActive(false);
+                transform.Find("StandingHitboxP1").gameObject.SetActive(true);
+                transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
+                grabChild = transform.Find("StandingHitboxP1").gameObject;
+            }
+
         }
     }
+
+    void HandleAttack()
+    {
+        if (input.AttackPressed())
+        {
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
+        }
+    }
+
 
     //handling orientation functions
     public GameObject GetOtherPlayer()
@@ -252,12 +308,12 @@ public class PlayerController : MonoBehaviour
 
     public void HandleOrientation()
     {
-        
+
         float distance = otherPlayerTransform.position.x - transform.position.x;
         orientation = (int)Mathf.Sign(distance);
         //transform.localScale = new Vector3(orientation, transform.localScale.y, transform.localScale.z);
-        
-        
+
+
     }
 
     public void GetOtherPlayerVariables()
@@ -271,25 +327,27 @@ public class PlayerController : MonoBehaviour
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
-        if(isPlayer1)
+        if (isPlayer1)
         {
-            if(transform.position.x < cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width)
+            if (transform.position.x < cameraScript.gameObject.GetComponent<Transform>().position.x - (1 / 2) * width)
             {
-                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width, transform.position.y, 0);
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x - (1 / 2) * width, transform.position.y, 0);
             }
         }
         else
         {
-            if(transform.position.x > cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width)
+            if (transform.position.x > cameraScript.gameObject.GetComponent<Transform>().position.x + (1 / 2) * width)
             {
-                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width, transform.position.y, 0);
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1 / 2) * width, transform.position.y, 0);
             }
         }
     }
 
+
     public void PlayerDies()
     {
         if(isAlive)
+
         {
             isAlive = false;
             cameraScript.PlayerDies(gameObject);
@@ -310,15 +368,16 @@ public class PlayerController : MonoBehaviour
         //SET ANIMATOR TO RUNNing state
 
         //WILL NEED TO FIX THE Y VALUE HERE
-        if(isPlayer1)
+
+        if (isPlayer1)
         {
-            gameObject.transform.position = new Vector3(cam.transform.position.x - (1/2)*width, 2, 0);
+            gameObject.transform.position = new Vector3(cam.transform.position.x - (1 / 2) * width, 2, 0);
         }
         else
         {
-            gameObject.transform.position = new Vector3(cam.transform.position.x + (1/2)*width, 2, 0);
+            gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
         }
-        
+
     }
 
 
@@ -348,3 +407,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
