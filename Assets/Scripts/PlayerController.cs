@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] CameraScript cameraScript;
+    [SerializeField] PlayerMovement playerMovement;
     
     public float moveSpeed = 5f;
     public bool isJumping = false;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool isFalling;
     public bool isPlayer1;
     public bool isAlive =true;
+    public bool isCrouching;
     
     // flip logic
     private bool facingDefault;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
         
         isGrounded = false;
         
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleJump();
         //HandleCameraEdges();
+        HandleCrouch();
         
         if(input.DebugPressed() && !hasDied)
         {
@@ -198,6 +202,19 @@ public class PlayerController : MonoBehaviour
     public bool IsAlive()
     {
         return isAlive;
+    }
+
+    void HandleCrouch()
+    {
+
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed())
+        {
+            isCrouching = true;
+        }
+        else
+        {
+            isCrouching = false;
+        }
     }
 
     //handling orientation functions
