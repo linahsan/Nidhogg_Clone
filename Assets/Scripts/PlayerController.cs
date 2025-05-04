@@ -54,11 +54,12 @@ public class PlayerController : MonoBehaviour
         
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
+
+        cameraScript = GameObject.FindWithTag("Camera").GetComponent<CameraScript>();
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-        otherPlayer = GetOtherPlayer();
-        otherPlayerTransform = otherPlayer.GetComponent<Transform>();
+       
         
     }
 
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         HandleMovement();
         HandleJump();
+        //HandleCameraEdges();
         
         if(input.DebugPressed() && !hasDied)
         {
@@ -220,5 +222,32 @@ public class PlayerController : MonoBehaviour
         //transform.localScale = new Vector3(orientation, transform.localScale.y, transform.localScale.z);
         
         
+    }
+
+    public void GetOtherPlayerVariables()
+    {
+        otherPlayer = GetOtherPlayer();
+        otherPlayerTransform = otherPlayer.GetComponent<Transform>();
+    }
+
+    public void HandleCameraEdges()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+        if(isPlayer1)
+        {
+            if(transform.position.x < cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width)
+            {
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width, transform.position.y, 0);
+            }
+        }
+        else
+        {
+            if(transform.position.x > cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width)
+            {
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width, transform.position.y, 0);
+            }
+        }
     }
 }
