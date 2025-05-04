@@ -12,6 +12,7 @@ public class PlayerInputScript : MonoBehaviour
     public InputAction down;
     public InputAction jump;
     public InputAction attack;
+    public InputAction debug;
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -21,6 +22,7 @@ public class PlayerInputScript : MonoBehaviour
         down = playerInput.actions.FindAction("Down");
         jump = playerInput.actions.FindAction("Jump");
         attack = playerInput.actions.FindAction("Attack");
+        debug = playerInput.actions.FindAction("Debug");
     }
 
     private void OnEnable()
@@ -84,6 +86,10 @@ public class PlayerInputScript : MonoBehaviour
     public bool AttackPressed() => attack.IsPressed();
 
     public bool AttackReleased() => attack.WasReleasedThisFrame();
+
+    public bool DebugPressed() => debug.IsPressed();
+
+    public bool DebugReleased() => debug.WasReleasedThisFrame();
     
     /*
     private void OnMove(InputAction.CallbackContext context)

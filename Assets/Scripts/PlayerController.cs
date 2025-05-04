@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] CameraScript cameraScript;
     
     public float moveSpeed = 5f;
     public bool isJumping = false;
@@ -17,10 +18,19 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
+    public bool isAlive =true;
     
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
+
+    //debugging:
+    private bool hasDied = false;
+    
+    //orietnation:
+    private GameObject otherPlayer;
+    private Transform otherPlayerTransform;
+    private int orientation = 1;
     
     void Start()
     {
@@ -44,6 +54,13 @@ public class PlayerController : MonoBehaviour
         
         facingDefault = true;
         SetSpriteFacing(defaultFacingRight);
+
+        cameraScript = GameObject.FindWithTag("Camera").GetComponent<CameraScript>();
+        cameraScript.AddActivePlayer(gameObject);
+        cameraScript.Initalization();
+
+       
+        
     }
 
     void FixedUpdate()
@@ -52,6 +69,19 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         HandleMovement();
         HandleJump();
+        //HandleCameraEdges();
+        
+        if(input.DebugPressed() && !hasDied)
+        {
+            isAlive = !isAlive;
+            cameraScript.PlayerDies(gameObject);
+            hasDied = true;
+        }
+
+        if(input.DebugReleased())
+        {
+            hasDied = false;
+        }
     }
 
     void HandleMovement()
@@ -162,5 +192,62 @@ public class PlayerController : MonoBehaviour
     void SetSpriteFacing(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
+    }
+    
+
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+
+    //handling orientation functions
+    public GameObject GetOtherPlayer()
+    {
+        GameObject otherPlayer = null;
+        for (int i = 0; i < cameraScript.activePlayers.Count; i++)
+        {
+            if (cameraScript.activePlayers[i].GetComponent<PlayerController>().isPlayer1 != isPlayer1)
+            {
+                otherPlayer = cameraScript.activePlayers[i];
+            }
+        }
+        return otherPlayer;
+    }
+
+    public void HandleOrientation()
+    {
+        
+        float distance = otherPlayerTransform.position.x - transform.position.x;
+        orientation = (int)Mathf.Sign(distance);
+        //transform.localScale = new Vector3(orientation, transform.localScale.y, transform.localScale.z);
+        
+        
+    }
+
+    public void GetOtherPlayerVariables()
+    {
+        otherPlayer = GetOtherPlayer();
+        otherPlayerTransform = otherPlayer.GetComponent<Transform>();
+    }
+
+    public void HandleCameraEdges()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+        if(isPlayer1)
+        {
+            if(transform.position.x < cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width)
+            {
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x - (1/2)*width, transform.position.y, 0);
+            }
+        }
+        else
+        {
+            if(transform.position.x > cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width)
+            {
+                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1/2)*width, transform.position.y, 0);
+            }
+        }
     }
 }
