@@ -79,6 +79,8 @@ public class CameraScript : MonoBehaviour
         if (gameObject.GetComponent<Transform>().position.x < frameMinX)
         {
             gameObject.GetComponent<Transform>().position = new Vector3(frameMinX, 0, -10);
+            Debug.Log("happened");
+            Debug.Log(frameMinX);
         }
         
 
@@ -99,7 +101,6 @@ public class CameraScript : MonoBehaviour
            
         }
         activePlayers.Add(currentPlayer);
-        Debug.Log(activePlayers.Count);
     }
 
 
@@ -161,13 +162,18 @@ public class CameraScript : MonoBehaviour
             */
             
 
-            frameMinX = player2.GetComponent<Transform>().position.x - (barrierRange)*width;
+            frameMinX = player1Transform.position.x - (barrierRange)*width;
             //frameMaxX = testPlayer.GetComponent<Transform>().position.x + (barrierRange)*width; 
-            frameMaxX = maxX;
+            frameMaxX = player1Transform.position.x + (barrierRange)*width;
 
-            //rightBorder.SetActive(false);
+            if(player2Transform.position.x - (barrierRange)*width > frameMinX)
+            {
+                frameMinX = player2Transform.position.x - (barrierRange)*width;
+            }
+
+            rightBorder.SetActive(false);
             leftBorder.SetActive(false);
-            Debug.Log("1");
+            //Debug.Log("1");
         }
         else if(winningDirection == -1)
         {
@@ -182,13 +188,17 @@ public class CameraScript : MonoBehaviour
             */
 
             //frameMinX = testPlayer.GetComponent<Transform>().position.x - (barrierRange)*width;
-            frameMaxX = player1.GetComponent<Transform>().position.x + (barrierRange)*width; 
+            frameMaxX = player2Transform.position.x + (barrierRange)*width; 
 
-            frameMinX = minX;
+            frameMinX = player2Transform.position.x - (barrierRange)*width;
 
+            if(player2Transform.position.x + (barrierRange)*width < frameMaxX)
+            {
+                frameMaxX = player2Transform.position.x + (barrierRange)*width;
+            }
             rightBorder.SetActive(false);
-            //leftBorder.SetActive(false);
-            Debug.Log("-1");
+            leftBorder.SetActive(false);
+            //Debug.Log("-1");
         }
     }
 
@@ -269,9 +279,12 @@ public class CameraScript : MonoBehaviour
                     player2 = activePlayers[i];
                 }
             }
+            player1Transform = player1.GetComponent<Transform>();
+            player2Transform = player2.GetComponent<Transform>();
+            player1.GetComponent<PlayerController>().GetOtherPlayerVariables();
+            player2.GetComponent<PlayerController>().GetOtherPlayerVariables();
         }
-        player1Transform = player1.GetComponent<Transform>().transform;
-        player2Transform = player2.GetComponent<Transform>().transform;
+        
     }
     
 }
