@@ -19,16 +19,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = false;
     public bool isFalling;
     public bool isPlayer1;
-    public bool isAlive =true;
+    public bool isAlive = true;
     public bool isCrouching;
-<<<<<<< Updated upstream
-    
-=======
+
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
     private int deathTimer;
->>>>>>> Stashed changes
+
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
@@ -81,16 +79,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-<<<<<<< Updated upstream
-        CheckGrounded();
-        ApplyGravity();
-        HandleMovement();
-        HandleJump();
-        //HandleCameraEdges();
-        HandleCrouch();
+
         
-        if(input.DebugPressed() && !hasDied)
-=======
+        
+
         if (isAlive)
         {
             ApplyGravity();
@@ -112,17 +104,17 @@ public class PlayerController : MonoBehaviour
         }
 
         if (input.DebugPressed() && !hasDied)
->>>>>>> Stashed changes
+
         {
-            isAlive = !isAlive;
-            cameraScript.PlayerDies(gameObject);
-            hasDied = true;
+            PlayerDies();
         }
 
-        if(input.DebugReleased())
-        {
-            hasDied = false;
-        }
+
+    }
+
+    void OnBecameInvisible()
+    {
+        PlayerDies();
     }
 
     void HandleMovement()
@@ -206,31 +198,29 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, LayerMask.GetMask("Ground"));
+        isGrounded = false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Ground"));
 
         if (hit.collider != null)
         {
-            isGrounded = true;
-            isFalling = false;
-            isJumping = false;
-            verticalVelocity = 0f;
+            //other possible if statement: hit.transform.gameObject.tag == LayerMask.NameToLayer("Ground")
+            if (hit.transform.gameObject.tag == "Ground" && !isJumping)
+            {
+                isGrounded = true;
+                isFalling = false;
+                isJumping = false;
+                verticalVelocity = 0f;
 
-<<<<<<< Updated upstream
-            // snapping ot ground --> might not need, need to check iwht high heights
-            float groundY = hit.point.y + GetComponent<Collider2D>().bounds.extents.y;
-            
-            Vector2 pos = transform.position;
-            pos.y = groundY;
-            transform.position = pos;
-=======
+
                 // snapping ot ground --> might not need, need to check iwht high heights
                 float groundY = hit.point.y + grabChild.GetComponent<Collider2D>().bounds.extents.y;
+
 
                 Vector2 pos = transform.position;
                 pos.y = groundY;
                 transform.position = pos;
             }
->>>>>>> Stashed changes
+
         }
     }
 
@@ -356,13 +346,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-<<<<<<< Updated upstream
-}
-=======
+
 
     public void PlayerDies()
     {
-        if (isAlive)
+        if(isAlive)
+
         {
             isAlive = false;
             cameraScript.PlayerDies(gameObject);
@@ -383,6 +372,7 @@ public class PlayerController : MonoBehaviour
         //SET ANIMATOR TO RUNNing state
 
         //WILL NEED TO FIX THE Y VALUE HERE
+
         if (isPlayer1)
         {
             gameObject.transform.position = new Vector3(cam.transform.position.x - (1 / 2) * width, 2, 0);
@@ -394,4 +384,4 @@ public class PlayerController : MonoBehaviour
 
     }
 }
->>>>>>> Stashed changes
+
