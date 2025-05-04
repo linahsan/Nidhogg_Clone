@@ -45,7 +45,7 @@ public class CameraScript : MonoBehaviour
 
         for(int i = 0; i < activePlayers.Count; i++)
         {
-            if(activePlayers[i].GetComponent<SpriteRenderer>().enabled == true)
+            if(activePlayers[i].GetComponent<PlayerController>().isAlive == true)
             {
                 activePlayerCount++;
                 updateActivePlayers.Add(activePlayers[i]);
@@ -67,10 +67,24 @@ public class CameraScript : MonoBehaviour
             newX /= 2;
             newPosition = new Vector3(newX, 0, -10);
 
-
+        //handles maxes and mins:
+        if(newPosition.x > frameMaxX)
+        {
+            newPosition = new Vector3(frameMaxX, 0, -10);
         }
+
+        if (newPosition.x < frameMinX)
+        {
+            newPosition = new Vector3(frameMinX, 0, -10);
+            Debug.Log("happened");
+            Debug.Log(frameMinX);
+        }
+        }
+
+        //ADD LEANING IF STATEMENT HERE
         gameObject.GetComponent<Transform>().position = newPosition;
 
+        /*
         if(gameObject.GetComponent<Transform>().position.x > frameMaxX)
         {
             gameObject.GetComponent<Transform>().position = new Vector3(frameMaxX, 0, -10);
@@ -82,6 +96,7 @@ public class CameraScript : MonoBehaviour
             Debug.Log("happened");
             Debug.Log(frameMinX);
         }
+        */
         
 
 
