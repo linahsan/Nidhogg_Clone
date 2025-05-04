@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-
+       OnEnterScene();
 
     }
 
@@ -378,6 +378,33 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
         }
 
+    }
+
+
+    public void OnEnterScene()
+    {
+        if(SceneTransitionManager.Instance.winningDirection == 1)
+        {
+            if(isPlayer1)
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+            else
+            {
+                PlayerDies();
+            }
+        }
+        else if(SceneTransitionManager.Instance.winningDirection == -1)
+        {
+            if(isPlayer1)
+            {
+                PlayerDies();
+            }
+            else
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+        }
     }
 }
 
