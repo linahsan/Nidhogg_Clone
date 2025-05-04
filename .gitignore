@@ -78,3 +78,6 @@ crashlytics-build.properties
 
 # JetBrains IDE files
 /.idea/
+.DS_Store
+Assets/.DS_Store
+Assets/.DS_Store
