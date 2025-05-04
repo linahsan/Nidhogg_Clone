@@ -79,10 +79,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        
-        
-
         if (isAlive)
         {
             ApplyGravity();

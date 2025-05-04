@@ -598,6 +598,9 @@ MonoBehaviour:
   isPlayer1: 0
   isAlive: 1
   isCrouching: 0
+  isAttacking: 0
+  respawnTime: 0
+  grabChild: {fileID: 0}
 --- !u!114 &798464981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1102,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   debug:
-    m_Name: 
+    m_Name: Debug
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 8ea260f3-b3db-44b3-b685-02b00de0fbcd
@@ -1136,6 +1139,9 @@ MonoBehaviour:
   isPlayer1: 0
   isAlive: 1
   isCrouching: 0
+  isAttacking: 0
+  respawnTime: 0
+  grabChild: {fileID: 0}
 --- !u!114 &889366644
 MonoBehaviour:
   m_ObjectHideFlags: 0

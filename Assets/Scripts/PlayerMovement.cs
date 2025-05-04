@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         FallingCheck();
         CrouchingCheck();
         CrawlingCheck();
+        RollingCheck();
     }
 
     // 
@@ -131,6 +132,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void RollingCheck()
+    {
+        if (controller.isCrouching && movingForward)
+        {
+            UpdateRollAnimation();
+        }
+    }
+
     void UpdateControllerBools()
     {
         animator.SetBool("isFalling", controller.isFalling);
@@ -166,5 +175,11 @@ public class PlayerMovement : MonoBehaviour
     void UpdateCrouchAnimation()
     {
         animator.SetInteger("height", currentHeight);
+    }
+
+    void UpdateRollAnimation()
+    {
+        animator.SetInteger("height", currentHeight);
+        animator.SetBool("movingForward", movingForward);
     }
 }
