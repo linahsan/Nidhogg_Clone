@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    private int deathTimer;
+    public int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
     
-    public GameObject grabChild;
+    //public GameObject grabChild;
     
     [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
@@ -338,33 +338,24 @@ public class PlayerController : MonoBehaviour
     void HandleCrouch()
     {
 
-        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed() && playerMovement.currentAnimation != "Armed_Standing_Idle_Low")
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
         {
 
             isCrouching = true;
-            bottomCollider.gameObject.SetActive(true);
-            grabChild = crouchCollider;
+            bottomCollider.gameObject.SetActive(false);
+            headCollider.gameObject.SetActive(false);
+            bodyCollider.gameObject.SetActive(false);  
+            crouchCollider.gameObject.SetActive(true);
             Debug.Log("We are currently crouching");
 
         }
         else
         {
             isCrouching = false;
-            grabChild = bottomCollider;
-
-            if (!isGrounded)
-            {
-                bottomCollider.gameObject.SetActive(true);
-            }
-            else
-            {
-                crouchCollider.gameObject.SetActive(false);
-                
-                headCollider.gameObject.SetActive(true);
-                bodyCollider.gameObject.SetActive(true);    
-                bottomCollider.gameObject.SetActive(true);
-            }
-
+            bottomCollider.gameObject.SetActive(true);
+            headCollider.gameObject.SetActive(true);
+            bodyCollider.gameObject.SetActive(true);   
+            crouchCollider.gameObject.SetActive(false);
         }
     }
 
@@ -581,10 +572,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("HitByCrouch", true);
         
         isDying = true; 
-    {
-        if(collision.gameObject.GetComponent<DoorScript>())
+        
+        if(hittenBox.gameObject.GetComponent<DoorScript>())
         {
-            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
+            hittenBox.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
 }
