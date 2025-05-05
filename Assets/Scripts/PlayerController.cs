@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     public Transform ledgeCornerCheck;
     public float ledgeCheckDistance = 0.1f;
     public GameObject bloodSplatter;
-
+    public LayerMask wallLayer;
 
     void Start()
     {
@@ -102,6 +102,18 @@ public class PlayerController : MonoBehaviour
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 animator.SetBool("IsAttacking", false);
             isAttacking = false;
+        }
+        
+        Vector2 direction = Vector2.right;
+        Vector2 origin = (Vector2)transform.position + Vector2.up * 0.1f;
+        float distance = 1f;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance);
+        Debug.DrawRay(origin, direction * distance, Color.red);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit: " + hit.collider.name + " | Tag: " + hit.collider.tag);
         }
         
     }
@@ -400,7 +412,7 @@ public class PlayerController : MonoBehaviour
             wallDirection = Vector2.left;
         }
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, wallLayer);
         Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, Color.green);
         
         if (hit.collider != null && hit.collider.CompareTag("Wall"))
