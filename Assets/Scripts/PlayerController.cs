@@ -77,6 +77,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (!isAttacking && input.AttackPressed())
+        {
+            animator.SetBool("IsAttacking", true);
+            isAttacking = true;
+        }
+        else
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                animator.SetBool("IsAttacking", false);
+            isAttacking = false;
+        }
+        
+    }
+
     void FixedUpdate()
     {
         if (isAlive)
