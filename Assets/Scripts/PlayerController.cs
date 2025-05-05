@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    public int deathTimer;
+    private int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -47,12 +47,15 @@ public class PlayerController : MonoBehaviour
 
     //hitbox
     public GameObject grabChild;
+    
+    [SerializeField] float wallCheckDistance = 0.5f;
+    [SerializeField] bool isTouchingWall = false;
+    [SerializeField] bool isWallClinging = false;
+    public Transform ledgeCornerCheck;
+    public float ledgeCheckDistance = 0.1f;
     public GameObject bloodSplatter;
 
-    void Awake()
-    {
-        
-    }
+
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -83,13 +86,12 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-        OnEnterScene();
+       OnEnterScene();
 
     }
 
     void Update()
     {
-
         if (!isAttacking && input.AttackPressed())
         {
             animator.SetBool("IsAttacking", true);
@@ -104,20 +106,20 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
     void FixedUpdate()
     {
         if (isAlive)
         {
             ApplyGravity();
             CheckGrounded();
+            CheckWall();
             
             HandleMovement();
             HandleJump();
             //HandleCameraEdges();
-            //HandleCrouch();
+            HandleCrouch();
             HandleAttack();
-            //HandleRoll();
+            HandleRoll();
         }
         else
         {
@@ -140,10 +142,7 @@ public class PlayerController : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        if(cameraScript.hasStarted)
-        {
-            PlayerDies();
-        }
+        PlayerDies();
     }
 
     void HandleMovement()
@@ -388,6 +387,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void CheckWall()
+    {
+        Vector2 wallDirection;
+        if (transform.localScale.x > 0)
+        {
+            wallDirection = Vector2.right;
+        }
+        else
+        {
+            wallDirection = Vector2.left;
+        }
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance);
+        
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+        {
+            isTouchingWall = true;
+            Debug.Log("istouchingwall");
+            float playerBounds = GetComponent<SpriteRenderer>().bounds.extents.x;
+            float wallX = hit.point.x;
+            if (transform.localScale.x > 0)
+            {
+                transform.position = new Vector2(wallX - playerBounds, transform.position.y);
+            }
+            else
+            {
+                transform.position = new Vector2(wallX + playerBounds, transform.position.y);
+            }
+        }
+        else
+        {
+            isTouchingWall = false;
+        }
+    }
+
 
     //handling orientation functions
     public GameObject GetOtherPlayer()
@@ -451,12 +485,7 @@ public class PlayerController : MonoBehaviour
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
-
-            Instantiate(bloodSplatter, transform.position, transform.rotation);
-
-
             //Debug.Log("happened");
-
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
@@ -488,21 +517,17 @@ public class PlayerController : MonoBehaviour
     {
         if(SceneTransitionManager.Instance.winningDirection == 1)
         {
-            Debug.Log("OnEnterScene winningDirection = 1");
             if(isPlayer1)
             {
-                Debug.Log("Is player 1");
                 transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
             }
             else
             {
-                Debug.Log("is Player 2");
                 PlayerDies();
             }
         }
         else if(SceneTransitionManager.Instance.winningDirection == -1)
         {
-
             if(isPlayer1)
             {
                 PlayerDies();
@@ -514,25 +539,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        //Debug.Log(collision.gameObject);
-        if(collision.gameObject.tag == "door")
-        {
-            Debug.Log("on trigger happened");
-            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
-
-        }
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.gameObject);
-        if(collision.gameObject.tag == "door")
+        if(collision.gameObject.GetComponent<DoorScript>())
         {
-            Debug.Log("on collision happened");
             collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
-    */
 }
+
