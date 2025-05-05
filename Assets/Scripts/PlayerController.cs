@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] SwordScript sword;
     [SerializeField] PlayerInputScript input;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool isRolling;
     public float crawlSpeed = 3f;
     public float rollSpeed = 5f;
+    public bool isDying = false;
     [SerializeField] private float rollFriction = 0.00005f;
     public float currentRollSpeed = 0f;
     [SerializeField] private float minSpeedToCrawl = 0.2f;
@@ -46,8 +48,12 @@ public class PlayerController : MonoBehaviour
     private int orientation = 1;
 
     //hitbox
-    public GameObject grabChild;
-
+    public Collider2D grabChild;
+    [SerializeField] private Collider2D crouchCollider;
+    [SerializeField] private Collider2D headCollider;
+    [SerializeField] private Collider2D bodyCollider;
+    [SerializeField] private Collider2D bottomCollider;
+    
 
     void Start()
     {
@@ -57,19 +63,31 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
 
-        grabChild = transform.Find("StandingHitboxP1").gameObject;
+        grabChild = bottomCollider;
 
         isGrounded = false;
 
+        var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
+        var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
         if (this.name == "Player1")
         {
             isPlayer1 = true;
             defaultFacingRight = true;
+            headCollider.includeLayers = layer1;
+            bodyCollider.includeLayers = layer1;
+            bottomCollider.includeLayers = layer1;
+            crouchCollider.includeLayers = layer1;
+            sword.SetOwner(SwordScript.SwordOwner.Player1);
         }
         else
         {
             isPlayer1 = false;
             defaultFacingRight = false;
+            headCollider.includeLayers = layer2;
+            bodyCollider.includeLayers = layer2;
+            bottomCollider.includeLayers = layer2;
+            crouchCollider.includeLayers = layer2;
+            sword.SetOwner(SwordScript.SwordOwner.Player2);
         }
 
         facingDefault = true;
@@ -96,7 +114,11 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsAttacking", false);
             isAttacking = false;
         }
-        
+
+        if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            PlayerDies();
+        }
     }
 
     void FixedUpdate()
@@ -265,7 +287,7 @@ public class PlayerController : MonoBehaviour
 
 
                 // snapping ot ground --> might not need, need to check iwht high heights
-                float groundY = hit.point.y + grabChild.GetComponent<Collider2D>().bounds.extents.y;
+                float groundY = hit.point.y + grabChild.bounds.extents.y + grabChild.bounds.size.y/2;
 
 
                 Vector2 pos = transform.position;
@@ -310,33 +332,27 @@ public class PlayerController : MonoBehaviour
         {
 
             isCrouching = true;
-
-            transform.Find("CrouchingHitboxP1").gameObject.SetActive(true);
-            transform.Find("StandingHitboxP1").gameObject.SetActive(false);
-            transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
-            grabChild = transform.Find("CrouchingHitboxP1").gameObject;
+            bottomCollider.gameObject.SetActive(true);
+            grabChild = crouchCollider;
             Debug.Log("We are currently crouching");
 
         }
         else
         {
             isCrouching = false;
+            grabChild = bottomCollider;
 
             if (!isGrounded)
             {
-                
-                transform.Find("CrouchingHitboxP1").gameObject.SetActive(false);
-                transform.Find("StandingHitboxP1").gameObject.SetActive(false);
-                transform.Find("JumpingHitboxP1").gameObject.SetActive(true);
-                grabChild = transform.Find("JumpingHitboxP1").gameObject;
+                bottomCollider.gameObject.SetActive(true);
             }
             else
             {
+                crouchCollider.gameObject.SetActive(false);
                 
-                transform.Find("CrouchingHitboxP1").gameObject.SetActive(false);
-                transform.Find("StandingHitboxP1").gameObject.SetActive(true);
-                transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
-                grabChild = transform.Find("StandingHitboxP1").gameObject;
+                headCollider.gameObject.SetActive(true);
+                bodyCollider.gameObject.SetActive(true);    
+                bottomCollider.gameObject.SetActive(true);
             }
 
         }
@@ -444,6 +460,7 @@ public class PlayerController : MonoBehaviour
             isFalling = false;
             //Debug.Log("happened");
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
+            
         }
     }
 
@@ -466,7 +483,8 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
         }
-
+        
+        animator.SetTrigger("Death");
     }
 
 
@@ -502,6 +520,20 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
+    }
+
+    public void HandleDeath(BoxCollider2D hittenBox)
+    {
+        if (hittenBox == headCollider)
+            animator.SetBool("HitByHead", true);
+        else if (hittenBox == bodyCollider)
+            animator.SetBool("HitByBody", true);
+        else if (hittenBox == bottomCollider)
+            animator.SetBool("HitByBottom", true);
+        else if (hittenBox == crouchCollider)
+            animator.SetBool("HitByCrouch", true);
+        
+        isDying = true; 
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SwordScript : MonoBehaviour
@@ -24,4 +25,33 @@ public class SwordScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.parent.GetComponent<PlayerController>().HandleDeath(other as BoxCollider2D);
+        }
+    }
+
+    public void SetOwner(SwordOwner owner)
+    {
+        switch (owner)
+        {
+            case SwordOwner.Player1:
+                State = SWORD_STATES.HELD;
+                GetComponent<BoxCollider2D>().includeLayers = 1<<LayerMask.NameToLayer("Player 2 Hit Box");
+                break;
+            case SwordOwner.Player2:
+                State = SWORD_STATES.HELD;
+                GetComponent<BoxCollider2D>().includeLayers = 1<<LayerMask.NameToLayer("Player 1 Hit Box");
+                break;
+            case SwordOwner.None:
+                State = SWORD_STATES.FALLING;
+                GetComponent<BoxCollider2D>().includeLayers = 1<<LayerMask.NameToLayer("Default");
+                break;
+        }
+    }
+    
+    public enum SwordOwner {Player1, Player2, None}
 }
