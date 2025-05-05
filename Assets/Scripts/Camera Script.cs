@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
@@ -27,9 +28,15 @@ public class CameraScript : MonoBehaviour
    
    public Transform player1Transform;
    public Transform player2Transform;
+
+   public GameObject goOrange;
+   public GameObject goYellow;
+
    
     void Start()
     {
+        goOrange = transform.GetChild(3).gameObject;
+        goYellow = transform.GetChild(4).gameObject;
         OnSceneEnter();
     }
 
@@ -41,6 +48,7 @@ public class CameraScript : MonoBehaviour
         //Debug.Log(frameMaxX);
         activePlayerCount = 0;
         updateActivePlayers.Clear();
+        HandleGoSigns();
 
         
 
@@ -186,6 +194,10 @@ public class CameraScript : MonoBehaviour
 
     public void PlayerDies(GameObject player)
     {
+        if(activePlayers.Count < 2)
+        {
+            return;
+        }
         PlayerController playerController = player.GetComponent<PlayerController>();
         GameObject testPlayer = null;
         PlayerController otherPlayerController;
@@ -238,9 +250,9 @@ public class CameraScript : MonoBehaviour
             }
         }
 
-        Debug.Log(player);
-        Debug.Log(testPlayer);
-        Debug.Log(otherPlayerController.IsAlive());
+        //Debug.Log(player);
+        //Debug.Log(testPlayer);
+        //Debug.Log(otherPlayerController.IsAlive());
     }
 
     public void Initalization()
@@ -264,6 +276,25 @@ public class CameraScript : MonoBehaviour
             player2.GetComponent<PlayerController>().GetOtherPlayerVariables();
         }
         
+    }
+
+    public void HandleGoSigns()
+    {
+        if(winningDirection == 1)
+        {
+            goYellow.SetActive(true);
+            goOrange.SetActive(false);
+        }
+        else if(winningDirection == -1)
+        {
+            goYellow.SetActive(false);
+            goOrange.SetActive(true);
+        }
+        else
+        {
+            goYellow.SetActive(false);
+            goOrange.SetActive(false);
+        }
     }
 
     public void OnSceneEnter()
