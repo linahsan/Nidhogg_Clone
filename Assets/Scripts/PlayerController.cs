@@ -149,46 +149,64 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = rollSpeed;
         }
+        else if (playerMovement.isSliding)
+        {
+            moveSpeed = 2f;
+        }
         else
         {
             moveSpeed = runSpeed;
         }
 
-        if (input.LeftPressed())
+        if (!playerMovement.retreatPlay)
         {
-            direction.x = -1f;
+            if (input.LeftPressed())
+            {
+                direction.x = -1f;
 
-            if (isPlayer1 && facingDefault)
-            {
-                Flip();
+                if (isPlayer1 && facingDefault)
+                {
+                    Flip();
+                }
+                else if (!isPlayer1 && !facingDefault)
+                {
+                    Flip();
+                }
             }
-            else if (!isPlayer1 && !facingDefault)
+            else if (input.RightPressed())
             {
-                Flip();
+                direction.x = 1f;
+
+                if (!isPlayer1 && facingDefault)
+                {
+                    Flip();
+                }
+                else if (isPlayer1 && !facingDefault)
+                {
+                    Flip();
+                }
+            }
+            else
+            {
+                if (!facingDefault)
+                {
+                    Flip();
+                }
             }
         }
-        else if (input.RightPressed())
-        {
-            direction.x = 1f;
 
-            if (!isPlayer1 && facingDefault)
-            {
-                Flip();
-            }
-            else if (isPlayer1 && !facingDefault)
-            {
-                Flip();
-            }
-        }
-        else
+        if (playerMovement.currentAnimation == "Armed_Lunged_Mid")
         {
-            if (!facingDefault)
-            {
-                Flip();
-            }
+            Debug.Log("attack");
         }
 
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        if (!input.AttackPressed() ||
+            playerMovement.currentAnimation != "Armed_Lunged_Mid" ||
+            playerMovement.currentAnimation != "Armed_Lunge_High" ||
+            playerMovement.currentAnimation != "Armed_Lunge_Low")
+        {
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
     }
 
     void HandleJump()
@@ -260,6 +278,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
+        if (playerMovement.retreatPlay) return;
         facingDefault = !facingDefault;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
