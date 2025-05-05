@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     //hitbox
     public GameObject grabChild;
+    public GameObject bloodSplatter;
 
 
     void Start()
@@ -80,8 +81,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
 
-        
-        
+
+      
 
         if (isAlive)
         {
@@ -358,6 +359,8 @@ public class PlayerController : MonoBehaviour
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
+            Instantiate(bloodSplatter, transform.position, transform.rotation);
+
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
