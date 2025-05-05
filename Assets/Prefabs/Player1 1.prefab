@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -386,7 +386,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -674,9 +674,12 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   cameraScript: {fileID: 0}
   playerMovement: {fileID: 0}
+  runSpeed: 5
   moveSpeed: 5
   isJumping: 0
   jumpForce: 15
+  normalJumpForce: 15
+  crouchJumpForce: 15
   gravity: -30
   fallMultiplier: 2
   verticalVelocity: 0
@@ -685,6 +688,12 @@ MonoBehaviour:
   isPlayer1: 0
   isAlive: 1
   isCrouching: 0
+  isRolling: 0
+  crawlSpeed: 3
+  rollSpeed: 5
+  rollFriction: 0.00005
+  currentRollSpeed: 0
+  minSpeedToCrawl: 0.2
   isAttacking: 0
   respawnTime: 180
   grabChild: {fileID: 0}

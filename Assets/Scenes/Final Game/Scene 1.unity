@@ -321,11 +321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282340266305188697, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: destinationStartingPlayerX
-      value: 38.08
+      value: 37.5
       objectReference: {fileID: 0}
     - target: {fileID: 2282340266305188697, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: destinationStartingPlayerY
-      value: 1.46
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: 5274854552963189868, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: m_Name
@@ -652,11 +652,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1474416618553635689, guid: f18db7b18f945496b87cf60eb22fd052, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.989502
+      value: 14.61
       objectReference: {fileID: 0}
     - target: {fileID: 1474416618553635689, guid: f18db7b18f945496b87cf60eb22fd052, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4742188
+      value: -2.75
       objectReference: {fileID: 0}
     - target: {fileID: 1474416618553635689, guid: f18db7b18f945496b87cf60eb22fd052, type: 3}
       propertyPath: m_LocalPosition.z
@@ -993,11 +993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282340266305188697, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: destinationStartingCameraX
-      value: -0.07920408
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2282340266305188697, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: destinationStartingPlayerX
-      value: -3.140208
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 2282340266305188697, guid: 0aaf2ea7169274276bc2b95b5c020c9e, type: 3}
       propertyPath: destinationStartingPlayerY

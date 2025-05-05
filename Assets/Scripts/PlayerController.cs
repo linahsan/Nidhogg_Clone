@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    private int deathTimer;
+    public int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -48,7 +48,10 @@ public class PlayerController : MonoBehaviour
     //hitbox
     public GameObject grabChild;
 
-
+    void Awake()
+    {
+        
+    }
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-       OnEnterScene();
+        //OnEnterScene();
 
     }
 
@@ -109,9 +112,9 @@ public class PlayerController : MonoBehaviour
             HandleMovement();
             HandleJump();
             //HandleCameraEdges();
-            HandleCrouch();
+            //HandleCrouch();
             HandleAttack();
-            HandleRoll();
+            //HandleRoll();
         }
         else
         {
@@ -134,7 +137,10 @@ public class PlayerController : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        PlayerDies();
+        if(cameraScript.hasStarted)
+        {
+            PlayerDies();
+        }
     }
 
     void HandleMovement()
@@ -455,17 +461,21 @@ public class PlayerController : MonoBehaviour
     {
         if(SceneTransitionManager.Instance.winningDirection == 1)
         {
+            Debug.Log("OnEnterScene winningDirection = 1");
             if(isPlayer1)
             {
+                Debug.Log("Is player 1");
                 transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
             }
             else
             {
+                Debug.Log("is Player 2");
                 PlayerDies();
             }
         }
         else if(SceneTransitionManager.Instance.winningDirection == -1)
         {
+
             if(isPlayer1)
             {
                 PlayerDies();
@@ -477,12 +487,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log(collision.gameObject);
+        if(collision.gameObject.tag == "door")
+        {
+            Debug.Log("on trigger happened");
+            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
+
+        }
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<DoorScript>())
+        //Debug.Log(collision.gameObject);
+        if(collision.gameObject.tag == "door")
         {
+            Debug.Log("on collision happened");
             collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
+    */
 }
-
