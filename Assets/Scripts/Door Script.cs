@@ -8,9 +8,9 @@ public class DoorScript : MonoBehaviour
     public bool rightDoor;
 
     public string destinationScene;
-    public int destinationStartingPlayerX;
-    public int destinationStartingPlayerY;
-    public int destinationStartingCameraX;
+    public float destinationStartingPlayerX;
+    public float destinationStartingPlayerY;
+    public float destinationStartingCameraX;
     void Start()
     {
         thisCollider = gameObject.GetComponent<BoxCollider2D>();
