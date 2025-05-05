@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -29,7 +30,7 @@ public class CameraScript : MonoBehaviour
    
     void Start()
     {
-
+        OnSceneEnter();
     }
 
     // Update is called once per frame
@@ -76,12 +77,23 @@ public class CameraScript : MonoBehaviour
         if (newPosition.x < frameMinX)
         {
             newPosition = new Vector3(frameMinX, 0, -10);
-            Debug.Log("happened");
-            Debug.Log(frameMinX);
+            //Debug.Log("happened");
+            //Debug.Log(frameMinX);
         }
         }
 
         //ADD LEANING IF STATEMENT HERE
+        /*
+        if(Vector3.Distance(newPosition, transform.position) < 2.0f)
+        {
+            gameObject.GetComponent<Transform>().position = newPosition;
+        }
+        else
+        {
+            
+        }
+        */
+
         gameObject.GetComponent<Transform>().position = newPosition;
 
         /*
@@ -181,7 +193,6 @@ public class CameraScript : MonoBehaviour
 
         if(player.GetComponent<PlayerController>().isPlayer1) //i.e. if player 1 dies
         {
-            //get player 2
 
             for(int i = 0; i < activePlayers.Count; i++)
             {
@@ -206,8 +217,6 @@ public class CameraScript : MonoBehaviour
         }
         else //i.e. if player 2 died
         {
-
-            //gets player 1
             for(int i = 0; i < activePlayers.Count; i++)
             {
                 if(activePlayers[i].GetComponent<PlayerController>().isPlayer1)
@@ -255,6 +264,15 @@ public class CameraScript : MonoBehaviour
             player2.GetComponent<PlayerController>().GetOtherPlayerVariables();
         }
         
+    }
+
+    public void OnSceneEnter()
+    {
+        if(SceneTransitionManager.Instance.winningDirection != 0)
+        {
+            transform.position = new Vector3(SceneTransitionManager.Instance.cameraStartingX, transform.position.y, transform.position.z);
+            winningDirection = SceneTransitionManager.Instance.winningDirection;
+        }
     }
     
 }

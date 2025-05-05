@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool facingDefault;
     private bool defaultFacingRight;
 
-    //debugging:
-    private bool hasDied = false;
-
     //orietnation:
     private GameObject otherPlayer;
     private Transform otherPlayerTransform;
@@ -73,7 +70,7 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-
+       OnEnterScene();
 
     }
 
@@ -99,10 +96,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (input.DebugPressed() && !hasDied)
-
+        if (input.DebugPressed())
         {
             PlayerDies();
+            Debug.Log("Debug Pressed");
         }
 
 
@@ -356,13 +353,14 @@ public class PlayerController : MonoBehaviour
     public void PlayerDies()
     {
         if(isAlive)
-
         {
             isAlive = false;
+            Debug.Log(isAlive);
             cameraScript.PlayerDies(gameObject);
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
+            Debug.Log("happened");
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
@@ -387,6 +385,41 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
         }
 
+    }
+
+
+    public void OnEnterScene()
+    {
+        if(SceneTransitionManager.Instance.winningDirection == 1)
+        {
+            if(isPlayer1)
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+            else
+            {
+                PlayerDies();
+            }
+        }
+        else if(SceneTransitionManager.Instance.winningDirection == -1)
+        {
+            if(isPlayer1)
+            {
+                PlayerDies();
+            }
+            else
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<DoorScript>())
+        {
+            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
+        }
     }
 }
 

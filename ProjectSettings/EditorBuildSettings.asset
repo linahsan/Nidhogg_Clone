@@ -8,6 +8,33 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Caleb Scene 3.unity
+    guid: 21452944bd20e490eaef0e99e2bdc3d3
+  - enabled: 1
+    path: Assets/Scenes/test.unity
+    guid: 1e0469a0fb3db4c41a39a8b7508d9d1d
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene --2.unity
+    guid: a54e1148740dc449398f90498c43a585
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene ---3.unity
+    guid: 165d04beae9f946d9a29198ae029e5ba
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene -1.unity
+    guid: d346b29537c184404a0e2b0a415b9995
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene 0.unity
+    guid: 993596db4560f4d99a72f30a2eb837c8
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene 1.unity
+    guid: f29b422e057114819aac8f43208edef5
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene 2.unity
+    guid: 95948ccdc37334baa9dbdb142f10e818
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Scene 3.unity
+    guid: 308023b861f0f4572a769df84fba6263
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a422f71a40d0d4e799198a057ffe522a, type: 3}
   m_UseUCBPForAssetBundles: 0
