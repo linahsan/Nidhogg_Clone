@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerController controller;
     [SerializeField] PlayerInputScript input; 
     [SerializeField] Animator animator;
-    [SerializeField] string currentAnimation;
+    public string currentAnimation;
     
     // Standing Idle Heights
     public int currentHeight = 1;
@@ -14,12 +14,18 @@ public class PlayerMovement : MonoBehaviour
     // speed
     [SerializeField] bool movingForward = false;
     [SerializeField] bool stepBack = false;
+    [SerializeField] bool isCrouching = false;
     
+    private SpriteRenderer _swordSpriteRenderer;
+    public int SwordSpriteOrderInLayer;
+
     void Start()
     {
         controller = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerInputScript>();
+        _swordSpriteRenderer = transform.Find("Sword").GetComponent<SpriteRenderer>();
+        SwordSpriteOrderInLayer = _swordSpriteRenderer.sortingOrder;
     }
 
     // Update is called once per frame
@@ -34,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         CrouchingCheck();
         CrawlingCheck();
         RollingCheck();
+        _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
     }
 
     // 
@@ -101,9 +108,14 @@ public class PlayerMovement : MonoBehaviour
 
     void CrouchingCheck()
     {
-        if (controller.isCrouching)
+        if (currentHeight == 0 && input.DownPressedLong() && controller.isGrounded && !input.DownPressed())
         {
+            isCrouching = true;
             UpdateCrouchAnimation();
+        }
+        else
+        {
+            isCrouching = false;
         }
     }
 
@@ -145,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isFalling", controller.isFalling);
         animator.SetBool("isJumping", controller.isJumping);
         animator.SetBool("isGrounded", controller.isGrounded);
-        animator.SetBool("isCrouching", controller.isCrouching);
+        animator.SetBool("isCrouching", isCrouching);
     }
 
     // update height animation

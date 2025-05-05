@@ -223,12 +223,21 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingDefault = !facingDefault;
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        //spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void SetSpriteFacing(bool faceRight)
     {
-        spriteRenderer.flipX = !faceRight;
+        //spriteRenderer.flipX = !faceRight;
+        if (!faceRight)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
     }
 
 
@@ -240,7 +249,7 @@ public class PlayerController : MonoBehaviour
     void HandleCrouch()
     {
 
-        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed())
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed() && playerMovement.currentAnimation != "Armed_Standing_Idle_Low")
         {
 
             isCrouching = true;
