@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool facingDefault;
     private bool defaultFacingRight;
 
-    //debugging:
-    private bool hasDied = false;
-
     //orietnation:
     private GameObject otherPlayer;
     private Transform otherPlayerTransform;
@@ -99,9 +96,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (input.DebugPressed() && !hasDied)
+        if (input.DebugPressed())
         {
             PlayerDies();
+            Debug.Log("Debug Pressed");
         }
 
 
@@ -355,9 +353,9 @@ public class PlayerController : MonoBehaviour
     public void PlayerDies()
     {
         if(isAlive)
-
         {
             isAlive = false;
+            Debug.Log(isAlive);
             cameraScript.PlayerDies(gameObject);
             deathTimer = 0;
             isCrouching = false;

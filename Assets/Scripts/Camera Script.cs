@@ -77,8 +77,8 @@ public class CameraScript : MonoBehaviour
         if (newPosition.x < frameMinX)
         {
             newPosition = new Vector3(frameMinX, 0, -10);
-            Debug.Log("happened");
-            Debug.Log(frameMinX);
+            //Debug.Log("happened");
+            //Debug.Log(frameMinX);
         }
         }
 
@@ -193,7 +193,6 @@ public class CameraScript : MonoBehaviour
 
         if(player.GetComponent<PlayerController>().isPlayer1) //i.e. if player 1 dies
         {
-            //get player 2
 
             for(int i = 0; i < activePlayers.Count; i++)
             {
@@ -218,8 +217,6 @@ public class CameraScript : MonoBehaviour
         }
         else //i.e. if player 2 died
         {
-
-            //gets player 1
             for(int i = 0; i < activePlayers.Count; i++)
             {
                 if(activePlayers[i].GetComponent<PlayerController>().isPlayer1)
