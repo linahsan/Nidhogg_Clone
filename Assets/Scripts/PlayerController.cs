@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    private int deathTimer;
+    public int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     //hitbox
     public GameObject grabChild;
     
-    [SerializeField] float wallCheckDistance = 0.5f;
+    [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
     [SerializeField] bool isWallClinging = false;
     public Transform ledgeCornerCheck;
@@ -386,7 +386,8 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
     }
-
+    
+    
     void CheckWall()
     {
         Vector2 wallDirection;
@@ -400,6 +401,7 @@ public class PlayerController : MonoBehaviour
         }
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance);
+        Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, Color.green);
         
         if (hit.collider != null && hit.collider.CompareTag("Wall"))
         {
