@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     //hitbox
     public GameObject grabChild;
+    public GameObject bloodSplatter;
 
 
     void Start()
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         if (!isAttacking && input.AttackPressed())
         {
             animator.SetBool("IsAttacking", true);
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
 
     void FixedUpdate()
     {
@@ -442,7 +445,12 @@ public class PlayerController : MonoBehaviour
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
+
+            Instantiate(bloodSplatter, transform.position, transform.rotation);
+
+
             //Debug.Log("happened");
+
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
