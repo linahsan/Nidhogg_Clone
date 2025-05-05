@@ -437,12 +437,12 @@ public class PlayerController : MonoBehaviour
         if(isAlive)
         {
             isAlive = false;
-            Debug.Log(isAlive);
+            //Debug.Log(isAlive);
             cameraScript.PlayerDies(gameObject);
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
-            Debug.Log("happened");
+            //Debug.Log("happened");
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
