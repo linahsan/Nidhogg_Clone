@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (input.DebugPressed() && !hasDied)
-
         {
             PlayerDies();
         }
@@ -363,6 +362,7 @@ public class PlayerController : MonoBehaviour
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
+            Debug.Log("happened");
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
@@ -413,6 +413,14 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
             }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<DoorScript>())
+        {
+            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
 }

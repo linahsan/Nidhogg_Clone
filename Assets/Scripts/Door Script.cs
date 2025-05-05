@@ -25,6 +25,12 @@ public class DoorScript : MonoBehaviour
         
     }
 
+    public void DoorSceneChange()
+    {
+        SceneTransitionManager.Instance.SceneTransition(destinationScene, destinationStartingPlayerX, destinationStartingPlayerY, destinationStartingCameraX);
+    }
+
+    /*
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
@@ -39,4 +45,5 @@ public class DoorScript : MonoBehaviour
             }
         }
     }
+    */
 }
