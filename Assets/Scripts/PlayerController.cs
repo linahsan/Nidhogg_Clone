@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CameraScript cameraScript;
     [SerializeField] PlayerMovement playerMovement;
 
+    public float runSpeed = 5f;
     public float moveSpeed = 5f;
     public bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float normalJumpForce = 15f;
+    [SerializeField] private float crouchJumpForce = 15f;
     [SerializeField] private float gravity = -30f;
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
@@ -21,6 +24,12 @@ public class PlayerController : MonoBehaviour
     public bool isPlayer1;
     public bool isAlive = true;
     public bool isCrouching;
+    public bool isRolling;
+    public float crawlSpeed = 3f;
+    public float rollSpeed = 5f;
+    [SerializeField] private float rollFriction = 0.00005f;
+    public float currentRollSpeed = 0f;
+    [SerializeField] private float minSpeedToCrawl = 0.2f;
 
     public bool isAttacking;
     //respawn code:
@@ -101,6 +110,8 @@ public class PlayerController : MonoBehaviour
             HandleJump();
             //HandleCameraEdges();
             HandleCrouch();
+            HandleAttack();
+            HandleRoll();
         }
         else
         {
@@ -129,6 +140,19 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         Vector2 direction = Vector2.zero;
+
+        if (playerMovement.currentAnimation == "Armed_Crawling")
+        {
+            moveSpeed = crawlSpeed;
+        }
+        else if (playerMovement.currentAnimation == "Armed_Rolling")
+        {
+            moveSpeed = rollSpeed;
+        }
+        else
+        {
+            moveSpeed = runSpeed;
+        }
 
         if (input.LeftPressed())
         {
@@ -169,6 +193,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleJump()
     {
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -266,10 +291,7 @@ public class PlayerController : MonoBehaviour
         {
 
             isCrouching = true;
-           
 
-
-           
             transform.Find("CrouchingHitboxP1").gameObject.SetActive(true);
             transform.Find("StandingHitboxP1").gameObject.SetActive(false);
             transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
@@ -299,6 +321,31 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+    }
+
+    void HandleRoll()
+    {
+        if (playerMovement.currentAnimation == "Armed_Rolling")
+        {
+            animator.SetBool("IsRolling", true);
+            animator.speed = currentRollSpeed / rollSpeed;
+            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction * Time.deltaTime);
+            animator.SetFloat("RollingSpeed", currentRollSpeed);
+            
+            if (currentRollSpeed <= minSpeedToCrawl)
+            {
+                isRolling = false;
+                animator.speed = 1f;
+                animator.SetBool("IsRolling", false);
+            }
+        }
+        else
+        {
+            animator.speed = 1f;
+            currentRollSpeed = rollSpeed;
+            animator.SetFloat("RollingSpeed", 0f);
+        }
+        
     }
 
     void HandleAttack()
@@ -371,12 +418,12 @@ public class PlayerController : MonoBehaviour
         if(isAlive)
         {
             isAlive = false;
-            Debug.Log(isAlive);
+            //Debug.Log(isAlive);
             cameraScript.PlayerDies(gameObject);
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
-            Debug.Log("happened");
+            //Debug.Log("happened");
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
     }
