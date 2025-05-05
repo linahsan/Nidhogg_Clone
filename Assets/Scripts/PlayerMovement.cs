@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     // speed
     [SerializeField] bool movingForward = false;
     [SerializeField] bool stepBack = false;
+    public bool retreatPlay = false;
     public bool isCrouching = false;
+    public bool isSliding = false;
     
     private SpriteRenderer _swordSpriteRenderer;
     public int SwordSpriteOrderInLayer;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
+        StepBackCheck();
         HeightCheck();
         MoveForwardCheck();
         JumpingCheck();
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         CrouchingCheck();
         CrawlingCheck();
         RollingCheck();
+        SlideCheck();
         _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
     }
 
@@ -152,12 +156,46 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void StepBackCheck()
+    {
+        if (stepBack && (input.RightPressedShort() || input.LeftPressedShort()))
+        {
+            Debug.Log("step back");
+            retreatPlay = true;
+        }
+        else
+        {
+            retreatPlay = false;
+        }
+    }
+
+    void SlideCheck()
+    {
+        if (input.LeftPressed() && input.RightPressed())
+        {
+            isSliding = true;
+        }
+        else
+        {
+            isSliding = false;
+        }
+    }
+
+    void AttackCheck()
+    {
+        if (input.AttackPressed())
+        {
+            UpdateAttackAnimation();
+        }
+    }
     void UpdateControllerBools()
     {
         animator.SetBool("isFalling", controller.isFalling);
         animator.SetBool("isJumping", controller.isJumping);
         animator.SetBool("isGrounded", controller.isGrounded);
         animator.SetBool("isCrouching", isCrouching);
+        animator.SetBool("isSliding", isSliding);
+        animator.SetBool("isAttacking", controller.isAttacking);
     }
 
     // update height animation
@@ -193,5 +231,10 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetInteger("height", currentHeight);
         animator.SetBool("movingForward", movingForward);
+    }
+
+    void UpdateAttackAnimation()
+    {
+        
     }
 }
