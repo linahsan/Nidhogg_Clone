@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isWallClinging = false;
     public Transform ledgeCornerCheck;
     public float ledgeCheckDistance = 0.1f;
+    public GameObject bloodSplatter;
 
 
     void Start()
