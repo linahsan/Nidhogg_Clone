@@ -51,7 +51,7 @@ public class CameraScript : MonoBehaviour
         activePlayerCount = 0;
         updateActivePlayers.Clear();
         HandleGoSigns();
-        SceneTransitionManager.Instance.winningDirection = winningDirection;
+        //SceneTransitionManager.Instance.winningDirection = winningDirection;
         hasStarted = true;
 
         
@@ -153,7 +153,7 @@ public class CameraScript : MonoBehaviour
         //GameObject testPlayer = null;
 
 
-        if(winningDirection == 0)
+        if(SceneTransitionManager.Instance.winningDirection == 0)
         {
             
            frameMinX = gameObject.GetComponent<Transform>().position.x;
@@ -167,7 +167,7 @@ public class CameraScript : MonoBehaviour
             leftBorder.layer = LayerMask.NameToLayer("Ground");
 
         }
-        else if(winningDirection == 1)
+        else if(SceneTransitionManager.Instance.winningDirection == 1)
         {
             frameMinX = player1Transform.position.x - (barrierRange)*width;
             frameMaxX = player1Transform.position.x + (barrierRange)*width;
@@ -180,7 +180,7 @@ public class CameraScript : MonoBehaviour
             rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
             leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
         }
-        else if(winningDirection == -1)
+        else if(SceneTransitionManager.Instance.winningDirection == -1)
         {
             frameMaxX = player2Transform.position.x + (barrierRange)*width; 
 
@@ -223,11 +223,11 @@ public class CameraScript : MonoBehaviour
 
             if(otherPlayerController.IsAlive())
             {
-                winningDirection = -1;
+                SceneTransitionManager.Instance.winningDirection = -1;
             }
             else
             {
-                winningDirection = 0;
+                SceneTransitionManager.Instance.winningDirection = 0;
             }
 
         }
@@ -246,15 +246,15 @@ public class CameraScript : MonoBehaviour
 
             if(otherPlayerController.IsAlive())
             {
-                winningDirection = 1;
+                SceneTransitionManager.Instance.winningDirection = 1;
             }
             else
             {
-                winningDirection = 0;
+                SceneTransitionManager.Instance.winningDirection = 0;
             }
         }
 
-        SceneTransitionManager.Instance.winningDirection = winningDirection;
+        //SceneTransitionManager.Instance.winningDirection = winningDirection;
 
         //Debug.Log(player);
         //Debug.Log(testPlayer);
@@ -292,12 +292,12 @@ public class CameraScript : MonoBehaviour
 
     public void HandleGoSigns()
     {
-        if(winningDirection == 1)
+        if(SceneTransitionManager.Instance.winningDirection == 1)
         {
             goYellow.SetActive(true);
             goOrange.SetActive(false);
         }
-        else if(winningDirection == -1)
+        else if(SceneTransitionManager.Instance.winningDirection == -1)
         {
             goYellow.SetActive(false);
             goOrange.SetActive(true);

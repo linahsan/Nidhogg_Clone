@@ -11,6 +11,7 @@ public class SceneTransitionManager : MonoBehaviour
     public float playerSpawnX;
     public float playerSpawnY;
     public float cameraStartingX;
+    private bool hasInitialized = false;
 
    private void Awake()
     {
@@ -25,7 +26,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     }
 
-    void Start()
+    public void Starting()
     {
         
         var playerList = Object.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
@@ -68,7 +69,11 @@ public class SceneTransitionManager : MonoBehaviour
     
     void Update()
     {
-        
+        if(hasInitialized == false)
+        {
+            Starting();
+            hasInitialized = true;
+        }
     }
 
     public void SceneTransition(string sceneName, float winningPlayerX, float winningPlayerY, float newCameraX)
@@ -77,6 +82,7 @@ public class SceneTransitionManager : MonoBehaviour
         playerSpawnY = winningPlayerY;
         cameraStartingX = newCameraX;
 
+        hasInitialized = false;
 
 
         SceneManager.LoadScene(sceneName);

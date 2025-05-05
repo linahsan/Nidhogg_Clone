@@ -469,8 +469,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("is Player 2");
-                PlayerDies();
+               transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX + (5/2), SceneTransitionManager.Instance.playerSpawnY + (5/2), 0);
             }
         }
         else if(SceneTransitionManager.Instance.winningDirection == -1)
@@ -478,7 +477,7 @@ public class PlayerController : MonoBehaviour
 
             if(isPlayer1)
             {
-                PlayerDies();
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX - (5/2), SceneTransitionManager.Instance.playerSpawnY - (5/2), 0);
             }
             else
             {
