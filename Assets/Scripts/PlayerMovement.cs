@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // speed
     [SerializeField] bool movingForward = false;
     [SerializeField] bool stepBack = false;
-    [SerializeField] bool isCrouching = false;
+    public bool isCrouching = false;
     
     private SpriteRenderer _swordSpriteRenderer;
     public int SwordSpriteOrderInLayer;
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     void CrouchingCheck()
     {
-        if (currentHeight == 0 && input.DownPressedLong() && controller.isGrounded && !input.DownPressed())
+        if (currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
         {
             isCrouching = true;
             UpdateCrouchAnimation();

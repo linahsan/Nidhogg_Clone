@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float normalJumpForce = 15f;
+    [SerializeField] private float crouchJumpForce = 15f;
     [SerializeField] private float gravity = -30f;
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
@@ -147,10 +149,6 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = rollSpeed;
         }
-        else if (playerMovement.currentAnimation == "Armed_Roll_Stop")
-        {
-            moveSpeed = 0f;
-        }
         else
         {
             moveSpeed = runSpeed;
@@ -195,6 +193,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleJump()
     {
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
