@@ -25,8 +25,19 @@ public class DoorScript : MonoBehaviour
         
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            DoorSceneChange();
+            Debug.Log("Happened");
+        }
+    }
+
     public void DoorSceneChange()
     {
+        Debug.Log(cameraScript.winningDirection);
+        Debug.Log(SceneTransitionManager.Instance.winningDirection);
         SceneTransitionManager.Instance.SceneTransition(destinationScene, destinationStartingPlayerX, destinationStartingPlayerY, destinationStartingCameraX);
     }
 

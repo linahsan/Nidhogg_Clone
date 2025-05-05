@@ -32,12 +32,14 @@ public class CameraScript : MonoBehaviour
    public GameObject goOrange;
    public GameObject goYellow;
 
+   public bool hasStarted = false;
+
    
     void Start()
     {
         goOrange = transform.GetChild(3).gameObject;
         goYellow = transform.GetChild(4).gameObject;
-        OnSceneEnter();
+       //OnSceneEnter();
     }
 
     // Update is called once per frame
@@ -49,6 +51,8 @@ public class CameraScript : MonoBehaviour
         activePlayerCount = 0;
         updateActivePlayers.Clear();
         HandleGoSigns();
+        SceneTransitionManager.Instance.winningDirection = winningDirection;
+        hasStarted = true;
 
         
 
@@ -250,6 +254,8 @@ public class CameraScript : MonoBehaviour
             }
         }
 
+        SceneTransitionManager.Instance.winningDirection = winningDirection;
+
         //Debug.Log(player);
         //Debug.Log(testPlayer);
         //Debug.Log(otherPlayerController.IsAlive());
@@ -274,6 +280,12 @@ public class CameraScript : MonoBehaviour
             player2Transform = player2.GetComponent<Transform>();
             player1.GetComponent<PlayerController>().GetOtherPlayerVariables();
             player2.GetComponent<PlayerController>().GetOtherPlayerVariables();
+
+
+            //JUST MAKE A SERIES OF IF STATEMENTS THAT DO THESE IN A SPECIFIC ORDER DEPENDING ON THE WINNINGDIRECTION
+
+            //player1.GetComponent<PlayerController>().OnEnterScene();
+            //player2.GetComponent<PlayerController>().OnEnterScene();
         }
         
     }
@@ -299,11 +311,11 @@ public class CameraScript : MonoBehaviour
 
     public void OnSceneEnter()
     {
-        if(SceneTransitionManager.Instance.winningDirection != 0)
-        {
-            transform.position = new Vector3(SceneTransitionManager.Instance.cameraStartingX, transform.position.y, transform.position.z);
-            winningDirection = SceneTransitionManager.Instance.winningDirection;
-        }
+        Debug.Log("Camera Script");
+        winningDirection = SceneTransitionManager.Instance.winningDirection;
+        transform.position = new Vector3(SceneTransitionManager.Instance.cameraStartingX, transform.position.y, transform.position.z);
+        Debug.Log(winningDirection);
+        //hasStarted = true;
     }
     
 }
