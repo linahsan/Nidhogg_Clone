@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CameraScript cameraScript;
     [SerializeField] PlayerMovement playerMovement;
 
+    public float runSpeed = 5f;
     public float moveSpeed = 5f;
     public bool isJumping = false;
     [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float normalJumpForce = 15f;
+    [SerializeField] private float crouchJumpForce = 15f;
     [SerializeField] private float gravity = -30f;
     [SerializeField] private float fallMultiplier = 1.5f;
     [SerializeField] float verticalVelocity;
@@ -21,6 +24,12 @@ public class PlayerController : MonoBehaviour
     public bool isPlayer1;
     public bool isAlive = true;
     public bool isCrouching;
+    public bool isRolling;
+    public float crawlSpeed = 3f;
+    public float rollSpeed = 5f;
+    [SerializeField] private float rollFriction = 0.00005f;
+    public float currentRollSpeed = 0f;
+    [SerializeField] private float minSpeedToCrawl = 0.2f;
 
     public bool isAttacking;
     //respawn code:
@@ -30,9 +39,6 @@ public class PlayerController : MonoBehaviour
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
-
-    //debugging:
-    private bool hasDied = false;
 
     //orietnation:
     private GameObject otherPlayer;
@@ -74,16 +80,30 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-
+       OnEnterScene();
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
 
+        if (!isAttacking && input.AttackPressed())
+        {
+            animator.SetBool("IsAttacking", true);
+            isAttacking = true;
+        }
+        else
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                animator.SetBool("IsAttacking", false);
+            isAttacking = false;
+        }
+        
+    }
 
-      
 
+    void FixedUpdate()
+    {
         if (isAlive)
         {
             ApplyGravity();
@@ -93,6 +113,8 @@ public class PlayerController : MonoBehaviour
             HandleJump();
             //HandleCameraEdges();
             HandleCrouch();
+            HandleAttack();
+            HandleRoll();
         }
         else
         {
@@ -104,10 +126,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (input.DebugPressed() && !hasDied)
-
+        if (input.DebugPressed())
         {
             PlayerDies();
+            Debug.Log("Debug Pressed");
         }
 
 
@@ -122,45 +144,77 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 direction = Vector2.zero;
 
-        if (input.LeftPressed())
+        if (playerMovement.currentAnimation == "Armed_Crawling")
         {
-            direction.x = -1f;
-
-            if (isPlayer1 && facingDefault)
-            {
-                Flip();
-            }
-            else if (!isPlayer1 && !facingDefault)
-            {
-                Flip();
-            }
+            moveSpeed = crawlSpeed;
         }
-        else if (input.RightPressed())
+        else if (playerMovement.currentAnimation == "Armed_Rolling")
         {
-            direction.x = 1f;
-
-            if (!isPlayer1 && facingDefault)
-            {
-                Flip();
-            }
-            else if (isPlayer1 && !facingDefault)
-            {
-                Flip();
-            }
+            moveSpeed = rollSpeed;
+        }
+        else if (playerMovement.isSliding)
+        {
+            moveSpeed = 2f;
         }
         else
         {
-            if (!facingDefault)
+            moveSpeed = runSpeed;
+        }
+
+        if (!playerMovement.retreatPlay)
+        {
+            if (input.LeftPressed())
             {
-                Flip();
+                direction.x = -1f;
+
+                if (isPlayer1 && facingDefault)
+                {
+                    Flip();
+                }
+                else if (!isPlayer1 && !facingDefault)
+                {
+                    Flip();
+                }
+            }
+            else if (input.RightPressed())
+            {
+                direction.x = 1f;
+
+                if (!isPlayer1 && facingDefault)
+                {
+                    Flip();
+                }
+                else if (isPlayer1 && !facingDefault)
+                {
+                    Flip();
+                }
+            }
+            else
+            {
+                if (!facingDefault)
+                {
+                    Flip();
+                }
             }
         }
 
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        if (playerMovement.currentAnimation == "Armed_Lunged_Mid")
+        {
+            Debug.Log("attack");
+        }
+
+        if (!input.AttackPressed() ||
+            playerMovement.currentAnimation != "Armed_Lunged_Mid" ||
+            playerMovement.currentAnimation != "Armed_Lunge_High" ||
+            playerMovement.currentAnimation != "Armed_Lunge_Low")
+        {
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
     }
 
     void HandleJump()
     {
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -227,13 +281,23 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
+        if (playerMovement.retreatPlay) return;
         facingDefault = !facingDefault;
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        //spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void SetSpriteFacing(bool faceRight)
     {
-        spriteRenderer.flipX = !faceRight;
+        //spriteRenderer.flipX = !faceRight;
+        if (!faceRight)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
     }
 
 
@@ -245,14 +309,11 @@ public class PlayerController : MonoBehaviour
     void HandleCrouch()
     {
 
-        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed())
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed() && playerMovement.currentAnimation != "Armed_Standing_Idle_Low")
         {
 
             isCrouching = true;
-           
 
-
-           
             transform.Find("CrouchingHitboxP1").gameObject.SetActive(true);
             transform.Find("StandingHitboxP1").gameObject.SetActive(false);
             transform.Find("JumpingHitboxP1").gameObject.SetActive(false);
@@ -282,6 +343,31 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+    }
+
+    void HandleRoll()
+    {
+        if (playerMovement.currentAnimation == "Armed_Rolling")
+        {
+            animator.SetBool("IsRolling", true);
+            animator.speed = currentRollSpeed / rollSpeed;
+            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction * Time.deltaTime);
+            animator.SetFloat("RollingSpeed", currentRollSpeed);
+            
+            if (currentRollSpeed <= minSpeedToCrawl)
+            {
+                isRolling = false;
+                animator.speed = 1f;
+                animator.SetBool("IsRolling", false);
+            }
+        }
+        else
+        {
+            animator.speed = 1f;
+            currentRollSpeed = rollSpeed;
+            animator.SetFloat("RollingSpeed", 0f);
+        }
+        
     }
 
     void HandleAttack()
@@ -352,14 +438,18 @@ public class PlayerController : MonoBehaviour
     public void PlayerDies()
     {
         if(isAlive)
-
         {
             isAlive = false;
+            //Debug.Log(isAlive);
             cameraScript.PlayerDies(gameObject);
             deathTimer = 0;
             isCrouching = false;
             isFalling = false;
+
             Instantiate(bloodSplatter, transform.position, transform.rotation);
+
+
+            //Debug.Log("happened");
 
             //its *possible* I may need to mess w "isFacingDefaultDirection" here
         }
@@ -385,6 +475,41 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
         }
 
+    }
+
+
+    public void OnEnterScene()
+    {
+        if(SceneTransitionManager.Instance.winningDirection == 1)
+        {
+            if(isPlayer1)
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+            else
+            {
+                PlayerDies();
+            }
+        }
+        else if(SceneTransitionManager.Instance.winningDirection == -1)
+        {
+            if(isPlayer1)
+            {
+                PlayerDies();
+            }
+            else
+            {
+                transform.position = new Vector3(SceneTransitionManager.Instance.playerSpawnX, SceneTransitionManager.Instance.playerSpawnY, 0);
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<DoorScript>())
+        {
+            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
+        }
     }
 }
 

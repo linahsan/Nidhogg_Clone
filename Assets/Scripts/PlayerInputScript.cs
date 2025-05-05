@@ -65,9 +65,13 @@ public class PlayerInputScript : MonoBehaviour
     //right:
     public bool RightPressed() => right.IsPressed();
 
+    public bool RightPressedShort() => right.WasPressedThisFrame();
+
     public bool RightReleased() => right.WasReleasedThisFrame();
     //left:
     public bool LeftPressed() => left.IsPressed();
+    
+    public bool LeftPressedShort() => left.WasPressedThisFrame();
 
     public bool LeftReleased() => left.WasReleasedThisFrame();
     //up:
