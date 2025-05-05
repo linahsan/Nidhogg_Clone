@@ -15,11 +15,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool movingForward = false;
     [SerializeField] bool stepBack = false;
     
+    private SpriteRenderer _swordSpriteRenderer;
+    public int SwordSpriteOrderInLayer;
+
     void Start()
     {
         controller = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerInputScript>();
+        _swordSpriteRenderer = transform.Find("Sword").GetComponent<SpriteRenderer>();
+        SwordSpriteOrderInLayer = _swordSpriteRenderer.sortingOrder;
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         CrouchingCheck();
         CrawlingCheck();
         RollingCheck();
+        _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
     }
 
     // 
