@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         cameraScript.AddActivePlayer(gameObject);
         cameraScript.Initalization();
 
-        //OnEnterScene();
+        OnEnterScene();
 
     }
 
