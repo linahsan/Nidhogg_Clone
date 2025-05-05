@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    private int deathTimer;
+    public int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
     
-    public GameObject grabChild;
+    //public GameObject grabChild;
     
     [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
@@ -114,13 +114,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking && input.AttackPressed())
         {
-            animator.SetBool("IsAttacking", true);
+            animator.SetBool("isAttacking", true);
             isAttacking = true;
         }
         else
         {
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                animator.SetBool("IsAttacking", false);
+                animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
 
@@ -581,11 +581,14 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("HitByCrouch", true);
         
         isDying = true; 
+    }
+    /*
     {
         if(collision.gameObject.GetComponent<DoorScript>())
         {
             collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
+    */
 }
 

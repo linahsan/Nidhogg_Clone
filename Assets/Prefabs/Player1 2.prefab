@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc51f055d8b64ffe88e12f36834d635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword: {fileID: 6732475894413092238}
   input: {fileID: 0}
   animator: {fileID: 0}
   rb: {fileID: 0}
@@ -369,12 +370,27 @@ MonoBehaviour:
   isRolling: 0
   crawlSpeed: 3
   rollSpeed: 5
+  isDying: 0
   rollFriction: 0.00005
   currentRollSpeed: 0
   minSpeedToCrawl: 0.2
   isAttacking: 0
   respawnTime: 180
+  deathTimer: 0
   grabChild: {fileID: 0}
+  crouchCollider: {fileID: 551656447250769667}
+  headCollider: {fileID: 4038936294940755546}
+  bodyCollider: {fileID: 3762589775543039771}
+  bottomCollider: {fileID: 1779119380128329700}
+  wallCheckDistance: 1
+  isTouchingWall: 0
+  isWallClinging: 0
+  ledgeCornerCheck: {fileID: 0}
+  ledgeCheckDistance: 0.1
+  bloodSplatter: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2671250752587469961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +462,9 @@ MonoBehaviour:
   currentHeight: 1
   movingForward: 0
   stepBack: 0
+  retreatPlay: 0
   isCrouching: 0
+  isSliding: 0
   SwordSpriteOrderInLayer: 0
 --- !u!1 &3252497251399928291
 GameObject:
@@ -510,7 +528,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -588,7 +606,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -615,6 +633,7 @@ GameObject:
   - component: {fileID: 2640656762300420262}
   - component: {fileID: 7307566417808074198}
   - component: {fileID: 1537625316001181560}
+  - component: {fileID: 6732475894413092238}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -738,6 +757,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.72, y: 0.12}
   m_EdgeRadius: 0
+--- !u!114 &6732475894413092238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570886432391698818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c83742825c5b4b39920683f4cf6b5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayer: {fileID: 0}
+  State: 0
 --- !u!1 &5567832103070218565
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +833,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
