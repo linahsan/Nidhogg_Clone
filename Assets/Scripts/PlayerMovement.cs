@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentHeight = 1;
     
     // speed
-    [SerializeField] bool movingForward = false;
+    public bool movingForward = false;
     [SerializeField] bool stepBack = false;
     public bool retreatPlay = false;
     public bool isCrouching = false;

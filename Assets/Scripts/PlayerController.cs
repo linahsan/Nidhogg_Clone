@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
 
     //hitbox
     public GameObject grabChild;
+    
+    [SerializeField] float wallCheckDistance = 0.5f;
+    [SerializeField] bool isTouchingWall = false;
+    [SerializeField] bool isWallClinging = false;
+    public Transform ledgeCornerCheck;
+    public float ledgeCheckDistance = 0.1f;
 
 
     void Start()
@@ -105,6 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             ApplyGravity();
             CheckGrounded();
+            CheckWall();
             
             HandleMovement();
             HandleJump();
@@ -376,6 +383,41 @@ public class PlayerController : MonoBehaviour
         else
         {
             isAttacking = false;
+        }
+    }
+
+    void CheckWall()
+    {
+        Vector2 wallDirection;
+        if (transform.localScale.x > 0)
+        {
+            wallDirection = Vector2.right;
+        }
+        else
+        {
+            wallDirection = Vector2.left;
+        }
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance);
+        
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+        {
+            isTouchingWall = true;
+            Debug.Log("istouchingwall");
+            float playerBounds = GetComponent<SpriteRenderer>().bounds.extents.x;
+            float wallX = hit.point.x;
+            if (transform.localScale.x > 0)
+            {
+                transform.position = new Vector2(wallX - playerBounds, transform.position.y);
+            }
+            else
+            {
+                transform.position = new Vector2(wallX + playerBounds, transform.position.y);
+            }
+        }
+        else
+        {
+            isTouchingWall = false;
         }
     }
 
