@@ -32,8 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rollFriction = 0.00005f;
     public float currentRollSpeed = 0f;
     [SerializeField] private float minSpeedToCrawl = 0.2f;
-
-    public bool isAttacking;
+    
     //respawn code:
     public int respawnTime;
     public int deathTimer;
@@ -63,6 +62,17 @@ public class PlayerController : MonoBehaviour
     public float ledgeCheckDistance = 0.1f;
     public GameObject bloodSplatter;
     public LayerMask wallLayer;
+    
+    // timer between states
+    float holdTimer = 0f;
+    float positionDuration = 0.3f;
+    public bool isIdle = false;
+    public bool isStepping = false;
+    public bool stepBack = false;
+    public bool stepForward = false;
+    public bool isRunning = false;
+    public bool isAttacking = false;
+    public bool isSliding;
 
     void Start()
     {
@@ -78,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
         var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
+        
         if (this.name == "Player1")
         {
             isPlayer1 = true;
@@ -110,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Update()
+    void Update() // move elsewhere
     {
         if (!isAttacking && input.AttackPressed())
         {
@@ -139,11 +150,13 @@ public class PlayerController : MonoBehaviour
             CheckWall();
             
             HandleMovement();
+            HandleSlide();
             HandleJump();
             //HandleCameraEdges();
             HandleCrouch();
             HandleAttack();
             HandleRoll();
+            MoveSpeed();
         }
         else
         {
@@ -160,90 +173,123 @@ public class PlayerController : MonoBehaviour
             PlayerDies();
             Debug.Log("Debug Pressed");
         }
-
-
     }
-
-    void OnBecameInvisible()
+    
+    void MoveSpeed()
     {
-        PlayerDies();
+        if (isCrouching)
+        {
+            moveSpeed = crawlSpeed;
+        }
+        else if (isSliding)
+        {
+            moveSpeed = 1f;
+        }
+        else
+        {
+            moveSpeed = runSpeed;
+        }
     }
 
     void HandleMovement()
     {
         Vector2 direction = Vector2.zero;
 
-        if (playerMovement.currentAnimation == "Armed_Crawling")
+        if (input.LeftPressed())
         {
-            moveSpeed = crawlSpeed;
-        }
-        else if (playerMovement.currentAnimation == "Armed_Rolling")
-        {
-            moveSpeed = rollSpeed;
-        }
-        else if (playerMovement.isSliding)
-        {
-            moveSpeed = 2f;
-        }
-        else
-        {
-            moveSpeed = runSpeed;
-        }
+            holdTimer += Time.deltaTime;
+            direction.x = -1f;
 
-        if (!playerMovement.retreatPlay)
-        {
-            if (input.LeftPressed())
+            if (holdTimer < positionDuration)
             {
-                direction.x = -1f;
+                isStepping = true;
+                isRunning = false;
+            }
+            else
+            {
+                isRunning = true;
+                isStepping = false;
 
                 if (isPlayer1 && facingDefault)
                 {
+                    stepBack = true;
+                    stepForward = false;
                     Flip();
                 }
                 else if (!isPlayer1 && !facingDefault)
                 {
+                    stepBack = false;
+                    stepForward = true;
                     Flip();
                 }
             }
-            else if (input.RightPressed())
-            {
-                direction.x = 1f;
+        }
+        else if (input.RightPressed())
+        {
+            holdTimer += Time.deltaTime;
+            direction.x = 1f;
 
+            if (holdTimer < positionDuration)
+            {
+                isStepping = true;
+                isRunning = false;
+            }
+            else
+            {
+                isRunning = true;
+                isStepping = false;
+                
                 if (!isPlayer1 && facingDefault)
                 {
+                    stepBack = true;
+                    stepForward = false;
                     Flip();
                 }
                 else if (isPlayer1 && !facingDefault)
                 {
-                    Flip();
-                }
-            }
-            else
-            {
-                if (!facingDefault)
-                {
+                    stepBack = false;
+                    stepForward = true;
                     Flip();
                 }
             }
         }
-
-        if (playerMovement.currentAnimation == "Armed_Lunged_Mid")
+        else
         {
-            Debug.Log("attack");
+            holdTimer = 0f;
+            isRunning = false;
+            isStepping = false;
         }
 
-        if (!input.AttackPressed() ||
-            playerMovement.currentAnimation != "Armed_Lunged_Mid" ||
-            playerMovement.currentAnimation != "Armed_Lunge_High" ||
-            playerMovement.currentAnimation != "Armed_Lunge_Low")
+        if (!isRunning && direction == Vector2.zero)
+        {
+            if (!facingDefault)
+            {
+                Flip();
+            }
+        }
+        
+        if (!isAttacking)
         {
             transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
     }
 
+    void HandleSlide()
+    {
+        if (input.LeftPressed() && input.RightPressed())
+        {
+            isSliding = true;
+            isStepping = false;
+            isRunning = false;
+        }
+        else
+        {
+            isSliding = false;
+        }
+    }
+
     void HandleJump()
     {
-        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -328,34 +374,29 @@ public class PlayerController : MonoBehaviour
             transform.localScale = scale;
         }
     }
-
-
-    public bool IsAlive()
-    {
-        return isAlive;
-    }
-
-    void HandleCrouch()
+    
+    void HandleCrouch() // differentiate crouch and low height
     {
 
         if (playerMovement.currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
         {
 
             isCrouching = true;
-            bottomCollider.gameObject.SetActive(false);
-            headCollider.gameObject.SetActive(false);
-            bodyCollider.gameObject.SetActive(false);  
-            crouchCollider.gameObject.SetActive(true);
+            bottomCollider.enabled = false;
+            headCollider.enabled = false;
+            bodyCollider.enabled = false;  
+            crouchCollider.enabled = true;
             Debug.Log("We are currently crouching");
 
         }
         else
         {
             isCrouching = false;
-            bottomCollider.gameObject.SetActive(true);
-            headCollider.gameObject.SetActive(true);
-            bodyCollider.gameObject.SetActive(true);   
-            crouchCollider.gameObject.SetActive(false);
+            bottomCollider.enabled = true;
+            headCollider.enabled = true;
+            bodyCollider.enabled = true;   
+            crouchCollider.enabled = false;
+            Debug.Log("We are currently not crouching");
         }
     }
 
@@ -578,5 +619,16 @@ public class PlayerController : MonoBehaviour
             hittenBox.gameObject.GetComponent<DoorScript>().DoorSceneChange();
         }
     }
+    
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+    
+    void OnBecameInvisible()
+    {
+        PlayerDies();
+    }
+
 }
 
