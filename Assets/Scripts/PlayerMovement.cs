@@ -13,9 +13,16 @@ public class PlayerMovement : MonoBehaviour
     
     // speed
     public bool movingForward = false;
+    public bool isRunning = false;
+    public bool isIdle = false;
+    public bool isStepping = false;
+    
     [SerializeField] bool stepBack = false;
-    public bool retreatPlay = false;
+    [SerializeField] bool stepForward = false;
     public bool isCrouching = false;
+    
+    
+    public bool retreatPlay = false;
     public bool isSliding = false;
     
     private SpriteRenderer _swordSpriteRenderer;
