@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public float crawlSpeed = 3f;
     public float rollSpeed = 5f;
     public bool isDying = false;
-    [SerializeField] private float rollFriction = 0.00005f;
+    [SerializeField] private float rollFriction = 20f;
     public float currentRollSpeed = 0f;
     [SerializeField] private float minSpeedToCrawl = 0.2f;
     
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D headCollider;
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
+    [SerializeField] private Collider2D hatCollider;
     
     //public GameObject grabChild;
     
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
+        wallLayer = LayerMask.NameToLayer("Wall");
 
         grabChild = bottomCollider;
 
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
             bodyCollider.includeLayers = layer2;
             bottomCollider.includeLayers = layer2;
             crouchCollider.includeLayers = layer2;
+
             sword.SetOwner(SwordScript.SwordOwner.Player2);
         }
 
@@ -125,20 +128,21 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking && input.AttackPressed())
         {
-            animator.SetBool("IsAttacking", true);
+            animator.SetBool("isAttacking", true);
             isAttacking = true;
         }
         else
         {
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                animator.SetBool("IsAttacking", false);
+                animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
-
+        /*
         if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             PlayerDies();
         }
+        */
     }
 
     void FixedUpdate()
@@ -268,7 +272,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!isAttacking)
+        if (!isAttacking && !isTouchingWall)
         {
             transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
@@ -303,6 +307,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded)
         {
+            hatCollider.enabled = true;
             float currentGravity = gravity;
 
             if (verticalVelocity < 0)
@@ -321,6 +326,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            hatCollider.enabled = false;
             verticalVelocity = 0f;
             isFalling = false;
         }
@@ -343,7 +349,7 @@ public class PlayerController : MonoBehaviour
 
 
                 // snapping ot ground --> might not need, need to check iwht high heights
-                float groundY = hit.point.y + grabChild.bounds.extents.y + grabChild.bounds.size.y/2;
+                float groundY = hit.point.y + grabChild.bounds.extents.y; //- grabChild.bounds.size.y/2;
 
 
                 Vector2 pos = transform.position;
@@ -386,7 +392,8 @@ public class PlayerController : MonoBehaviour
             headCollider.enabled = false;
             bodyCollider.enabled = false;  
             crouchCollider.enabled = true;
-            Debug.Log("We are currently crouching");
+            grabChild = crouchCollider;
+            //Debug.Log("We are currently crouching");
 
         }
         else
@@ -396,7 +403,8 @@ public class PlayerController : MonoBehaviour
             headCollider.enabled = true;
             bodyCollider.enabled = true;   
             crouchCollider.enabled = false;
-            Debug.Log("We are currently not crouching");
+            grabChild = bottomCollider;
+            //Debug.Log("We are currently not crouching");
         }
     }
 
@@ -404,16 +412,30 @@ public class PlayerController : MonoBehaviour
     {
         if (playerMovement.currentAnimation == "Armed_Rolling")
         {
-            animator.SetBool("IsRolling", true);
+            animator.SetBool("isRolling", true);
             animator.speed = currentRollSpeed / rollSpeed;
-            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction * Time.deltaTime);
+            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction);
             animator.SetFloat("RollingSpeed", currentRollSpeed);
-            
+            Debug.Log(currentRollSpeed);
+
+
+            bottomCollider.enabled = false;
+            headCollider.enabled = false;
+            bodyCollider.enabled = false;
+            crouchCollider.enabled = true;
+            grabChild = crouchCollider;
+
             if (currentRollSpeed <= minSpeedToCrawl)
             {
                 isRolling = false;
                 animator.speed = 1f;
-                animator.SetBool("IsRolling", false);
+                animator.SetBool("isRolling", false);
+                if(input.DownPressedLong() && !input.DownPressed())
+                {
+                    playerMovement.currentHeight = 0;
+                    isCrouching = true;
+                }
+                
             }
         }
         else
@@ -421,6 +443,7 @@ public class PlayerController : MonoBehaviour
             animator.speed = 1f;
             currentRollSpeed = rollSpeed;
             animator.SetFloat("RollingSpeed", 0f);
+
         }
         
     }
@@ -450,7 +473,7 @@ public class PlayerController : MonoBehaviour
             wallDirection = Vector2.left;
         }
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, wallLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, LayerMask.GetMask("Wall"));
         Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, Color.green);
         
         if (hit.collider != null && hit.collider.CompareTag("Wall"))
