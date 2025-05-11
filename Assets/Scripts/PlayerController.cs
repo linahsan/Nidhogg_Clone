@@ -54,8 +54,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
     
-    public GameObject grabChild;
-    
     [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
     [SerializeField] bool isWallClinging = false;
@@ -571,21 +569,19 @@ public class PlayerController : MonoBehaviour
 
     public void HandleDeath(BoxCollider2D hittenBox)
     {
+        var opponent = hittenBox.gameObject.transform.parent;
+        var opponentAnimator = opponent.GetComponent<Animator>();
+        var opponentController = opponent.GetComponent<PlayerController>();
         if (hittenBox == headCollider)
-            animator.SetBool("HitByHead", true);
+            opponentAnimator.SetBool("HitByHead", true);
         else if (hittenBox == bodyCollider)
-            animator.SetBool("HitByBody", true);
+            opponentAnimator.SetBool("HitByBody", true);
         else if (hittenBox == bottomCollider)
-            animator.SetBool("HitByBottom", true);
+            opponentAnimator.SetBool("HitByBottom", true);
         else if (hittenBox == crouchCollider)
-            animator.SetBool("HitByCrouch", true);
+            opponentAnimator.SetBool("HitByCrouch", true);
         
-        isDying = true; 
-    {
-        if(collision.gameObject.GetComponent<DoorScript>())
-        {
-            collision.gameObject.GetComponent<DoorScript>().DoorSceneChange();
-        }
+        opponentController.isDying = true;
     }
 }
 
