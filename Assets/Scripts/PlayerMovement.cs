@@ -131,6 +131,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
         {
+            /*
+            if(isCrouching == false)
+            {
+                animator.Play("Armed_Crouching", 0, 0);
+            }
+            */
             isCrouching = true;
             UpdateCrouchAnimation();
         }
