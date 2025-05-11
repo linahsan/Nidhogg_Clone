@@ -28,10 +28,7 @@ public class SwordScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.transform.parent.GetComponent<PlayerController>().HandleDeath(other as BoxCollider2D);
-        }
+        other.transform.parent.GetComponent<PlayerController>().HandleHit(other as BoxCollider2D);
     }
 
     public void SetOwner(SwordOwner owner)

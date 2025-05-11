@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = false;
 
-        var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
-        var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
+        var layer1 = 1 << LayerMask.NameToLayer("Player 1 Hit Box");
+        var layer2 = 1 << LayerMask.NameToLayer("Player 2 Hit Box");
         if (this.name == "Player1")
         {
             isPlayer1 = true;
@@ -120,11 +120,6 @@ public class PlayerController : MonoBehaviour
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 animator.SetBool("IsAttacking", false);
             isAttacking = false;
-        }
-
-        if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            PlayerDies();
         }
     }
 
@@ -379,14 +374,14 @@ public class PlayerController : MonoBehaviour
             {
                 isRolling = false;
                 animator.speed = 1f;
-                animator.SetBool("IsRolling", false);
+                //animator.SetBool("IsRolling", false);
             }
         }
         else
         {
             animator.speed = 1f;
             currentRollSpeed = rollSpeed;
-            animator.SetFloat("RollingSpeed", 0f);
+            //animator.SetFloat("RollingSpeed", 0f);
         }
         
     }
@@ -567,18 +562,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HandleDeath(BoxCollider2D hittenBox)
+    public void HandleHit(BoxCollider2D hittenBox)
     {
         var opponent = hittenBox.gameObject.transform.parent;
         var opponentAnimator = opponent.GetComponent<Animator>();
         var opponentController = opponent.GetComponent<PlayerController>();
-        if (hittenBox == headCollider)
+        
+        if (hittenBox == opponentController.headCollider)
             opponentAnimator.SetBool("HitByHead", true);
-        else if (hittenBox == bodyCollider)
+        else if (hittenBox == opponentController.bodyCollider)
             opponentAnimator.SetBool("HitByBody", true);
-        else if (hittenBox == bottomCollider)
+        else if (hittenBox == opponentController.bottomCollider)
             opponentAnimator.SetBool("HitByBottom", true);
-        else if (hittenBox == crouchCollider)
+        else if (hittenBox == opponentController.crouchCollider)
             opponentAnimator.SetBool("HitByCrouch", true);
         
         opponentController.isDying = true;
