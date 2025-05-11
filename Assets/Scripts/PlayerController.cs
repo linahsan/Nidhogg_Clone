@@ -32,10 +32,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rollFriction = 0.00005f;
     public float currentRollSpeed = 0f;
     [SerializeField] private float minSpeedToCrawl = 0.2f;
-    
+
+    public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    public int deathTimer;
+    private int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -53,8 +54,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
     
-    //public GameObject grabChild;
-    
     [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
     [SerializeField] bool isWallClinging = false;
@@ -62,17 +61,6 @@ public class PlayerController : MonoBehaviour
     public float ledgeCheckDistance = 0.1f;
     public GameObject bloodSplatter;
     public LayerMask wallLayer;
-    
-    // timer between states
-    float holdTimer = 0f;
-    float positionDuration = 0.3f;
-    public bool isIdle = false;
-    public bool isStepping = false;
-    public bool stepBack = false;
-    public bool stepForward = false;
-    public bool isRunning = false;
-    public bool isAttacking = false;
-    public bool isSliding;
 
     void Start()
     {
@@ -88,7 +76,6 @@ public class PlayerController : MonoBehaviour
 
         var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
         var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
-        
         if (this.name == "Player1")
         {
             isPlayer1 = true;
@@ -121,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Update() // move elsewhere
+    void Update()
     {
         if (!isAttacking && input.AttackPressed())
         {
@@ -150,13 +137,11 @@ public class PlayerController : MonoBehaviour
             CheckWall();
             
             HandleMovement();
-            HandleSlide();
             HandleJump();
             //HandleCameraEdges();
             HandleCrouch();
             HandleAttack();
             HandleRoll();
-            MoveSpeed();
         }
         else
         {
@@ -173,123 +158,90 @@ public class PlayerController : MonoBehaviour
             PlayerDies();
             Debug.Log("Debug Pressed");
         }
+
+
     }
-    
-    void MoveSpeed()
+
+    void OnBecameInvisible()
     {
-        if (isCrouching)
-        {
-            moveSpeed = crawlSpeed;
-        }
-        else if (isSliding)
-        {
-            moveSpeed = 1f;
-        }
-        else
-        {
-            moveSpeed = runSpeed;
-        }
+        PlayerDies();
     }
 
     void HandleMovement()
     {
         Vector2 direction = Vector2.zero;
 
-        if (input.LeftPressed())
+        if (playerMovement.currentAnimation == "Armed_Crawling")
         {
-            holdTimer += Time.deltaTime;
-            direction.x = -1f;
+            moveSpeed = crawlSpeed;
+        }
+        else if (playerMovement.currentAnimation == "Armed_Rolling")
+        {
+            moveSpeed = rollSpeed;
+        }
+        else if (playerMovement.isSliding)
+        {
+            moveSpeed = 2f;
+        }
+        else
+        {
+            moveSpeed = runSpeed;
+        }
 
-            if (holdTimer < positionDuration)
+        if (!playerMovement.retreatPlay)
+        {
+            if (input.LeftPressed())
             {
-                isStepping = true;
-                isRunning = false;
-            }
-            else
-            {
-                isRunning = true;
-                isStepping = false;
+                direction.x = -1f;
 
                 if (isPlayer1 && facingDefault)
                 {
-                    stepBack = true;
-                    stepForward = false;
                     Flip();
                 }
                 else if (!isPlayer1 && !facingDefault)
                 {
-                    stepBack = false;
-                    stepForward = true;
                     Flip();
                 }
             }
-        }
-        else if (input.RightPressed())
-        {
-            holdTimer += Time.deltaTime;
-            direction.x = 1f;
+            else if (input.RightPressed())
+            {
+                direction.x = 1f;
 
-            if (holdTimer < positionDuration)
-            {
-                isStepping = true;
-                isRunning = false;
-            }
-            else
-            {
-                isRunning = true;
-                isStepping = false;
-                
                 if (!isPlayer1 && facingDefault)
                 {
-                    stepBack = true;
-                    stepForward = false;
                     Flip();
                 }
                 else if (isPlayer1 && !facingDefault)
                 {
-                    stepBack = false;
-                    stepForward = true;
+                    Flip();
+                }
+            }
+            else
+            {
+                if (!facingDefault)
+                {
                     Flip();
                 }
             }
         }
-        else
+
+        if (playerMovement.currentAnimation == "Armed_Lunged_Mid")
         {
-            holdTimer = 0f;
-            isRunning = false;
-            isStepping = false;
+            Debug.Log("attack");
         }
 
-        if (!isRunning && direction == Vector2.zero)
-        {
-            if (!facingDefault)
-            {
-                Flip();
-            }
-        }
-        
-        if (!isAttacking)
+        if (!input.AttackPressed() ||
+            playerMovement.currentAnimation != "Armed_Lunged_Mid" ||
+            playerMovement.currentAnimation != "Armed_Lunge_High" ||
+            playerMovement.currentAnimation != "Armed_Lunge_Low")
         {
             transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
     }
 
-    void HandleSlide()
-    {
-        if (input.LeftPressed() && input.RightPressed())
-        {
-            isSliding = true;
-            isStepping = false;
-            isRunning = false;
-        }
-        else
-        {
-            isSliding = false;
-        }
-    }
-
     void HandleJump()
     {
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -374,29 +326,43 @@ public class PlayerController : MonoBehaviour
             transform.localScale = scale;
         }
     }
-    
-    void HandleCrouch() // differentiate crouch and low height
+
+
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+
+    void HandleCrouch()
     {
 
-        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed() && playerMovement.currentAnimation != "Armed_Standing_Idle_Low")
         {
 
             isCrouching = true;
-            bottomCollider.enabled = false;
-            headCollider.enabled = false;
-            bodyCollider.enabled = false;  
-            crouchCollider.enabled = true;
+            bottomCollider.gameObject.SetActive(true);
+            grabChild = crouchCollider;
             Debug.Log("We are currently crouching");
 
         }
         else
         {
             isCrouching = false;
-            bottomCollider.enabled = true;
-            headCollider.enabled = true;
-            bodyCollider.enabled = true;   
-            crouchCollider.enabled = false;
-            Debug.Log("We are currently not crouching");
+            grabChild = bottomCollider;
+
+            if (!isGrounded)
+            {
+                bottomCollider.gameObject.SetActive(true);
+            }
+            else
+            {
+                crouchCollider.gameObject.SetActive(false);
+                
+                headCollider.gameObject.SetActive(true);
+                bodyCollider.gameObject.SetActive(true);    
+                bottomCollider.gameObject.SetActive(true);
+            }
+
         }
     }
 
@@ -603,32 +569,19 @@ public class PlayerController : MonoBehaviour
 
     public void HandleDeath(BoxCollider2D hittenBox)
     {
+        var opponent = hittenBox.gameObject.transform.parent;
+        var opponentAnimator = opponent.GetComponent<Animator>();
+        var opponentController = opponent.GetComponent<PlayerController>();
         if (hittenBox == headCollider)
-            animator.SetBool("HitByHead", true);
+            opponentAnimator.SetBool("HitByHead", true);
         else if (hittenBox == bodyCollider)
-            animator.SetBool("HitByBody", true);
+            opponentAnimator.SetBool("HitByBody", true);
         else if (hittenBox == bottomCollider)
-            animator.SetBool("HitByBottom", true);
+            opponentAnimator.SetBool("HitByBottom", true);
         else if (hittenBox == crouchCollider)
-            animator.SetBool("HitByCrouch", true);
+            opponentAnimator.SetBool("HitByCrouch", true);
         
-        isDying = true; 
-        
-        if(hittenBox.gameObject.GetComponent<DoorScript>())
-        {
-            hittenBox.gameObject.GetComponent<DoorScript>().DoorSceneChange();
-        }
+        opponentController.isDying = true;
     }
-    
-    public bool IsAlive()
-    {
-        return isAlive;
-    }
-    
-    void OnBecameInvisible()
-    {
-        PlayerDies();
-    }
-
 }
 
