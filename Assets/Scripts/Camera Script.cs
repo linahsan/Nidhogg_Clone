@@ -163,8 +163,8 @@ public class CameraScript : MonoBehaviour
             rightBorder.SetActive(true);
             leftBorder.SetActive(true);
 
-            rightBorder.layer = LayerMask.NameToLayer("Ground");
-            leftBorder.layer = LayerMask.NameToLayer("Ground");
+            rightBorder.layer = LayerMask.NameToLayer("Wall");
+            leftBorder.layer = LayerMask.NameToLayer("Wall");
 
         }
         else if(winningDirection == 1)
@@ -177,8 +177,8 @@ public class CameraScript : MonoBehaviour
                 frameMinX = player2Transform.position.x - (barrierRange)*width;
             }
 
-            rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
-            leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
+            //rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
+            //leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
         }
         else if(winningDirection == -1)
         {
@@ -191,8 +191,8 @@ public class CameraScript : MonoBehaviour
                 frameMaxX = player1Transform.position.x + (barrierRange)*width;
             }
 
-            rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
-            leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
+            //rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
+            //leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
         }
     }
 
