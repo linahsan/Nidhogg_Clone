@@ -31,6 +31,10 @@ public class CameraScript : MonoBehaviour
 
    public GameObject goOrange;
    public GameObject goYellow;
+   public Transform player1Spawn;
+   public Transform player2Spawn;
+   public Transform rightBound;
+   public Transform leftBound;
 
    public bool hasStarted = false;
 
@@ -39,6 +43,7 @@ public class CameraScript : MonoBehaviour
     {
         goOrange = transform.GetChild(3).gameObject;
         goYellow = transform.GetChild(4).gameObject;
+
        //OnSceneEnter();
     }
 
@@ -160,8 +165,8 @@ public class CameraScript : MonoBehaviour
            frameMaxX = gameObject.GetComponent<Transform>().position.x;
 
 
-            rightBorder.SetActive(true);
-            leftBorder.SetActive(true);
+            //rightBorder.SetActive(true);
+            //leftBorder.SetActive(true);
 
             rightBorder.layer = LayerMask.NameToLayer("Wall");
             leftBorder.layer = LayerMask.NameToLayer("Wall");
@@ -172,10 +177,12 @@ public class CameraScript : MonoBehaviour
             frameMinX = player1Transform.position.x - (barrierRange)*width;
             frameMaxX = player1Transform.position.x + (barrierRange)*width;
 
+            /*
             if(player2Transform.position.x - (barrierRange)*width > frameMinX)
             {
                 frameMinX = player2Transform.position.x - (barrierRange)*width;
             }
+            */
 
             //rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
             //leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
@@ -186,10 +193,12 @@ public class CameraScript : MonoBehaviour
 
             frameMinX = player2Transform.position.x - (barrierRange)*width;
 
+            /*
             if(player1Transform.position.x + (barrierRange)*width < frameMaxX)
             {
                 frameMaxX = player1Transform.position.x + (barrierRange)*width;
             }
+            */
 
             //rightBorder.layer = LayerMask.NameToLayer("Player 1 Ignore");
             //leftBorder.layer = LayerMask.NameToLayer("Player 2 Ignore");
