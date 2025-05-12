@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,13 +30,14 @@ public class PlayerController : MonoBehaviour
     public float crawlSpeed = 3f;
     public float rollSpeed = 5f;
     public bool isDying = false;
-    [SerializeField] private float rollFriction = 20f;
+    [SerializeField] private float rollFriction = 0.00005f;
     public float currentRollSpeed = 0f;
     [SerializeField] private float minSpeedToCrawl = 0.2f;
-    
+
+    public bool isAttacking;
     //respawn code:
     public int respawnTime;
-    public int deathTimer;
+    private int deathTimer;
 
     // flip logic
     private bool facingDefault;
@@ -52,9 +54,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D headCollider;
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
-    [SerializeField] private Collider2D hatCollider;
-    
-    //public GameObject grabChild;
     
     [SerializeField] float wallCheckDistance = 1f;
     [SerializeField] bool isTouchingWall = false;
@@ -63,17 +62,6 @@ public class PlayerController : MonoBehaviour
     public float ledgeCheckDistance = 0.1f;
     public GameObject bloodSplatter;
     public LayerMask wallLayer;
-    
-    // timer between states
-    float holdTimer = 0f;
-    float positionDuration = 0.3f;
-    public bool isIdle = false;
-    public bool isStepping = false;
-    public bool stepBack = false;
-    public bool stepForward = false;
-    public bool isRunning = false;
-    public bool isAttacking = false;
-    public bool isSliding;
 
     void Start()
     {
@@ -82,15 +70,13 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
-        wallLayer = LayerMask.NameToLayer("Wall");
 
         grabChild = bottomCollider;
 
         isGrounded = false;
 
-        var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
-        var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
-        
+        var layer1 = 1 << LayerMask.NameToLayer("Player 1 Hit Box");
+        var layer2 = 1 << LayerMask.NameToLayer("Player 2 Hit Box");
         if (this.name == "Player1")
         {
             isPlayer1 = true;
@@ -109,7 +95,6 @@ public class PlayerController : MonoBehaviour
             bodyCollider.includeLayers = layer2;
             bottomCollider.includeLayers = layer2;
             crouchCollider.includeLayers = layer2;
-
             sword.SetOwner(SwordScript.SwordOwner.Player2);
         }
 
@@ -124,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Update() // move elsewhere
+    void Update()
     {
         if (!isAttacking && input.AttackPressed())
         {
@@ -137,12 +122,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
-        /*
-        if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            PlayerDies();
-        }
-        */
     }
 
     void FixedUpdate()
@@ -154,7 +133,6 @@ public class PlayerController : MonoBehaviour
             CheckWall();
             
             HandleMovement();
-            HandleSlide();
             HandleJump();
             HandleCrouch();
             HandleAttack();
@@ -178,123 +156,91 @@ public class PlayerController : MonoBehaviour
             PlayerDies();
             Debug.Log("Debug Pressed");
         }
+
+
     }
-    
-    void MoveSpeed()
+
+    void OnBecameInvisible()
     {
-        if (isCrouching)
-        {
-            moveSpeed = crawlSpeed;
-        }
-        else if (isSliding)
-        {
-            moveSpeed = 1f;
-        }
-        else
-        {
-            moveSpeed = runSpeed;
-        }
+        PlayerDies();
     }
 
     void HandleMovement()
     {
         Vector2 direction = Vector2.zero;
 
-        if (input.LeftPressed())
+        if (playerMovement.currentAnimation == "Armed_Crawling")
         {
-            holdTimer += Time.deltaTime;
-            direction.x = -1f;
+            moveSpeed = crawlSpeed;
+        }
+        else if (playerMovement.currentAnimation == "Armed_Rolling")
+        {
+            moveSpeed = rollSpeed;
+        }
+        else if (playerMovement.isSliding)
+        {
+            moveSpeed = 2f;
+        }
+        else
+        {
+            moveSpeed = runSpeed;
+        }
 
-            if (holdTimer < positionDuration)
+        if (!playerMovement.retreatPlay)
+        {
+            if (input.LeftPressed())
             {
-                isStepping = true;
-                isRunning = false;
-            }
-            else
-            {
-                isRunning = true;
-                isStepping = false;
+                direction.x = -1f;
 
                 if (isPlayer1 && facingDefault)
                 {
-                    stepBack = true;
-                    stepForward = false;
                     Flip();
                 }
                 else if (!isPlayer1 && !facingDefault)
                 {
-                    stepBack = false;
-                    stepForward = true;
                     Flip();
                 }
             }
-        }
-        else if (input.RightPressed())
-        {
-            holdTimer += Time.deltaTime;
-            direction.x = 1f;
+            else if (input.RightPressed())
+            {
+                direction.x = 1f;
 
-            if (holdTimer < positionDuration)
-            {
-                isStepping = true;
-                isRunning = false;
-            }
-            else
-            {
-                isRunning = true;
-                isStepping = false;
-                
                 if (!isPlayer1 && facingDefault)
                 {
-                    stepBack = true;
-                    stepForward = false;
                     Flip();
                 }
                 else if (isPlayer1 && !facingDefault)
                 {
-                    stepBack = false;
-                    stepForward = true;
+                    Flip();
+                }
+            }
+            else
+            {
+                if (!facingDefault)
+                {
                     Flip();
                 }
             }
         }
-        else
+
+        if (playerMovement.currentAnimation == "Armed_Lunged_Mid")
         {
-            holdTimer = 0f;
-            isRunning = false;
-            isStepping = false;
+            Debug.Log("attack");
         }
 
-        if (!isRunning && direction == Vector2.zero)
-        {
-            if (!facingDefault)
-            {
-                Flip();
-            }
-        }
-        
-        if (!isAttacking && !isTouchingWall)
+        if (!input.AttackPressed() ||
+            playerMovement.currentAnimation != "Armed_Lunged_Mid" ||
+            playerMovement.currentAnimation != "Armed_Lunge_High" ||
+            playerMovement.currentAnimation != "Armed_Lunge_Low")
         {
             transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
     }
 
-    void HandleSlide()
-    {
-        if (input.LeftPressed() && input.RightPressed())
-        {
-            isSliding = true;
-            isStepping = false;
-            isRunning = false;
-        }
-        else
-        {
-            isSliding = false;
-        }
-    }
-
     void HandleJump()
     {
+        
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -308,7 +254,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded)
         {
-            hatCollider.enabled = true;
             float currentGravity = gravity;
 
             if (verticalVelocity < 0)
@@ -327,7 +272,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            hatCollider.enabled = false;
             verticalVelocity = 0f;
             isFalling = false;
         }
@@ -350,7 +294,7 @@ public class PlayerController : MonoBehaviour
 
 
                 // snapping ot ground --> might not need, need to check iwht high heights
-                float groundY = hit.point.y + grabChild.bounds.extents.y; //- grabChild.bounds.size.y/2;
+                float groundY = hit.point.y + grabChild.bounds.extents.y + grabChild.bounds.size.y/2;
 
 
                 Vector2 pos = transform.position;
@@ -381,31 +325,43 @@ public class PlayerController : MonoBehaviour
             transform.localScale = scale;
         }
     }
-    
-    void HandleCrouch() // differentiate crouch and low height
+
+
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+
+    void HandleCrouch()
     {
 
-        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && !input.DownPressed())
+        if (playerMovement.currentHeight == 0 && input.DownPressedLong() && isGrounded && !input.DownPressed() && playerMovement.currentAnimation != "Armed_Standing_Idle_Low")
         {
 
             isCrouching = true;
-            bottomCollider.enabled = false;
-            headCollider.enabled = false;
-            bodyCollider.enabled = false;  
-            crouchCollider.enabled = true;
+            bottomCollider.gameObject.SetActive(true);
             grabChild = crouchCollider;
-            //Debug.Log("We are currently crouching");
+            Debug.Log("We are currently crouching");
 
         }
         else
         {
             isCrouching = false;
-            bottomCollider.enabled = true;
-            headCollider.enabled = true;
-            bodyCollider.enabled = true;   
-            crouchCollider.enabled = false;
             grabChild = bottomCollider;
-            //Debug.Log("We are currently not crouching");
+
+            if (!isGrounded)
+            {
+                bottomCollider.gameObject.SetActive(true);
+            }
+            else
+            {
+                crouchCollider.gameObject.SetActive(false);
+                
+                headCollider.gameObject.SetActive(true);
+                bodyCollider.gameObject.SetActive(true);    
+                bottomCollider.gameObject.SetActive(true);
+            }
+
         }
     }
 
@@ -413,38 +369,23 @@ public class PlayerController : MonoBehaviour
     {
         if (playerMovement.currentAnimation == "Armed_Rolling")
         {
-            animator.SetBool("isRolling", true);
+            animator.SetBool("IsRolling", true);
             animator.speed = currentRollSpeed / rollSpeed;
-            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction);
+            currentRollSpeed = Mathf.Max(0f, currentRollSpeed - rollFriction * Time.deltaTime);
             animator.SetFloat("RollingSpeed", currentRollSpeed);
-            Debug.Log(currentRollSpeed);
-
-
-            bottomCollider.enabled = false;
-            headCollider.enabled = false;
-            bodyCollider.enabled = false;
-            crouchCollider.enabled = true;
-            grabChild = crouchCollider;
-
+            
             if (currentRollSpeed <= minSpeedToCrawl)
             {
                 isRolling = false;
                 animator.speed = 1f;
-                animator.SetBool("isRolling", false);
-                if(input.DownPressedLong() && !input.DownPressed())
-                {
-                    playerMovement.currentHeight = 0;
-                    isCrouching = true;
-                }
-                
+                //animator.SetBool("IsRolling", false);
             }
         }
         else
         {
             animator.speed = 1f;
             currentRollSpeed = rollSpeed;
-            animator.SetFloat("RollingSpeed", 0f);
-
+            //animator.SetFloat("RollingSpeed", 0f);
         }
         
     }
@@ -474,7 +415,7 @@ public class PlayerController : MonoBehaviour
             wallDirection = Vector2.left;
         }
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, LayerMask.GetMask("Wall"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, wallLayer);
         Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, Color.green);
         
         if (hit.collider != null && hit.collider.CompareTag("Wall"))
@@ -642,34 +583,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HandleDeath(BoxCollider2D hittenBox)
+    public void HandleHit(BoxCollider2D hittenBox)
     {
-        if (hittenBox == headCollider)
-            animator.SetBool("HitByHead", true);
-        else if (hittenBox == bodyCollider)
-            animator.SetBool("HitByBody", true);
-        else if (hittenBox == bottomCollider)
-            animator.SetBool("HitByBottom", true);
-        else if (hittenBox == crouchCollider)
-            animator.SetBool("HitByCrouch", true);
-        
-        isDying = true; 
-        
-        if(hittenBox.gameObject.GetComponent<DoorScript>())
-        {
-            hittenBox.gameObject.GetComponent<DoorScript>().DoorSceneChange();
-        }
-    }
-    
-    public bool IsAlive()
-    {
-        return isAlive;
-    }
-    
-    void OnBecameInvisible()
-    {
-        PlayerDies();
-    }
+        var opponent = hittenBox.gameObject.transform.parent;
+        var opponentAnimator = opponent.GetComponent<Animator>();
+        var opponentController = opponent.GetComponent<PlayerController>();
 
+        if (!opponentController || opponentController.isDying)
+            return;
+        
+        if (hittenBox == opponentController.headCollider)
+            opponentAnimator.SetTrigger("HitByHead");
+        else if (hittenBox == opponentController.bodyCollider)
+            opponentAnimator.SetTrigger("HitByBody");
+        else if (hittenBox == opponentController.bottomCollider)
+            opponentAnimator.SetTrigger("HitByBottom");
+        else if (hittenBox == opponentController.crouchCollider)
+            opponentAnimator.SetTrigger("HitByCrouch");
+        opponentController.isDying = true;
+
+        var droppedSword = Instantiate(sword, transform.parent).AddComponent<Rigidbody2D>();
+        droppedSword.position = sword.transform.position;
+        droppedSword.transform.rotation = sword.transform.rotation;
+        var parentScale = opponentController.transform.localScale;
+        var localScale = sword.transform.localScale;
+        droppedSword.transform.localScale = new Vector3(
+            parentScale.x * localScale.x,
+            parentScale.y * localScale.y,
+            parentScale.z * localScale.z
+            );
+        droppedSword.includeLayers = 1 << LayerMask.NameToLayer("Dropped Sword");
+        var droopedSwordCollider = droppedSword.GetComponent<BoxCollider2D>();
+        droopedSwordCollider.forceSendLayers = 0;
+
+        opponentController.sword.gameObject.SetActive(false);
+
+    }
 }
 

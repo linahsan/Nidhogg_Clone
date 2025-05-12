@@ -1,3 +1,4 @@
+using System;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -40,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
         StepBackCheck();
         HeightCheck();
@@ -48,7 +48,14 @@ public class PlayerMovement : MonoBehaviour
         JumpingCheck();
         FallingCheck();
         CrouchingCheck();
-        CrawlingCheck();
+        try
+        {
+            CrawlingCheck();
+        }
+        catch (Exception e)
+        {
+        }
+
         RollingCheck();
         SlideCheck();
         _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
@@ -57,16 +64,26 @@ public class PlayerMovement : MonoBehaviour
     // 
     void HeightCheck()
     {
-        if (input.DownPressed() && animator.GetInteger("height") > 0)
+        bool isrunning =  animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Running");
+
+        if (isrunning)
         {
-            currentHeight--;
-            UpdateHeightAnimation();
+            //downpress is rolling, uppress is rasing sword
         }
-        else if (input.UpPressed() && animator.GetInteger("height") < 2)
+        else
         {
-            currentHeight++;
-            UpdateHeightAnimation();
+            if (input.DownPressed() && animator.GetInteger("height") > 0)
+            {
+                currentHeight--;
+                UpdateHeightAnimation();
+            }
+            else if (input.UpPressed() && animator.GetInteger("height") < 2)
+            {
+                currentHeight++;
+                UpdateHeightAnimation();
+            }
         }
+        
     }
     
     void MoveForwardCheck()
@@ -138,6 +155,8 @@ public class PlayerMovement : MonoBehaviour
 
     void CrawlingCheck()
     {
+        
+        currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         if (controller.isCrouching)
         {
             Debug.Log("is crouching");
@@ -207,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isJumping", controller.isJumping);
         animator.SetBool("isGrounded", controller.isGrounded);
         animator.SetBool("isCrouching", isCrouching);
-        animator.SetBool("isSliding", isSliding);
+        //animator.SetBool("isSliding", isSliding);
         animator.SetBool("isAttacking", controller.isAttacking);
     }
 

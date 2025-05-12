@@ -37,7 +37,6 @@ public class SceneTransitionManager : MonoBehaviour
             if(winningDirection == -1)
             {
                 currentPlayerController.isAlive = false;
-                currentPlayerController.deathTimer = 0;
                 currentPlayerController.isCrouching = false;
                 currentPlayerController.isFalling = false;
             }
@@ -55,7 +54,6 @@ public class SceneTransitionManager : MonoBehaviour
             else if(winningDirection == 1)
             {
                 currentPlayerController.isAlive = false;
-                currentPlayerController.deathTimer = 0;
                 currentPlayerController.isCrouching = false;
                 currentPlayerController.isFalling = false;
             }
