@@ -15,8 +15,19 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetTrigger("AttackFinished");
     }
 
+    public void OnHitDone()
+    {
+        animator.SetTrigger("AnimationDone");
+    }
+
     private void Update()
     {
-        
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            animator.SetTrigger("AnimationDone");
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

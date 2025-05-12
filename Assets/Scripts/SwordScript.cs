@@ -4,7 +4,7 @@ using UnityEngine;
 public class SwordScript : MonoBehaviour
 {
     public GameObject currentPlayer;
-
+    public bool dropped = false;
     public enum SWORD_STATES
     {
         HELD,
@@ -28,11 +28,14 @@ public class SwordScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (dropped)
+            return;
         other.transform.parent.GetComponent<PlayerController>().HandleHit(other as BoxCollider2D);
     }
 
     public void SetOwner(SwordOwner owner)
     {
+        dropped = false;
         switch (owner)
         {
             case SwordOwner.Player1:

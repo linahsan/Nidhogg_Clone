@@ -1,3 +1,4 @@
+using System;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -40,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
         StepBackCheck();
         HeightCheck();
@@ -48,7 +48,14 @@ public class PlayerMovement : MonoBehaviour
         JumpingCheck();
         FallingCheck();
         CrouchingCheck();
-        CrawlingCheck();
+        try
+        {
+            CrawlingCheck();
+        }
+        catch (Exception e)
+        {
+        }
+
         RollingCheck();
         SlideCheck();
         _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
@@ -148,6 +155,8 @@ public class PlayerMovement : MonoBehaviour
 
     void CrawlingCheck()
     {
+        
+        currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         if (controller.isCrouching)
         {
             Debug.Log("is crouching");
@@ -218,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isGrounded", controller.isGrounded);
         animator.SetBool("isCrouching", isCrouching);
         //animator.SetBool("isSliding", isSliding);
-        animator.SetBool("IsAttacking", controller.isAttacking);
+        animator.SetBool("isAttacking", controller.isAttacking);
     }
 
     // update height animation

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -112,13 +113,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking && input.AttackPressed())
         {
-            animator.SetBool("IsAttacking", true);
+            animator.SetBool("isAttacking", true);
             isAttacking = true;
         }
         else
         {
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                animator.SetBool("IsAttacking", false);
+                animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
     }
@@ -567,17 +568,36 @@ public class PlayerController : MonoBehaviour
         var opponent = hittenBox.gameObject.transform.parent;
         var opponentAnimator = opponent.GetComponent<Animator>();
         var opponentController = opponent.GetComponent<PlayerController>();
+
+        if (!opponentController || opponentController.isDying)
+            return;
         
         if (hittenBox == opponentController.headCollider)
-            opponentAnimator.SetBool("HitByHead", true);
+            opponentAnimator.SetTrigger("HitByHead");
         else if (hittenBox == opponentController.bodyCollider)
-            opponentAnimator.SetBool("HitByBody", true);
+            opponentAnimator.SetTrigger("HitByBody");
         else if (hittenBox == opponentController.bottomCollider)
-            opponentAnimator.SetBool("HitByBottom", true);
+            opponentAnimator.SetTrigger("HitByBottom");
         else if (hittenBox == opponentController.crouchCollider)
-            opponentAnimator.SetBool("HitByCrouch", true);
-        
+            opponentAnimator.SetTrigger("HitByCrouch");
         opponentController.isDying = true;
+
+        var droppedSword = Instantiate(sword, transform.parent).AddComponent<Rigidbody2D>();
+        droppedSword.position = sword.transform.position;
+        droppedSword.transform.rotation = sword.transform.rotation;
+        var parentScale = opponentController.transform.localScale;
+        var localScale = sword.transform.localScale;
+        droppedSword.transform.localScale = new Vector3(
+            parentScale.x * localScale.x,
+            parentScale.y * localScale.y,
+            parentScale.z * localScale.z
+            );
+        droppedSword.includeLayers = 1 << LayerMask.NameToLayer("Dropped Sword");
+        var droopedSwordCollider = droppedSword.GetComponent<BoxCollider2D>();
+        droopedSwordCollider.forceSendLayers = 0;
+
+        opponentController.sword.gameObject.SetActive(false);
+
     }
 }
 
