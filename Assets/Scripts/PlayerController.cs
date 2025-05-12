@@ -134,10 +134,12 @@ public class PlayerController : MonoBehaviour
             
             HandleMovement();
             HandleJump();
-            //HandleCameraEdges();
             HandleCrouch();
             HandleAttack();
             HandleRoll();
+            MoveSpeed();
+
+            HandleCameraEdges();
         }
         else
         {
@@ -473,20 +475,37 @@ public class PlayerController : MonoBehaviour
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
-        if (isPlayer1)
+
+        if(isPlayer1)
         {
-            if (transform.position.x < cameraScript.gameObject.GetComponent<Transform>().position.x - (1 / 2) * width)
+            if(transform.position.x < cameraScript.leftBound.position.x)
             {
-                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x - (1 / 2) * width, transform.position.y, 0);
+                transform.position = new Vector3(cameraScript.leftBound.position.x, transform.position.y, 0);
+            }
+            else if(cameraScript.winningDirection == 0)
+            {
+                if(transform.position.x > cameraScript.rightBound.position.x)
+                {
+                    transform.position = new Vector3(cameraScript.rightBound.position.x, transform.position.y);
+                }
             }
         }
-        else
+        else //Player 2
         {
-            if (transform.position.x > cameraScript.gameObject.GetComponent<Transform>().position.x + (1 / 2) * width)
+            if(transform.position.x > cameraScript.rightBound.position.x)
             {
-                transform.position = new Vector3(cameraScript.gameObject.GetComponent<Transform>().position.x + (1 / 2) * width, transform.position.y, 0);
+                transform.position = new Vector3(cameraScript.rightBound.position.x, transform.position.y);
+            }
+            else if(cameraScript.winningDirection == 0)
+            {
+                if(transform.position.x < cameraScript.leftBound.position.x)
+                {
+                    transform.position = new Vector3(cameraScript.leftBound.position.x, transform.position.y, 0);
+                }
             }
         }
+
+       
     }
 
 
@@ -519,11 +538,11 @@ public class PlayerController : MonoBehaviour
 
         if (isPlayer1)
         {
-            gameObject.transform.position = new Vector3(cam.transform.position.x - (1 / 2) * width, 2, 0);
+            gameObject.transform.position = new Vector3(cameraScript.player1Spawn.position.x, cameraScript.player1Spawn.position.y, 0);
         }
-        else
+        else //Player 2
         {
-            gameObject.transform.position = new Vector3(cam.transform.position.x + (1 / 2) * width, 2, 0);
+            gameObject.transform.position = new Vector3(cameraScript.player2Spawn.position.x, cameraScript.player2Spawn.position.y, 0);
         }
         
         animator.SetTrigger("Death");
