@@ -238,6 +238,7 @@ public class PlayerController : MonoBehaviour
     void HandleJump()
     {
         
+        
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
