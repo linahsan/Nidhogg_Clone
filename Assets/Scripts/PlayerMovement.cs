@@ -29,9 +29,10 @@ public class PlayerMovement : MonoBehaviour
     
     private SpriteRenderer _swordSpriteRenderer;
     public int SwordSpriteOrderInLayer;
-
+    private PlayerAnimationController _playerAnimationController;
     void Start()
     {
+        _playerAnimationController = GetComponent<PlayerAnimationController>(); 
         controller = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerInputScript>();
@@ -44,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (controller.isDying || !controller.isAlive)
             return;
-        if (controller.isJumping)
+        if (_playerAnimationController.isDiveKick)
         {
-            transform.position += (Vector3)Vector2.right * ((controller.FacingRight ? 1 : -1) * Time.deltaTime) * 2;
+            transform.position += (Vector3)Vector2.right * ((controller.FacingRight ? 1 : -1) * Time.deltaTime) * 4;
         }
         currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
