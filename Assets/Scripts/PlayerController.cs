@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int HitByBody = Animator.StringToHash("HitByBody");
     [SerializeField] SwordScript sword;
     [SerializeField] PlayerInputScript input;
     [SerializeField] Animator animator;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     // flip logic
     private bool facingDefault;
     private bool defaultFacingRight;
+    public bool FacingRight => (facingDefault && defaultFacingRight) || ((!facingDefault) && (!defaultFacingRight));
 
     //orietnation:
     private GameObject otherPlayer;
@@ -49,12 +51,14 @@ public class PlayerController : MonoBehaviour
 
     //hitbox
     public Collider2D grabChild;
-    [SerializeField] private Collider2D crouchCollider;
     [SerializeField] private Collider2D headCollider;
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Collider2D bottomCollider;
     [SerializeField] private Collider2D hatCollider;
-    
+
+    [Header("Fucking real collider")] [SerializeField]
+    private Collider2D standingCollider;
+    [SerializeField] private Collider2D crouchCollider;
     //public GameObject grabChild;
     
     [SerializeField] float wallCheckDistance = 1f;
@@ -89,27 +93,24 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = false;
 
-        var layer1 = LayerMask.NameToLayer("Player 1 Hit Box");
-        var layer2 = LayerMask.NameToLayer("Player 2 Hit Box");
+        var layer1 = 1 << LayerMask.NameToLayer("Player 1 Hit Box");
+        var layer2 = 1 << LayerMask.NameToLayer("Player 2 Hit Box");
         
         if (this.name == "Player1")
         {
             isPlayer1 = true;
             defaultFacingRight = true;
-            headCollider.includeLayers = layer1;
-            bodyCollider.includeLayers = layer1;
-            bottomCollider.includeLayers = layer1;
             crouchCollider.includeLayers = layer1;
+            standingCollider.includeLayers = layer1;
             sword.SetOwner(SwordScript.SwordOwner.Player1);
         }
         else
         {
+            print("I am player 2");
             isPlayer1 = false;
             defaultFacingRight = false;
-            headCollider.includeLayers = layer2;
-            bodyCollider.includeLayers = layer2;
-            bottomCollider.includeLayers = layer2;
             crouchCollider.includeLayers = layer2;
+            standingCollider.includeLayers = layer2;
 
             sword.SetOwner(SwordScript.SwordOwner.Player2);
         }
@@ -296,6 +297,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleJump()
     {
+
         if (input.JumpPressed() && isGrounded)
         {
             verticalVelocity = jumpForce;
@@ -673,15 +675,18 @@ public class PlayerController : MonoBehaviour
            if (!opponentController || opponentController.isDying)
                return;
            
-           if (hittenBox == opponentController.headCollider)
-               opponentAnimator.SetTrigger("HitByHead");
-           else if (hittenBox == opponentController.bodyCollider)
-               opponentAnimator.SetTrigger("HitByBody");
-           else if (hittenBox == opponentController.bottomCollider)
-               opponentAnimator.SetTrigger("HitByBottom");
-           else if (hittenBox == opponentController.crouchCollider)
-               opponentAnimator.SetTrigger("HitByCrouch");
+           if (hittenBox == opponentController.bodyCollider)
+               opponentAnimator.SetTrigger(HitByBody);
+           /*
+            else if (hittenBox == opponentController.bodyCollider)
+                opponentAnimator.SetTrigger("HitByBody");
+            else if (hittenBox == opponentController.bottomCollider)
+                opponentAnimator.SetTrigger("HitByBottom");
+            else if (hittenBox == opponentController.crouchCollider)
+                opponentAnimator.SetTrigger("HitByCrouch");
+            */
            opponentController.isDying = true;
+           opponentController.isAlive = false;
        
            var droppedSword = Instantiate(sword, transform.parent).AddComponent<Rigidbody2D>();
            droppedSword.position = sword.transform.position;
@@ -696,6 +701,7 @@ public class PlayerController : MonoBehaviour
            droppedSword.includeLayers = 1 << LayerMask.NameToLayer("Dropped Sword");
            var droopedSwordCollider = droppedSword.GetComponent<BoxCollider2D>();
            droopedSwordCollider.forceSendLayers = 0;
+           Destroy(opponentController.sword.gameObject);
        
            opponentController.sword.gameObject.SetActive(false);
        

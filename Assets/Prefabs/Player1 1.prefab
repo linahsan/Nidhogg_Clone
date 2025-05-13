@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1024136799479912280}
   - component: {fileID: 805428409034455624}
   - component: {fileID: 6430473555043446984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StandingHitboxP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8671498712892388501}
   - component: {fileID: 6997884607601020990}
   - component: {fileID: 693352680929254333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 0}
+  isHeld: 1
   State: 0
 --- !u!1 &538787950575339758
 GameObject:
@@ -293,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3040812073252675449}
   - component: {fileID: 4582293045198726769}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: jumpingHatP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +502,7 @@ GameObject:
   - component: {fileID: 7799460685229917012}
   - component: {fileID: 6072469946699054905}
   - component: {fileID: 4900289460583539514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CrouchingHitboxP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,6 +1029,7 @@ GameObject:
   - component: {fileID: 7677988059918194123}
   - component: {fileID: 5516406532608962675}
   - component: {fileID: 2579502136448553273}
+  - component: {fileID: 6883176998093497228}
   m_Layer: 7
   m_Name: Player1 1
   m_TagString: Player
@@ -1313,11 +1315,12 @@ MonoBehaviour:
   respawnTime: 180
   deathTimer: 0
   grabChild: {fileID: 0}
-  crouchCollider: {fileID: 4900289460583539514}
   headCollider: {fileID: 6430473555043446984}
   bodyCollider: {fileID: 6430473555043446984}
   bottomCollider: {fileID: 6430473555043446984}
   hatCollider: {fileID: 4582293045198726769}
+  standingCollider: {fileID: 6430473555043446984}
+  crouchCollider: {fileID: 4900289460583539514}
   wallCheckDistance: 1
   isTouchingWall: 0
   isWallClinging: 0
@@ -1410,6 +1413,20 @@ MonoBehaviour:
   stepBack: 0
   stepForward: 0
   isCrouching: 0
+  throwReady: 0
+  isThrowing: 0
   retreatPlay: 0
   isSliding: 0
   SwordSpriteOrderInLayer: 0
+--- !u!114 &6883176998093497228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567663679217594416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6e5f1bc252a8d4bb1af9b94af24211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
