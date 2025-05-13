@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 5381155984514116142}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03c93a7577ae84c76b9594a40cb3b1cd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   state: 0
   directionValue: 0
   speed: 0.01
-  thrownPlayer: {fileID: 0}
+  thrownPlayer: 0
 --- !u!61 &7542048668525655880
 BoxCollider2D:
   m_ObjectHideFlags: 0

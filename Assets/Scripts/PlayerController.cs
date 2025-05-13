@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
 
-        sword.gameObject.SetActive(swordActive);
+        sword.gameObject.GetComponent<SpriteRenderer>().enabled = swordActive;
         /*
         if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
@@ -724,7 +724,7 @@ public class PlayerController : MonoBehaviour
                 inputDirection = -1;
             }
             spawnedSword.GetComponent<EXTERNALSwordScript>().directionValue = inputDirection;
-            spawnedSword.transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
+            spawnedSword.transform.position = new Vector3(transform.position.x + (3/2) * transform.localScale.x, transform.position.y, 0);
             spawnedSword.GetComponent<EXTERNALSwordScript>().thrownPlayer = isPlayer1;
         }
 
