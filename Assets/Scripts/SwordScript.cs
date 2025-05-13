@@ -5,6 +5,7 @@ public class SwordScript : MonoBehaviour
 {
     public GameObject currentPlayer;
     public bool isHeld = true;
+    public bool isThrown = false;
 
     public enum SWORD_STATES
     {
@@ -55,6 +56,8 @@ public class SwordScript : MonoBehaviour
 
         isHeld = true;
     }
+    
+    
     
     public enum SwordOwner {Player1, Player2, None}
 }
