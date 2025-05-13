@@ -215,7 +215,7 @@ public class CameraScript : MonoBehaviour
         GameObject testPlayer = null;
         PlayerController otherPlayerController;
 
-
+        
         if(player.GetComponent<PlayerController>().isPlayer1) //i.e. if player 1 dies
         {
 
