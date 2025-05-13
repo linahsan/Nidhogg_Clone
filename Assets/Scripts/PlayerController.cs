@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int HitByBody = Animator.StringToHash("HitByBody");
     [SerializeField] SwordScript sword;
     [SerializeField] PlayerInputScript input;
     [SerializeField] Animator animator;
@@ -673,14 +674,16 @@ public class PlayerController : MonoBehaviour
            if (!opponentController || opponentController.isDying)
                return;
            
-           if (hittenBox == opponentController.headCollider)
-               opponentAnimator.SetTrigger("HitByHead");
-           else if (hittenBox == opponentController.bodyCollider)
-               opponentAnimator.SetTrigger("HitByBody");
-           else if (hittenBox == opponentController.bottomCollider)
-               opponentAnimator.SetTrigger("HitByBottom");
-           else if (hittenBox == opponentController.crouchCollider)
-               opponentAnimator.SetTrigger("HitByCrouch");
+           if (hittenBox == opponentController.bodyCollider)
+               opponentAnimator.SetTrigger(HitByBody);
+           /*
+            else if (hittenBox == opponentController.bodyCollider)
+                opponentAnimator.SetTrigger("HitByBody");
+            else if (hittenBox == opponentController.bottomCollider)
+                opponentAnimator.SetTrigger("HitByBottom");
+            else if (hittenBox == opponentController.crouchCollider)
+                opponentAnimator.SetTrigger("HitByCrouch");
+            */
            opponentController.isDying = true;
        
            var droppedSword = Instantiate(sword, transform.parent).AddComponent<Rigidbody2D>();
