@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool stepBack = false;
     [SerializeField] bool stepForward = false;
     public bool isCrouching = false;
+    public bool throwReady = false;
+    public bool isThrowing = false;
     
     
     public bool retreatPlay = false;
@@ -51,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         CrawlingCheck();
         RollingCheck();
         SlideCheck();
+        ThrowCheck();
+        ThrowingCheck();
         _swordSpriteRenderer.sortingOrder = SwordSpriteOrderInLayer;
     }
 
@@ -194,6 +198,37 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void ThrowCheck()
+    {
+        if (currentHeight == 2 && input.UpPressedLong() && !input.UpPressed())
+        {
+            /*
+            if(isCrouching == false)
+            {
+                animator.Play("Armed_Crouching", 0, 0);
+            }
+            */
+            throwReady = true;
+            UpdateThrowAnimation();
+        }
+        else
+        {
+            throwReady = false;
+        }
+    }
+
+    void ThrowingCheck()
+    {
+        if (input.AttackPressed())
+        {
+            isThrowing = true;
+        }
+        else
+        {
+            isThrowing = false;
+        }
+    }
+
     void AttackCheck()
     {
         if (input.AttackPressed())
@@ -209,6 +244,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isCrouching", isCrouching);
         animator.SetBool("isSliding", isSliding);
         animator.SetBool("isAttacking", controller.isAttacking);
+        animator.SetBool("ThrowReady", throwReady);
+        animator.SetBool("isThrowing", isThrowing);
     }
 
     // update height animation
@@ -238,12 +275,21 @@ public class PlayerMovement : MonoBehaviour
     void UpdateCrouchAnimation()
     {
         animator.SetInteger("height", currentHeight);
+        animator.SetBool("isCrouching", isCrouching);
     }
 
     void UpdateRollAnimation()
     {
         animator.SetInteger("height", currentHeight);
         animator.SetBool("movingForward", movingForward);
+    }
+
+    void UpdateThrowAnimation()
+    {
+        animator.SetBool("ThrowReady", throwReady);
+        animator.SetInteger("height", currentHeight);
+        animator.SetBool("movingForward", movingForward);
+        animator.SetBool("stepBack", stepBack);
     }
 
     void UpdateAttackAnimation()
