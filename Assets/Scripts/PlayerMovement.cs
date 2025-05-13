@@ -42,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (controller.isDying || !controller.isAlive)
+            return;
+        if (controller.isJumping)
+        {
+            transform.position += (Vector3)Vector2.right * ((controller.FacingRight ? 1 : -1) * Time.deltaTime) * 2;
+        }
         currentAnimation = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         UpdateControllerBools();
         StepBackCheck();
