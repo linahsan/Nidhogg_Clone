@@ -77,7 +77,8 @@ public class PlayerInputScript : MonoBehaviour
     //up:
     public bool UpPressed() => up.WasPressedThisFrame();
 
-    public bool UpPressedLong() => up.IsPressed();
+    private bool _upLongPressed;
+    public bool UpPressedLong() =>_upLongPressed;
 
     public bool UpReleased() => up.WasReleasedThisFrame();
     //down:
@@ -98,6 +99,30 @@ public class PlayerInputScript : MonoBehaviour
     public bool DebugPressed() => debug.IsPressed();
 
     public bool DebugReleased() => debug.WasReleasedThisFrame();
+
+    private bool _prevUpPressed;
+    private float _upPressedTime;
+    
+    private float _upPressDuration;
+    [SerializeField] private float longPressThreshold = 1f;
+    
+    void Update()
+    {
+        // 持续按住就累加
+        if (up.IsPressed())
+        {
+            _upPressDuration += Time.deltaTime;
+            if (_upPressDuration >= longPressThreshold)
+                _upLongPressed = true;
+        }
+        // 松开那一帧，重置所有状态
+        if (up.WasReleasedThisFrame())
+        {
+            _upPressDuration = 0f;
+            _upLongPressed = false;
+        }
+        print($"name :{gameObject.name}, is long pressed? {_upLongPressed}");
+    }
     
     /*
     private void OnMove(InputAction.CallbackContext context)

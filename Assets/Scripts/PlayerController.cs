@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] CameraScript cameraScript;
     [SerializeField] PlayerMovement playerMovement;
-
+    private PlayerAnimationController AniController;
+    
     public float runSpeed = 5f;
     public float moveSpeed = 5f;
     public bool isJumping = false;
@@ -139,6 +140,23 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
+        if (input.UpReleased())
+        {
+            animator.SetBool("isThrowing", false);
+        }
+        if (input.UpPressedLong())
+        {
+            animator.SetBool("isThrowing", true);
+
+            if (input.AttackPressed())
+            {
+                animator.SetBool("isAttacking", true);
+                isAttacking = true;
+                AniController.AnimationEnded();
+            }
+        }
+
+        
         /*
         if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
