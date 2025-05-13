@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6430473555043446984}
   m_Layer: 0
   m_Name: StandingHitboxP1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.33773124, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +132,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9.31, y: 12}
+  m_Size: {x: 8.634539, y: 12}
   m_EdgeRadius: 0
 --- !u!1 &435374758115327890
 GameObject:
@@ -257,7 +257,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.010904476, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -267,7 +267,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.72, y: 0.12}
+  m_Size: {x: 0.741809, y: 0.12}
   m_EdgeRadius: 0
 --- !u!114 &693352680929254333
 MonoBehaviour:
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 4582293045198726769}
   m_Layer: 7
   m_Name: jumpingHatP1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 4900289460583539514}
   m_Layer: 0
   m_Name: CrouchingHitboxP1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,7 +612,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12758827, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -622,7 +622,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9.31, y: 12}
+  m_Size: {x: 9.054825, y: 12}
   m_EdgeRadius: 0
 --- !u!1 &4446636164067717291
 GameObject:
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 617835516229737629}
   m_Layer: 0
   m_Name: Running Sound
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 9027552124993639033}
   m_Layer: 0
   m_Name: Advancing Sound
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,6 +1334,8 @@ MonoBehaviour:
   isRunning: 0
   isAttacking: 0
   isSliding: 0
+  swordExternalPrefab: {fileID: 5381155984514116142, guid: bd3c0cab3a9f249378255b8a0cbf8bff, type: 3}
+  movingDirection: 0
 --- !u!114 &7677988059918194123
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class SwordScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.parent.GetComponent<PlayerController>().HandleDeath(other as BoxCollider2D);
+            other.transform.parent.GetComponent<PlayerController>().PlayerDies();
         }
     }
 

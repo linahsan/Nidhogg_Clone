@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             currentHeight--;
             UpdateHeightAnimation();
         }
-        else if (input.UpPressed() && animator.GetInteger("height") < 2)
+        else if (input.UpPressed() && animator.GetInteger("height") < 3)
         {
             currentHeight++;
             UpdateHeightAnimation();

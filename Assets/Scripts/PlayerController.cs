@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -75,6 +76,10 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking = false;
     public bool isSliding;
 
+    public GameObject swordExternalPrefab;
+    public float movingDirection;
+    public bool swordActive = true;
+
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -137,6 +142,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isAttacking", false);
             isAttacking = false;
         }
+
+        sword.gameObject.SetActive(swordActive);
         /*
         if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
@@ -160,6 +167,11 @@ public class PlayerController : MonoBehaviour
             HandleAttack();
             HandleRoll();
             MoveSpeed();
+
+            if(playerMovement.currentHeight == 3 && input.AttackPressed())
+            {
+                Throw();
+            }
 
             HandleCameraEdges();
         }
@@ -591,6 +603,8 @@ public class PlayerController : MonoBehaviour
         float width = height * cam.aspect;
 
         isAlive = true;
+        swordActive = true;
+        sword.gameObject.SetActive(true);
         //SET ANIMATOR TO RUNNing state
 
         //WILL NEED TO FIX THE Y VALUE HERE
@@ -669,6 +683,31 @@ public class PlayerController : MonoBehaviour
     void OnBecameInvisible()
     {
         PlayerDies();
+    }
+
+    public void Throw()
+    {
+        if(swordActive == true)
+        {
+            swordActive = false;
+
+            //swpan the sword
+            GameObject spawnedSword = Instantiate(swordExternalPrefab);
+
+            int inputDirection = 0;
+            if(Mathf.Sign(transform.localScale.x) == 1)
+            {
+                inputDirection = 1;
+            }
+            else
+            {
+                inputDirection = -1;
+            }
+            spawnedSword.GetComponent<EXTERNALSwordScript>().directionValue = inputDirection;
+            spawnedSword.transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
+            spawnedSword.GetComponent<EXTERNALSwordScript>().thrownPlayer = isPlayer1;
+        }
+
     }
 
 }
