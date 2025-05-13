@@ -320,7 +320,6 @@ public class CameraScript : MonoBehaviour
 
     public void OnSceneEnter()
     {
-        Debug.Log("Camera Script");
         winningDirection = SceneTransitionManager.Instance.winningDirection;
         transform.position = new Vector3(SceneTransitionManager.Instance.cameraStartingX, transform.position.y, transform.position.z);
         Debug.Log(winningDirection);

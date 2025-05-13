@@ -31,28 +31,30 @@ public class EXTERNALSwordScript : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Happened");
 
         bool willHappen = false;
 
-        if(other.GetComponent<PlayerController>())
+        if(other.transform.parent.GetComponent<PlayerController>())
         {
-            if(other.GetComponent<PlayerController>().isPlayer1 == thrownPlayer)
+            if(other.transform.parent.GetComponent<PlayerController>().isPlayer1 == thrownPlayer)
             {
                 willHappen = false;
             }
             else
             {
                 willHappen = true;
-                other.GetComponent<PlayerController>().PlayerDies();
+                other.transform.parent.GetComponent<PlayerController>().PlayerDies();
             }
         }
         else
         {
             willHappen = true;
         }
+
+
         if(willHappen)
         {
             Debug.Log("Happened");

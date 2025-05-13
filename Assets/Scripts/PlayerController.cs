@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
     public float movingDirection;
     public bool swordActive = true;
 
+    public bool isDiveKicking = false;
+
     void Start()
     {
         input = GetComponent<PlayerInputScript>();
@@ -320,8 +322,25 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded)
         {
+            if(input.AttackPressed())
+            {
+                if(isDiveKicking == false)
+                {
+                    animator.SetTrigger("isDiveKicking");
+                    verticalVelocity = 0;
+                    isDiveKicking = true;
+                }
+            }
+
+
             hatCollider.enabled = true;
             float currentGravity = gravity;
+
+            if(isDiveKicking)
+            {
+                transform.position += new Vector3(transform.localScale.x * moveSpeed * Time.deltaTime, 0, 0);
+
+            }
 
             if (verticalVelocity < 0)
             {
@@ -342,6 +361,7 @@ public class PlayerController : MonoBehaviour
             hatCollider.enabled = false;
             verticalVelocity = 0f;
             isFalling = false;
+            isDiveKicking = false;
         }
     }
 
